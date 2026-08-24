@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://bv5qb7aufriy2"]
+
+[ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="1_5j42t"]
+
+[resource]
+script = ExtResource("1_5j42t")
+boss_line = Array[String](["Hello", "Boss"])
+employee_line = Array[String](["Hi", "Employee"])
+metadata/_custom_type_script = "uid://cvbvgyackyiws"

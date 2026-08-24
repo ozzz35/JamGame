@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://pfoh5fim0htc"]
+
+[ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_0kpiu"]
+[ext_resource type="Script" uid="uid://bmpvykrb8rtk0" path="res://Scripts/button.gd" id="2_smycg"]
+[ext_resource type="Texture2D" uid="uid://bckd5eoukjitg" path="res://Assets/button_anim_test.png" id="3_smycg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iju5o"]
+atlas = ExtResource("3_smycg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edukx"]
+atlas = ExtResource("3_smycg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svtet"]
+atlas = ExtResource("3_smycg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrk2b"]
+atlas = ExtResource("3_smycg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_riscd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iju5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edukx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svtet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrk2b")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Button" type="TextureButton" unique_id=59391517]
+offset_right = 40.0
+offset_bottom = 40.0
+action_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("1_0kpiu")
+script = ExtResource("2_smycg")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=760119112]
+visible = false
+position = Vector2(66, 66)
+scale = Vector2(2.015, 2.015)
+sprite_frames = SubResource("SpriteFrames_riscd")
