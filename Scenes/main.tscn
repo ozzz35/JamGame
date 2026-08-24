@@ -191,14 +191,14 @@ expand_mode = 1
 [node name="Screen1Text" type="RichTextLabel" parent="Room/NPCScreens/Screen1" unique_id=2013003602]
 visible = false
 layout_mode = 0
-offset_left = 115.0
-offset_top = 303.6
-offset_right = 859.0
-offset_bottom = 455.6
+offset_left = 42.199997
+offset_top = 181.36002
+offset_right = 442.2
+offset_bottom = 381.36002
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_jjvhh")
 theme_override_font_sizes/normal_font_size = 60
-text = "Hey Hey Hey"
+text = "[Boss]"
 
 [node name="SpeechBubble" type="ColorRect" parent="Room/NPCScreens/Screen1/Screen1Text" unique_id=88294595]
 show_behind_parent = true
@@ -226,14 +226,14 @@ expand_mode = 1
 [node name="Screen2Text" type="RichTextLabel" parent="Room/NPCScreens/Screen2" unique_id=1821095586]
 visible = false
 layout_mode = 0
-offset_left = 115.0
-offset_top = 303.6
-offset_right = 859.0
-offset_bottom = 455.6
+offset_left = 38.19995
+offset_top = 179.36002
+offset_right = 438.19995
+offset_bottom = 379.36002
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_jjvhh")
 theme_override_font_sizes/normal_font_size = 60
-text = "Hey Hey Hey"
+text = "[Employee]"
 horizontal_alignment = 2
 
 [node name="SpeechBubble" type="ColorRect" parent="Room/NPCScreens/Screen2/Screen2Text" unique_id=81865297]
