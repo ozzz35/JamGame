@@ -1,14 +1,22 @@
-class_name CustomButton extends TextureButton
+class_name BigButton extends Button
 
 @export var round_index: int ## in which round this button is going to show up. All the interface nodes will have this
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
+@onready var button_animation_player: AnimationPlayer = $ButtonAnimationPlayer
 
 func _ready() -> void:
-	self_modulate.a = 0
-	animated_sprite.visible = true
+	pass
 
 func setup(): ## All the interface nodes will have this
-	animated_sprite.play("default")
-	await animated_sprite.animation_finished
-	self_modulate.a = 1
-	animated_sprite.visible = false
+	pass
+
+
+func _on_pressed() -> void:
+	GameState.big_button_pressed()
+
+
+func _on_button_down() -> void:
+	button_animation_player.play("press")
+
+
+func _on_button_up() -> void:
+	button_animation_player.play("release")

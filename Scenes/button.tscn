@@ -2,54 +2,154 @@
 
 [ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_0kpiu"]
 [ext_resource type="Script" uid="uid://bmpvykrb8rtk0" path="res://Scripts/button.gd" id="2_smycg"]
-[ext_resource type="Texture2D" uid="uid://bckd5eoukjitg" path="res://Assets/button_anim_test.png" id="3_smycg"]
+[ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="2_svtet"]
+[ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_nrk2b"]
+[ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="4_c4mwi"]
+[ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="5_ur6nl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iju5o"]
-atlas = ExtResource("3_smycg")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="Animation" id="Animation_svtet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_edukx"]
-atlas = ExtResource("3_smycg")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="Animation" id="Animation_nrk2b"]
+resource_name = "press"
+length = 0.17
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_svtet"]
-atlas = ExtResource("3_smycg")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="Animation" id="Animation_c4mwi"]
+resource_name = "release"
+length = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(0, 0)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nrk2b"]
-atlas = ExtResource("3_smycg")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur6nl"]
+_data = {
+&"RESET": SubResource("Animation_svtet"),
+&"press": SubResource("Animation_nrk2b"),
+&"release": SubResource("Animation_c4mwi")
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_riscd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iju5o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edukx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svtet")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nrk2b")
-}],
-"loop": 0,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="Button" type="TextureButton" unique_id=59391517]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Button" type="Button" unique_id=350368556]
+offset_right = 54.0
+offset_bottom = 54.0
 action_mode = 0
 keep_pressed_outside = true
-texture_normal = ExtResource("1_0kpiu")
+flat = true
 script = ExtResource("2_smycg")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=760119112]
-visible = false
-position = Vector2(66, 66)
-scale = Vector2(2.015, 2.015)
-sprite_frames = SubResource("SpriteFrames_riscd")
+[node name="Base" type="TextureRect" parent="." unique_id=1999923895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svtet")
+expand_mode = 1
+
+[node name="Button" type="TextureRect" parent="." unique_id=1502740742]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nrk2b")
+expand_mode = 1
+
+[node name="Mask" type="TextureRect" parent="." unique_id=685322151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c4mwi")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="." unique_id=67020893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ur6nl")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="." unique_id=1791828679]
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 54.0
+offset_right = 49.0
+offset_bottom = 78.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=665777746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="X" type="TextureButton" parent="Control" unique_id=139132425]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 18.0
+offset_bottom = 19.0
+texture_normal = ExtResource("1_0kpiu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Check" type="TextureButton" parent="Control" unique_id=134689538]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 19.0
+texture_normal = ExtResource("1_0kpiu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ButtonAnimationPlayer" type="AnimationPlayer" parent="." unique_id=887506625]
+libraries/ = SubResource("AnimationLibrary_ur6nl")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -2,8 +2,77 @@
 
 [ext_resource type="PackedScene" uid="uid://pfoh5fim0htc" path="res://Scenes/button.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://bjsxixl4whcwv" path="res://Scenes/switch_panel.tscn" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://die1y3ub2mm4p" path="res://Scripts/round_controller.gd" id="3_8gbba"]
 [ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/LinkMagic-Regular.ttf" id="3_jjvhh"]
+
+[sub_resource type="Animation" id="Animation_kry3j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen1/Indicator/LED:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen1/Indicator/LED:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_21xkr"]
+resource_name = "indicator1"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen1/Indicator/LED:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6bp64"]
+resource_name = "indicator2"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen2/Indicator/LED:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_344ge"]
+_data = {
+&"RESET": SubResource("Animation_kry3j"),
+&"indicator1": SubResource("Animation_21xkr"),
+&"indicator2": SubResource("Animation_6bp64")
+}
 
 [node name="Main" type="Control" unique_id=567231090]
 layout_mode = 3
@@ -29,6 +98,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23353665, 0.23353665, 0.23353665, 1)
+
+[node name="CameraScreens" type="Control" parent="Room" unique_id=510638559]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+
+[node name="Screen1" type="TextureRect" parent="Room/CameraScreens" unique_id=1297362530]
+modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.3
+anchor_right = 0.65
+anchor_bottom = 1.0
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34003
+texture = ExtResource("1_jjgbg")
+expand_mode = 1
+
+[node name="Screen2" type="TextureRect" parent="Room/CameraScreens" unique_id=1951833902]
+modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.35
+anchor_bottom = 0.65
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("1_jjgbg")
+expand_mode = 1
+
+[node name="Screen3" type="TextureRect" parent="Room/CameraScreens" unique_id=1633588371]
+modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.65
+anchor_right = 0.35
+anchor_bottom = 1.0
+offset_top = -75.2
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("1_jjgbg")
+expand_mode = 1
+
+[node name="Screen4" type="TextureRect" parent="Room/CameraScreens" unique_id=17494789]
+modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_top = -75.2
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("1_jjgbg")
+expand_mode = 1
+
+[node name="Screen5" type="TextureRect" parent="Room/CameraScreens" unique_id=1956068090]
+modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.65
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("1_jjgbg")
+expand_mode = 1
 
 [node name="PanelUI" type="Control" parent="Room" unique_id=939453577]
 layout_mode = 1
@@ -58,114 +203,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" parent="Room/PanelUI/Interface" unique_id=59391517 instance=ExtResource("1_bo1nx")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.58100003
-anchor_bottom = 0.771
-offset_left = -85.0
-offset_top = -94.0
-offset_right = 39.75995
-offset_bottom = 23.160004
-round_index = 1
+layout_mode = 0
+offset_left = 446.8
+offset_top = 186.0
+offset_right = 500.8
+offset_bottom = 240.0
 
-[node name="Button2" parent="Room/PanelUI/Interface" unique_id=416387195 instance=ExtResource("1_bo1nx")]
+[node name="SwitchPanel" parent="Room/PanelUI/Interface" unique_id=1973828323 instance=ExtResource("2_kry3j")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.58100003
-anchor_bottom = 0.771
-offset_left = -302.0
-offset_top = -94.0
-offset_right = -177.24005
-offset_bottom = 23.160004
-round_index = 2
-
-[node name="Button3" parent="Room/PanelUI/Interface" unique_id=51595790 instance=ExtResource("1_bo1nx")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.58100003
-anchor_bottom = 0.771
-offset_left = 128.0
-offset_top = -94.0
-offset_right = 252.75995
-offset_bottom = 23.160004
-round_index = 2
-
-[node name="CameraScreens" type="Control" parent="Room" unique_id=510638559]
-layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-
-[node name="Screen1" type="TextureRect" parent="Room/CameraScreens" unique_id=1297362530]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.35
-anchor_top = 0.3
-anchor_right = 0.65
-anchor_bottom = 1.0
-offset_right = -0.47998047
-offset_bottom = -0.14001465
-texture = ExtResource("1_jjgbg")
-expand_mode = 1
-
-[node name="Screen2" type="TextureRect" parent="Room/CameraScreens" unique_id=1951833902]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.3
-anchor_right = 0.35
-anchor_bottom = 0.65
-offset_right = -0.47998047
-offset_bottom = -0.14001465
-texture = ExtResource("1_jjgbg")
-expand_mode = 1
-
-[node name="Screen3" type="TextureRect" parent="Room/CameraScreens" unique_id=1633588371]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.65
-anchor_right = 0.35
-anchor_bottom = 1.0
-offset_right = -0.47998047
-offset_bottom = -0.14001465
-texture = ExtResource("1_jjgbg")
-expand_mode = 1
-
-[node name="Screen4" type="TextureRect" parent="Room/CameraScreens" unique_id=17494789]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.65
-anchor_top = 0.65
-anchor_right = 0.8
-anchor_bottom = 1.0
-offset_right = -0.47998047
-offset_bottom = -0.14001465
-texture = ExtResource("1_jjgbg")
-expand_mode = 1
-
-[node name="Screen5" type="TextureRect" parent="Room/CameraScreens" unique_id=1956068090]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.65
-anchor_top = 0.3
-anchor_right = 0.8
-anchor_bottom = 0.65
-offset_right = -0.47998047
-offset_bottom = -0.14001465
-texture = ExtResource("1_jjgbg")
-expand_mode = 1
+anchors_preset = 15
+offset_left = -23.200005
+offset_top = -9.0
+offset_right = -210.672
+offset_bottom = 262.784
+scale = Vector2(0.585, 0.585)
 
 [node name="NPCScreens" type="Control" parent="Room" unique_id=2035786970]
 layout_mode = 1
@@ -174,6 +225,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Screen1" type="TextureRect" parent="Room/NPCScreens" unique_id=103396358]
 self_modulate = Color(0.09302468, 0.09302468, 0.09302468, 1)
@@ -188,29 +240,44 @@ offset_bottom = -0.14001465
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
 
-[node name="Screen1Text" type="RichTextLabel" parent="Room/NPCScreens/Screen1" unique_id=2013003602]
-visible = false
+[node name="Indicator" type="Label" parent="Room/NPCScreens/Screen1" unique_id=2026350506]
 layout_mode = 0
-offset_left = 42.199997
-offset_top = 181.36002
-offset_right = 442.2
-offset_bottom = 381.36002
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_jjvhh")
-theme_override_font_sizes/normal_font_size = 60
-text = "[Boss]"
+offset_left = 118.2
+offset_top = 168.36
+offset_right = 158.2
+offset_bottom = 191.36
+theme_override_colors/font_color = Color(0.30938512, 0.30938518, 0.30938515, 1)
+theme_override_fonts/font = ExtResource("3_jjvhh")
+text = "REC"
 
-[node name="SpeechBubble" type="ColorRect" parent="Room/NPCScreens/Screen1/Screen1Text" unique_id=88294595]
+[node name="Background" type="ColorRect" parent="Room/NPCScreens/Screen1/Indicator" unique_id=2041847837]
 show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = -2.8000011
+offset_right = 49.199997
+offset_bottom = 21.36
+
+[node name="Base" type="ColorRect" parent="Room/NPCScreens/Screen1/Indicator" unique_id=1573165781]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 31.199997
+offset_top = 3.3600006
+offset_right = 46.649437
+offset_bottom = 18.36
+color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+
+[node name="LED" type="ColorRect" parent="Room/NPCScreens/Screen1/Indicator" unique_id=880088]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 33.199997
+offset_top = 5.3600006
+offset_right = 44.529587
+offset_bottom = 16.36
+color = Color(0, 0, 0, 1)
 
 [node name="Screen2" type="TextureRect" parent="Room/NPCScreens" unique_id=472316616]
 self_modulate = Color(0.07190548, 0.07190548, 0.07190548, 1)
+layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -219,31 +286,90 @@ anchor_right = 0.18
 anchor_bottom = 0.305
 offset_right = -0.47998047
 offset_bottom = -0.14001465
-layout_direction = 3
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
 
-[node name="Screen2Text" type="RichTextLabel" parent="Room/NPCScreens/Screen2" unique_id=1821095586]
-visible = false
+[node name="Indicator" type="Label" parent="Room/NPCScreens/Screen2" unique_id=1768136562]
 layout_mode = 0
-offset_left = 38.19995
-offset_top = 179.36002
-offset_right = 438.19995
-offset_bottom = 379.36002
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_jjvhh")
-theme_override_font_sizes/normal_font_size = 60
-text = "[Employee]"
-horizontal_alignment = 2
+offset_left = 118.2
+offset_top = 168.36
+offset_right = 158.2
+offset_bottom = 191.36
+theme_override_colors/font_color = Color(0.30938512, 0.30938518, 0.30938515, 1)
+theme_override_fonts/font = ExtResource("3_jjvhh")
+text = "REC"
 
-[node name="SpeechBubble" type="ColorRect" parent="Room/NPCScreens/Screen2/Screen2Text" unique_id=81865297]
+[node name="Background" type="ColorRect" parent="Room/NPCScreens/Screen2/Indicator" unique_id=1446536751]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.8000011
+offset_right = 49.199997
+offset_bottom = 21.36
+
+[node name="Base" type="ColorRect" parent="Room/NPCScreens/Screen2/Indicator" unique_id=1488098422]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 31.199997
+offset_top = 3.3600006
+offset_right = 46.649437
+offset_bottom = 18.36
+color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+
+[node name="LED" type="ColorRect" parent="Room/NPCScreens/Screen2/Indicator" unique_id=1856206246]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 33.199997
+offset_top = 5.3600006
+offset_right = 44.529587
+offset_bottom = 16.36
+color = Color(0, 0, 0, 1)
+
+[node name="IndicationAnimation" type="AnimationPlayer" parent="Room/NPCScreens" unique_id=1119376553]
+libraries/ = SubResource("AnimationLibrary_344ge")
+
+[node name="Panel" type="ColorRect" parent="Room/NPCScreens" unique_id=88294595]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = 258.0
+offset_right = -231.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+color = Color(0.39942783, 0.3994278, 0.39942777, 1)
+
+[node name="Screen1Text" type="RichTextLabel" parent="Room/NPCScreens/Panel" unique_id=2013003602]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_jjvhh")
+theme_override_font_sizes/normal_font_size = 30
+text = "[NPC]"
+
+[node name="GameManager" type="Node" parent="Room" unique_id=1377518922]
+
+[node name="input_controller" type="ColorRect" parent="Room" unique_id=573512137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="RoundController" type="Node" parent="." unique_id=1297435692]
 script = ExtResource("3_8gbba")
