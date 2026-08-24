@@ -23,6 +23,12 @@ GameState="*uid://duimxmru6eh7g"
 
 gdscript/warnings/enable=false
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=1200
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")

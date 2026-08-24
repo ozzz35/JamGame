@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://d0b5oqcpn7dd4"]
+
+[ext_resource type="Script" uid="uid://ws0uxkvdqd6s" path="res://test/button_1.gd" id="1_d15is"]
+[ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="1_k3rg5"]
+[ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="2_tu3k4"]
+[ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_d15is"]
+[ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="3_tu3k4"]
+[ext_resource type="Texture2D" uid="uid://uk2ybw8tn1v2" path="res://Assets/Textures/printer.png" id="6_4rtdt"]
+
+[sub_resource type="Animation" id="Animation_d15is"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button1/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tu3k4"]
+resource_name = "press"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button1/Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 7), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d15is"]
+_data = {
+&"RESET": SubResource("Animation_d15is"),
+&"press": SubResource("Animation_tu3k4")
+}
+
+[node name="visual_tests" type="Node2D" unique_id=1147265054]
+
+[node name="Button1" type="Node2D" parent="." unique_id=252544159]
+script = ExtResource("1_d15is")
+
+[node name="TextureButton" type="TextureButton" parent="Button1" unique_id=2059297315]
+custom_minimum_size = Vector2(50, 50)
+offset_left = -62.0
+offset_top = -63.0
+offset_right = 59.0
+offset_bottom = 55.0
+
+[node name="Base" type="Sprite2D" parent="Button1" unique_id=784969738]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_k3rg5")
+
+[node name="Button" type="Sprite2D" parent="Button1" unique_id=1627373184]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_d15is")
+
+[node name="Mask" type="Sprite2D" parent="Button1" unique_id=1407454011]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tu3k4")
+
+[node name="Button1Shadow" type="Sprite2D" parent="Button1" unique_id=476203301]
+position = Vector2(-2, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tu3k4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button1" unique_id=644267785]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_d15is")
+
+[node name="Printer" type="Sprite2D" parent="." unique_id=2044376994]
+position = Vector2(492, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_4rtdt")
+
+[connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
