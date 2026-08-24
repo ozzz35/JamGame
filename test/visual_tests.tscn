@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="7_in8s1"]
 [ext_resource type="Script" uid="uid://codo6cl5lqqqw" path="res://test/switch_1.gd" id="7_khshs"]
 [ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="8_khshs"]
+[ext_resource type="Texture2D" uid="uid://cuea64at6eu71" path="res://Assets/Textures/keypad_key.png" id="10_liwt1"]
+[ext_resource type="FontFile" uid="uid://doqvwlalbisyi" path="res://Assets/DINMittelschriftStd.otf" id="11_l7401"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -161,6 +163,27 @@ texture = ExtResource("8_khshs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Switch1" unique_id=859106384]
 libraries/ = SubResource("AnimationLibrary_liwt1")
+
+[node name="Keypad" type="Node2D" parent="." unique_id=229071669]
+
+[node name="KeypadKey" type="Sprite2D" parent="Keypad" unique_id=404374925]
+position = Vector2(46, 51)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_liwt1")
+
+[node name="Label" type="Label" parent="Keypad/KeypadKey" unique_id=837581703]
+offset_left = -44.0
+offset_top = -40.0
+offset_right = 44.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.23921569, 0.23137255, 0.23921569, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_l7401")
+theme_override_font_sizes/font_size = 24
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
