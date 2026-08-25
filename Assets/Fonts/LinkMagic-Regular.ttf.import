@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://doqvwlalbisyi"
-path="res://.godot/imported/DINMittelschriftStd.otf-f7bf2c39a9f833e6c2c01f7cd4598187.fontdata"
+uid="uid://c563x1hwmnh6q"
+path="res://.godot/imported/LinkMagic-Regular.ttf-42b7e89381c4d13a47a6c2d79d6a443f.fontdata"
 
 [deps]
 
-source_file="res://Assets/DINMittelschriftStd.otf"
-dest_files=["res://.godot/imported/DINMittelschriftStd.otf-f7bf2c39a9f833e6c2c01f7cd4598187.fontdata"]
+source_file="res://Assets/Fonts/LinkMagic-Regular.ttf"
+dest_files=["res://.godot/imported/LinkMagic-Regular.ttf-42b7e89381c4d13a47a6c2d79d6a443f.fontdata"]
 
 [params]
 

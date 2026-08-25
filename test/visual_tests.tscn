@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://d0b5oqcpn7dd4"]
 
 [ext_resource type="Script" uid="uid://ws0uxkvdqd6s" path="res://test/button_1.gd" id="1_d15is"]
-[ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="1_k3rg5"]
-[ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="2_tu3k4"]
-[ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_d15is"]
-[ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="3_tu3k4"]
+[ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/Interface/Button1/button1_base.png" id="1_k3rg5"]
+[ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/Interface/Button1/button1_shadow.png" id="2_tu3k4"]
+[ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/Interface/Button1/button1_button.png" id="3_d15is"]
+[ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/Interface/Button1/button1_base_mask.png" id="3_tu3k4"]
 [ext_resource type="Texture2D" uid="uid://uk2ybw8tn1v2" path="res://Assets/Textures/printer.png" id="6_4rtdt"]
-[ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="7_in8s1"]
+[ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/Interface/Switch/switch1_base.png" id="7_in8s1"]
 [ext_resource type="Script" uid="uid://codo6cl5lqqqw" path="res://test/switch_1.gd" id="7_khshs"]
-[ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="8_khshs"]
-[ext_resource type="Texture2D" uid="uid://cuea64at6eu71" path="res://Assets/Textures/keypad_key.png" id="10_liwt1"]
-[ext_resource type="FontFile" uid="uid://doqvwlalbisyi" path="res://Assets/DINMittelschriftStd.otf" id="11_l7401"]
+[ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/Interface/Switch/switch1_slider.png" id="8_khshs"]
+[ext_resource type="Script" uid="uid://djn7giru7nadd" path="res://test/keypad.gd" id="10_l7401"]
+[ext_resource type="Texture2D" uid="uid://ohqgjh4wjhco" path="res://Assets/Textures/Interface/Keypad/keypad_base.png" id="10_liwt1"]
+[ext_resource type="Texture2D" uid="uid://b3a7e1ck6lqax" path="res://Assets/Textures/Interface/Keypad/keypad_key_shadow.png" id="12_bd4go"]
+[ext_resource type="Texture2D" uid="uid://bnmoxnqe1x4ut" path="res://Assets/Textures/Interface/Keypad/keypad_key1.png" id="12_qfmdm"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -103,6 +105,43 @@ _data = {
 &"switch1": SubResource("Animation_khshs")
 }
 
+[sub_resource type="Animation" id="Animation_wll4h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bd4go"]
+resource_name = "press"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2.25), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wll4h"]
+_data = {
+&"RESET": SubResource("Animation_wll4h"),
+&"press": SubResource("Animation_bd4go")
+}
+
 [node name="visual_tests" type="Node2D" unique_id=1147265054]
 
 [node name="Button1" type="Node2D" parent="." unique_id=252544159]
@@ -165,25 +204,191 @@ texture = ExtResource("8_khshs")
 libraries/ = SubResource("AnimationLibrary_liwt1")
 
 [node name="Keypad" type="Node2D" parent="." unique_id=229071669]
+script = ExtResource("10_l7401")
 
-[node name="KeypadKey" type="Sprite2D" parent="Keypad" unique_id=404374925]
-position = Vector2(46, 51)
-scale = Vector2(0.5, 0.5)
+[node name="TextureRect" type="TextureRect" parent="Keypad" unique_id=286308319]
+offset_right = 386.0
+offset_bottom = 499.0
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_liwt1")
 
-[node name="Label" type="Label" parent="Keypad/KeypadKey" unique_id=837581703]
-offset_left = -44.0
-offset_top = -40.0
-offset_right = 44.0
+[node name="GridContainer" type="GridContainer" parent="Keypad/TextureRect" unique_id=1758858910]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 20.0
+offset_right = 346.0
+offset_bottom = 430.0
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="Key1" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=779098108]
+custom_minimum_size = Vector2(88, 81)
+clip_contents = true
+layout_mode = 2
+
+[node name="KeypadKeyShadow" type="Sprite2D" parent="Keypad/TextureRect/GridContainer/Key1" unique_id=2076472150]
+visible = false
+position = Vector2(44, 76)
+texture = ExtResource("12_bd4go")
+
+[node name="Key" type="Sprite2D" parent="Keypad/TextureRect/GridContainer/Key1" unique_id=866608809]
+texture = ExtResource("12_qfmdm")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key1" unique_id=327501367]
+visible = false
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="TextureButton" type="TextureButton" parent="Keypad/TextureRect/GridContainer/Key1" unique_id=1998253447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Keypad/TextureRect/GridContainer/Key1" unique_id=654390723]
+libraries/ = SubResource("AnimationLibrary_wll4h")
+
+[node name="Key2" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=2049884569]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key2" unique_id=2143397719]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key2" unique_id=430389610]
+anchors_preset = 0
+offset_right = 40.0
 offset_bottom = 40.0
-theme_override_colors/font_color = Color(0.23921569, 0.23137255, 0.23921569, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("11_l7401")
-theme_override_font_sizes/font_size = 24
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="Key3" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=1548510839]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key3" unique_id=1092388093]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key3" unique_id=294757577]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key4" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=457398994]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key4" unique_id=644028026]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key4" unique_id=753358394]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key5" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=1626999988]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key5" unique_id=478413810]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key5" unique_id=586182930]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key6" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=1212692903]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key6" unique_id=912586609]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key6" unique_id=2001313445]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key7" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=359885201]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key7" unique_id=649163680]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key7" unique_id=738216403]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key8" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=908288005]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key8" unique_id=1432459736]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key8" unique_id=1539831773]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key9" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=433108024]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key9" unique_id=1200889222]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key9" unique_id=256753515]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key10" type="Control" parent="Keypad/TextureRect/GridContainer" unique_id=79578983]
+custom_minimum_size = Vector2(88, 81)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Keypad/TextureRect/GridContainer/Key10" unique_id=700591144]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 81.0
+texture = ExtResource("12_qfmdm")
+
+[node name="Control" type="Control" parent="Keypad/TextureRect/GridContainer/Key10" unique_id=3868200]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Keypad/TextureRect/GridContainer/Key1/TextureButton" to="Keypad" method="_on_texture_button_pressed"]

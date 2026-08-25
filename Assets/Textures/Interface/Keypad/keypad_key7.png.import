@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp54ahtaj4q3m"
-path="res://.godot/imported/switch1_base.png-c18552308d23e9c28f7ccfdf80c5cc40.ctex"
+uid="uid://c02jgnonv8qmo"
+path="res://.godot/imported/keypad_key7.png-4c918571cd8c29cbe9b261ea4cc52030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/switch1_base.png"
-dest_files=["res://.godot/imported/switch1_base.png-c18552308d23e9c28f7ccfdf80c5cc40.ctex"]
+source_file="res://Assets/Textures/Interface/Keypad/keypad_key7.png"
+dest_files=["res://.godot/imported/keypad_key7.png-4c918571cd8c29cbe9b261ea4cc52030.ctex"]
 
 [params]
 

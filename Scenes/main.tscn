@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pfoh5fim0htc" path="res://Scenes/button.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://die1y3ub2mm4p" path="res://Scripts/round_controller.gd" id="3_8gbba"]
-[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/LinkMagic-Regular.ttf" id="3_jjvhh"]
+[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/Fonts/LinkMagic-Regular.ttf" id="3_jjvhh"]
 
 [node name="Main" type="Control" unique_id=567231090]
 layout_mode = 3

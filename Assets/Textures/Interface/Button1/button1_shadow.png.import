@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cijhbfgaeaimy"
-path="res://.godot/imported/button1_base.png-d71731dd5fd35f90d10df857a011f501.ctex"
+uid="uid://dr1hnnhj45d0c"
+path="res://.godot/imported/button1_shadow.png-2d5e4c183769dc911812064e9bfd0f6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/button1_base.png"
-dest_files=["res://.godot/imported/button1_base.png-d71731dd5fd35f90d10df857a011f501.ctex"]
+source_file="res://Assets/Textures/Interface/Button1/button1_shadow.png"
+dest_files=["res://.godot/imported/button1_shadow.png-2d5e4c183769dc911812064e9bfd0f6c.ctex"]
 
 [params]
 
