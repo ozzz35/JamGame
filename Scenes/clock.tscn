@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://1udl16husso3" path="res://Scripts/clock.gd" id="1_ga67c"]
 [ext_resource type="FontFile" uid="uid://crwjb73i4k3ip" path="res://Assets/fonts/digit-tech.16.ttf" id="1_pdqta"]
+[ext_resource type="Texture2D" uid="uid://c6p5fjsiwgjll" path="res://Assets/Interface/Clock1/clock_base_w_shadow.png" id="2_0t2r4"]
 [ext_resource type="FontFile" uid="uid://dvqv3guokdhrx" path="res://Assets/fonts/Seven Segment.ttf" id="2_ga67c"]
+[ext_resource type="Texture2D" uid="uid://bkuk5egtuyaxw" path="res://Assets/Interface/Clock1/clock_reflection.png" id="5_ac6rp"]
 
 [node name="Clock" type="Control" unique_id=619599893]
 layout_mode = 3
@@ -13,13 +15,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ga67c")
 
-[node name="Base" type="ColorRect" parent="." unique_id=541734044]
+[node name="Base" type="TextureRect" parent="." unique_id=1629904989]
 layout_mode = 0
-offset_right = 168.0
-offset_bottom = 94.0
-color = Color(0.4, 0.4, 0.4, 1)
+offset_right = 169.33054
+offset_bottom = 95.0
+texture = ExtResource("2_0t2r4")
+expand_mode = 1
 
 [node name="Screen" type="ColorRect" parent="Base" unique_id=145859458]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.07
@@ -31,53 +35,67 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Hours" type="Label" parent="Base" unique_id=852841552]
-modulate = Color(17.040874, 17.040874, 17.040874, 1)
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
+offset_left = -55.665268
 offset_top = -22.5
-offset_right = -8.0
+offset_right = 0.33473206
 offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(5.912981, 5.912981, 5.912981, 1)
 theme_override_fonts/font = ExtResource("1_pdqta")
-theme_override_font_sizes/font_size = 43
+theme_override_font_sizes/font_size = 33
 text = "09"
 
 [node name="Label" type="Label" parent="Base" unique_id=2013819235]
-modulate = Color(17.040874, 17.040874, 17.040874, 1)
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
 layout_mode = 0
-offset_left = 66.0
-offset_top = -50.0
-offset_right = 106.0
-offset_bottom = 116.0
+offset_left = 64.0
+offset_top = -52.0
+offset_right = 104.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(5.912981, 5.912981, 5.912981, 1)
 theme_override_fonts/font = ExtResource("2_ga67c")
-theme_override_font_sizes/font_size = 85
+theme_override_font_sizes/font_size = 64
 text = ":"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Mins" type="Label" parent="Base" unique_id=1047864001]
-modulate = Color(17.040874, 17.040874, 17.040874, 1)
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 11.0
+offset_left = 9.334732
 offset_top = -22.5
-offset_right = 67.0
+offset_right = 65.33473
 offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(5.912981, 5.912981, 5.912981, 1)
 theme_override_fonts/font = ExtResource("1_pdqta")
-theme_override_font_sizes/font_size = 43
+theme_override_font_sizes/font_size = 33
 text = "00"
+
+[node name="Reflection" type="TextureRect" parent="Base" unique_id=2034312152]
+modulate = Color(1, 1, 1, 0.5568628)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ac6rp")
+expand_mode = 1
 
 [node name="Timer1" type="Timer" parent="." unique_id=955442786]
 wait_time = 0.4

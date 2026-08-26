@@ -27,9 +27,25 @@ var char_wait_time: float = 0.05
 var line_wait_time: float = 0.5
 signal line_skipped
 
+const LED = "res://Assets/Interface/LED/LED.png"
+const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
+
+
+
 func _ready() -> void:
-	set_input(true)
 	GameState.round_finished.connect(_on_round_finished)
+	SoundManager.play_music("full_loop", 3)
+	
+	set_input(false)
+	if intro:
+		day_night_effect.show()
+		await get_tree().create_timer(2.0).timeout
+	day_night_effect.hide()
+	
+	GameState.next_round()
+	
+	set_input(true)
+	
 
 
 ## -- Round Stuff -- ##
@@ -38,9 +54,11 @@ func _on_round_finished(round: int):
 	if not round == 1:
 		day_change()
 		await GameState.day_changed
+		day_night_effect.hide()
 	
 	interface_setup(round)
-	day_night_effect.hide()
+	
+	
 	npc_lines(round)
 
 func npc_lines(round):
@@ -61,6 +79,7 @@ func npc_lines(round):
 			await get_tree().create_timer(char_wait_time).timeout
 		await next_button.pressed
 	
+	indication_animation.stop()
 	indication_animation.play("RESET")
 	indication_animation.play("indicator2")
 	

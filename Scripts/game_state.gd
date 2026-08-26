@@ -47,12 +47,12 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
-	next_round()
+	pass
 
 func next_round():
 	round_index += 1
 	round_finished.emit(round_index)
-	
+
 	gotten_error = false
 
 func destroy_sector(id: String):

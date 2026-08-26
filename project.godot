@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="JamGame"
-run/main_scene="uid://dlhniejtsivmm"
+run/main_scene="uid://b2opid8010ao2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameState="*uid://duimxmru6eh7g"
+SoundManager="*uid://7mnl8lwdc7dh"
+SceneTransition="*uid://682yxmt0nwan"
 
 [debug]
 

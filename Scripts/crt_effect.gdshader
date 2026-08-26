@@ -3,42 +3,32 @@ render_mode unshaded;
 
 /*
 	CRT + VHS full-screen post-process shader for Godot 4.5 / 4.6.
+	TextureRect version: effect is masked by the PNG's alpha channel,
+	so it only shows where the assigned Texture is non-transparent.
 
 	How it works:
 	This shader reads the already-rendered screen using hint_screen_texture + SCREEN_UV,
-	then redraws it with CRT/VHS effects.
+	then redraws it with CRT/VHS effects, clipped to the TextureRect's PNG alpha shape.
 
 	Important layering note:
-	This shader only affects things drawn behind this ColorRect.
-
-	Clean UI setup:
-	- Put the CRT shader ColorRect on a lower CanvasLayer.
-	- Put your UI/HUD on a higher CanvasLayer.
-
-	CRT/VHS UI setup:
-	- Put your UI/HUD behind the shader.
-	- Put the CRT shader ColorRect on a higher CanvasLayer.
-
-	Same CanvasLayer setup:
-	- Give the CRT shader ColorRect a higher z_index than the things you want affected.
-	- Anything with a higher z_index than the shader will be drawn clean above it.
+	This shader only affects things drawn behind this TextureRect.
 
 	Also recommended:
-	Set the shader ColorRect Mouse Filter to Ignore so it does not block UI clicks.
+	Set the TextureRect Mouse Filter to Ignore so it does not block UI clicks.
 */
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 // --- Color controls ---
-uniform float brightness : hint_range(0.0, 2.0) = 1.02;
+uniform float brightness : hint_range(0.0, 2.0) = 1.7;
 uniform float contrast : hint_range(0.0, 2.0) = 1.08;
 uniform float saturation : hint_range(0.0, 2.0) = 1.10;
 uniform float gamma : hint_range(0.2, 3.0) = 1.05;
 
 // --- CRT geometry / lens ---
-uniform float curvature : hint_range(0.0, 0.40) = 0.14;
+uniform float curvature : hint_range(0.0, 0.40) = 0.4;
 uniform float corner_soften : hint_range(0.0, 0.20) = 0.06;
-uniform float vignette : hint_range(0.0, 1.00) = 0.38;
+uniform float vignette : hint_range(0.0, 1.00) = 1.00;
 
 // --- Scanlines / phosphor ---
 uniform float scanline_strength : hint_range(0.0, 2.0) = 0.95;
@@ -125,114 +115,122 @@ vec3 sample_screen(vec2 uv) {
 }
 
 void fragment() {
-	vec2 px = SCREEN_PIXEL_SIZE;
-	vec2 res = 1.0 / px;
-	float t = TIME;
+	// --- Alpha mask from the TextureRect's own PNG (unbent UV) ---
+	float alpha_mask = texture(TEXTURE, UV).a;
 
-	// Start from screen UV.
-	vec2 uv = SCREEN_UV;
+	if (alpha_mask <= 0.001) {
+		COLOR = vec4(0.0);
+	} else {
+		vec2 px = SCREEN_PIXEL_SIZE;
+		vec2 res = 1.0 / px;
+		float t = TIME;
 
-	// --- VHS line jitter ---
-	float y_line = floor(uv.y * res.y);
-	float jitter_random = hash11(y_line + floor(t * 15.0) * 37.0);
-	float jitter = (jitter_random - 0.5) * 2.0;
-	uv.x += jitter * jitter_px * px.x;
+		// Start from screen UV.
+		vec2 uv = SCREEN_UV;
 
-	// --- Slow horizontal wobble ---
-	uv.x += sin(uv.y * 8.0 + t * 1.2) * wobble_px * px.x;
+		// --- VHS line jitter ---
+		float y_line = floor(uv.y * res.y);
+		float jitter_random = hash11(y_line + floor(t * 15.0) * 37.0);
+		float jitter = (jitter_random - 0.5) * 2.0;
+		uv.x += jitter * jitter_px * px.x;
 
-	// --- CRT curve ---
-	vec2 cuv = crt_curve(uv, curvature);
-	float in_bounds = inside01(cuv);
+		// --- Slow horizontal wobble ---
+		uv.x += sin(uv.y * 8.0 + t * 1.2) * wobble_px * px.x;
 
-	// --- Rounded corners / soft screen edge ---
-	vec2 corner_distance = abs(cuv - 0.5) * 2.0;
-	float edge = max(corner_distance.x, corner_distance.y);
-	float corner_mask = 1.0 - smoothstep(1.0 - corner_soften, 1.0, edge);
+		// --- CRT curve ---
+		vec2 cuv = crt_curve(uv, curvature);
+		float in_bounds = inside01(cuv);
 
-	// --- Chromatic aberration / VHS chroma shift ---
-	vec2 chroma_offset = vec2(chroma_offset_px * px.x, 0.0);
+		// --- Rounded corners / soft screen edge ---
+		vec2 corner_distance = abs(cuv - 0.5) * 2.0;
+		float edge = max(corner_distance.x, corner_distance.y);
+		float corner_mask = 1.0 - smoothstep(1.0 - corner_soften, 1.0, edge);
 
-	float red = sample_screen(cuv + chroma_offset).r;
-	float green = sample_screen(cuv).g;
-	float blue = sample_screen(cuv - chroma_offset).b;
+		// --- Chromatic aberration / VHS chroma shift ---
+		vec2 chroma_offset = vec2(chroma_offset_px * px.x, 0.0);
 
-	vec3 color = vec3(red, green, blue);
+		float red = sample_screen(cuv + chroma_offset).r;
+		float green = sample_screen(cuv).g;
+		float blue = sample_screen(cuv - chroma_offset).b;
 
-	// --- Luma smear / horizontal ghosting ---
-	float smear = luma_smear_px * px.x;
+		vec3 color = vec3(red, green, blue);
 
-	vec3 smear_right = sample_screen(cuv + vec2(smear, 0.0));
-	vec3 smear_left = sample_screen(cuv - vec2(smear, 0.0));
-	vec3 smeared_color = (color + smear_right + smear_left) / 3.0;
+		// --- Luma smear / horizontal ghosting ---
+		float smear = luma_smear_px * px.x;
 
-	color = mix(color, smeared_color, 0.35);
+		vec3 smear_right = sample_screen(cuv + vec2(smear, 0.0));
+		vec3 smear_left = sample_screen(cuv - vec2(smear, 0.0));
+		vec3 smeared_color = (color + smear_right + smear_left) / 3.0;
 
-	// --- Scanlines ---
-	float scanline_wave = sin(cuv.y * res.y * 3.14159 * scanline_density);
-	float scanline_darkening = 0.5 - 0.5 * scanline_wave;
-	float scanline_multiplier = 1.0 - scanline_strength * scanline_darkening;
+		color = mix(color, smeared_color, 0.35);
 
-	color *= scanline_multiplier;
+		// --- Scanlines ---
+		float scanline_wave = sin(cuv.y * res.y * 3.14159 * scanline_density);
+		float scanline_darkening = 0.5 - 0.5 * scanline_wave;
+		float scanline_multiplier = 1.0 - scanline_strength * scanline_darkening;
 
-	// --- Interlacing flicker ---
-	float field = mod(floor(FRAGCOORD.y) + floor(t * 60.0), 2.0);
-	color *= 1.0 - interlace_strength * field * 0.10;
+		color *= scanline_multiplier;
 
-	// --- Rolling tracking bar ---
-	float roll_y = fract(t * max(roll_speed, 0.0001));
-	float roll_distance = abs(cuv.y - roll_y);
-	float roll_bar = smoothstep(0.20, 0.0, roll_distance);
+		// --- Interlacing flicker ---
+		float field = mod(floor(FRAGCOORD.y) + floor(t * 60.0), 2.0);
+		color *= 1.0 - interlace_strength * field * 0.10;
 
-	color += roll_bar * roll_strength * vec3(0.12);
+		// --- Rolling tracking bar ---
+		float roll_y = fract(t * max(roll_speed, 0.0001));
+		float roll_distance = abs(cuv.y - roll_y);
+		float roll_bar = smoothstep(0.20, 0.0, roll_distance);
 
-	// --- Random horizontal tape tracking lines ---
-	float line_random = hash11(y_line * 0.7 + floor(t * 12.0) * 11.0);
-	float tape_line = smoothstep(0.985, 1.0, line_random) * tape_lines;
+		color += roll_bar * roll_strength * vec3(0.12);
 
-	color += tape_line * vec3(0.18);
+		// --- Random horizontal tape tracking lines ---
+		float line_random = hash11(y_line * 0.7 + floor(t * 12.0) * 11.0);
+		float tape_line = smoothstep(0.985, 1.0, line_random) * tape_lines;
 
-	// --- Grain ---
-	float noise = hash12(FRAGCOORD.xy + vec2(t * 120.0, t * 90.0));
-	float grain = (noise - 0.5) * 2.0;
+		color += tape_line * vec3(0.18);
 
-	color += grain * tape_noise * 0.06;
+		// --- Grain ---
+		float noise = hash12(FRAGCOORD.xy + vec2(t * 120.0, t * 90.0));
+		float grain = (noise - 0.5) * 2.0;
 
-	// --- Occasional white specks ---
-	float speck_random = hash12(FRAGCOORD.xy * 0.73 + t * 40.0);
-	float speck = smoothstep(0.995, 1.0, speck_random);
+		color += grain * tape_noise * 0.06;
 
-	color += speck * tape_noise * 0.25;
+		// --- Occasional white specks ---
+		float speck_random = hash12(FRAGCOORD.xy * 0.73 + t * 40.0);
+		float speck = smoothstep(0.995, 1.0, speck_random);
 
-	// --- Cheap glow on bright pixels ---
-	vec3 center_color = color;
+		color += speck * tape_noise * 0.25;
 
-	vec3 glow_right = sample_screen(cuv + vec2(px.x, 0.0));
-	vec3 glow_left = sample_screen(cuv - vec2(px.x, 0.0));
-	vec3 glow_up = sample_screen(cuv + vec2(0.0, px.y));
-	vec3 glow_down = sample_screen(cuv - vec2(0.0, px.y));
+		// --- Cheap glow on bright pixels ---
+		vec3 center_color = color;
 
-	vec3 blur = (center_color + glow_right + glow_left + glow_up + glow_down) / 5.0;
-	float brightness_value = dot(blur, vec3(0.2126, 0.7152, 0.0722));
-	vec3 glow = max(blur - vec3(glow_threshold), vec3(0.0));
+		vec3 glow_right = sample_screen(cuv + vec2(px.x, 0.0));
+		vec3 glow_left = sample_screen(cuv - vec2(px.x, 0.0));
+		vec3 glow_up = sample_screen(cuv + vec2(0.0, px.y));
+		vec3 glow_down = sample_screen(cuv - vec2(0.0, px.y));
 
-	color += glow * glow_strength * (0.5 + 0.5 * brightness_value);
+		vec3 blur = (center_color + glow_right + glow_left + glow_up + glow_down) / 5.0;
+		float brightness_value = dot(blur, vec3(0.2126, 0.7152, 0.0722));
+		vec3 glow = max(blur - vec3(glow_threshold), vec3(0.0));
 
-	// --- Vignette ---
-	vec2 vignette_uv = cuv - 0.5;
-	float vignette_mask = smoothstep(0.9, 0.2, dot(vignette_uv, vignette_uv) * 2.2);
+		color += glow * glow_strength * (0.5 + 0.5 * brightness_value);
 
-	color *= mix(1.0 - vignette, 1.0, vignette_mask);
+		// --- Vignette ---
+		vec2 vignette_uv = UV - 0.5;
+		float vignette_mask = smoothstep(0.9, 0.2, dot(vignette_uv, vignette_uv) * 2.2);
 
-	// --- Shadow mask / RGB triads ---
-	vec3 mask = triad_mask(FRAGCOORD.xy);
-	color *= mix(vec3(1.0), mask, mask_strength);
+		color *= mix(1.0 - vignette, 1.0, vignette_mask);
 
-	// --- Color grading ---
-	color = apply_color_controls(color);
+		// --- Shadow mask / RGB triads ---
+		vec3 mask = triad_mask(FRAGCOORD.xy);
+		color *= mix(vec3(1.0), mask, mask_strength);
 
-	// Outside the curved screen / rounded edges fades to black.
-	color *= in_bounds * corner_mask;
+		// --- Color grading ---
+		color = apply_color_controls(color);
 
-	COLOR = vec4(color, 1.0);
+		// Outside the curved screen / rounded edges fades to black.
+		color *= in_bounds * corner_mask;
+
+		// Final alpha comes from the PNG's own alpha channel.
+		COLOR = vec4(color, alpha_mask * in_bounds * corner_mask);
+	}
 }

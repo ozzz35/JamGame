@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_5j42t")
-boss_line = Array[String](["Hello", "Boss"])
-employee_line = Array[String](["Hi", "Employee"])
+boss_line = Array[String](["HELLO", "BOSS"])
+employee_line = Array[String](["HI", "EMPLOYEE"])
 metadata/_custom_type_script = "uid://cvbvgyackyiws"
