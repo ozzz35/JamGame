@@ -23,6 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://60m1hsycpfew" path="res://Assets/Textures/room_and_control_desk.png" id="20_2xssj"]
 [ext_resource type="Texture2D" uid="uid://bcdb4jfgypg05" path="res://Assets/Textures/Interface/LED/LED.png" id="21_kkm2p"]
 [ext_resource type="Texture2D" uid="uid://neyu7b0sslgk" path="res://Assets/Textures/Interface/LED/LED_lit.png" id="22_bumm1"]
+[ext_resource type="Texture2D" uid="uid://bn046muafne1o" path="res://Assets/Textures/TV/tv2_screen.png" id="24_6v400"]
+[ext_resource type="Texture2D" uid="uid://bw3dw7r38x82j" path="res://Assets/Textures/TV/tv3_body.png" id="24_c8tki"]
+[ext_resource type="Texture2D" uid="uid://cnp1wjeg14fgc" path="res://Assets/Textures/TV/tv3_screen.png" id="25_em406"]
+[ext_resource type="Texture2D" uid="uid://dn0h42xd0w5p7" path="res://Assets/Textures/TV/tv2_body.png" id="25_muufk"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -168,8 +172,13 @@ animations = [{
 
 [node name="visual_tests" type="Node2D" unique_id=1147265054]
 
+[node name="RoomAndControlDesk" type="Sprite2D" parent="." unique_id=2070534534]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_2xssj")
+centered = false
+
 [node name="Button1" type="Node2D" parent="." unique_id=252544159]
-position = Vector2(489, 245)
+position = Vector2(1269, 1008)
 script = ExtResource("1_d15is")
 
 [node name="TextureButton" type="TextureButton" parent="Button1" unique_id=2059297315]
@@ -201,12 +210,12 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_d15is")
 
 [node name="Printer" type="Sprite2D" parent="." unique_id=2044376994]
-position = Vector2(492, 40)
+position = Vector2(1401, 625)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_4rtdt")
 
 [node name="Switch1" type="Node2D" parent="." unique_id=1912211832]
-position = Vector2(203, 100)
+position = Vector2(818, 874)
 script = ExtResource("7_khshs")
 
 [node name="TextureButton" type="TextureButton" parent="Switch1" unique_id=1000212662]
@@ -228,6 +237,8 @@ texture = ExtResource("8_khshs")
 libraries/ = SubResource("AnimationLibrary_liwt1")
 
 [node name="Keypad" type="Node2D" parent="." unique_id=229071669]
+visible = false
+position = Vector2(191, 752)
 script = ExtResource("10_l7401")
 
 [node name="TextureRect" type="TextureRect" parent="Keypad" unique_id=286308319]
@@ -414,6 +425,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Clock" type="Node2D" parent="." unique_id=895452587]
+position = Vector2(-463, 69)
 
 [node name="Base" type="Sprite2D" parent="Clock" unique_id=820501127]
 position = Vector2(657.5, 553.75)
@@ -438,7 +450,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_dvtot")
 
 [node name="KeypadV2_vis" type="Node2D" parent="." unique_id=1366712037]
-position = Vector2(1116, 530)
+position = Vector2(409, 912)
 
 [node name="KeypadBaseV2WShadow" type="Sprite2D" parent="KeypadV2_vis" unique_id=2127092779]
 scale = Vector2(0.5, 0.5)
@@ -513,29 +525,97 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_qfmdm")
 
 [node name="TV1" type="Node2D" parent="." unique_id=1502945243]
-position = Vector2(987, 508)
+position = Vector2(830, 257)
 
 [node name="Screen" type="Sprite2D" parent="TV1" unique_id=555341813]
-position = Vector2(-487.5, 398.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_teu5y")
 
 [node name="Body" type="Sprite2D" parent="TV1" unique_id=1704521589]
-position = Vector2(-487.5, 398.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_2xssj")
 
-[node name="RoomAndControlDesk" type="Sprite2D" parent="." unique_id=2070534534]
-position = Vector2(2502, 639)
+[node name="TV2_1" type="Node2D" parent="." unique_id=211881557]
+position = Vector2(489, 142)
+
+[node name="Tv2Screen" type="Sprite2D" parent="TV2_1" unique_id=199460905]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("20_2xssj")
+texture = ExtResource("24_6v400")
+
+[node name="Tv2Body" type="Sprite2D" parent="TV2_1" unique_id=1315706632]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_muufk")
+
+[node name="TV2_2" type="Node2D" parent="." unique_id=1344492524]
+position = Vector2(1169, 138)
+
+[node name="Tv2Screen" type="Sprite2D" parent="TV2_2" unique_id=2126456331]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_6v400")
+
+[node name="Tv2Body" type="Sprite2D" parent="TV2_2" unique_id=1202906982]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_muufk")
+
+[node name="TV2_3" type="Node2D" parent="." unique_id=102571190]
+position = Vector2(1169, 382)
+
+[node name="Tv2Screen" type="Sprite2D" parent="TV2_3" unique_id=170681030]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_6v400")
+
+[node name="Tv2Body" type="Sprite2D" parent="TV2_3" unique_id=211044134]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_muufk")
+
+[node name="TV2_4" type="Node2D" parent="." unique_id=2024916020]
+position = Vector2(491, 380)
+
+[node name="Tv2Screen" type="Sprite2D" parent="TV2_4" unique_id=1894303638]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_6v400")
+
+[node name="Tv2Body" type="Sprite2D" parent="TV2_4" unique_id=797922233]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_muufk")
+
+[node name="TV3_1" type="Node2D" parent="." unique_id=628645172]
+position = Vector2(1435.75, 242)
+
+[node name="Tv3Screen" type="Sprite2D" parent="TV3_1" unique_id=53933649]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_em406")
+
+[node name="Tv3Body" type="Sprite2D" parent="TV3_1" unique_id=607515949]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_c8tki")
+
+[node name="TV3_2" type="Node2D" parent="." unique_id=573051302]
+position = Vector2(189.75, 247)
+
+[node name="Tv3Screen" type="Sprite2D" parent="TV3_2" unique_id=2071770128]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_em406")
+
+[node name="Tv3Body" type="Sprite2D" parent="TV3_2" unique_id=1792608817]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_c8tki")
 
 [node name="LED" type="AnimatedSprite2D" parent="." unique_id=80533065]
-position = Vector2(1046, 807)
+position = Vector2(76.75, 426)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2xssj")
 animation = &"blink"
 autoplay = "blink"
-frame_progress = 0.58832055
+frame_progress = 0.6091147
+
+[node name="LED2" type="AnimatedSprite2D" parent="." unique_id=869991498]
+position = Vector2(1325.75, 421)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_2xssj")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.955447
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
