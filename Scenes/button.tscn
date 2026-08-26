@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://pfoh5fim0htc"]
 
-[ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_0kpiu"]
 [ext_resource type="Script" uid="uid://bmpvykrb8rtk0" path="res://Scripts/button.gd" id="2_smycg"]
 [ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="2_svtet"]
 [ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_nrk2b"]
 [ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="4_c4mwi"]
 [ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="5_ur6nl"]
+[ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="6_svtet"]
 
 [sub_resource type="Animation" id="Animation_svtet"]
 length = 0.001
@@ -109,47 +109,35 @@ grow_vertical = 2
 texture = ExtResource("5_ur6nl")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="." unique_id=1791828679]
-show_behind_parent = true
-anchors_preset = 0
-offset_left = 6.0
-offset_top = 54.0
-offset_right = 49.0
-offset_bottom = 78.0
-
-[node name="Panel" type="Panel" parent="Control" unique_id=665777746]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="X" type="TextureButton" parent="Control" unique_id=139132425]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 18.0
-offset_bottom = 19.0
-texture_normal = ExtResource("1_0kpiu")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Check" type="TextureButton" parent="Control" unique_id=134689538]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 25.0
-offset_top = 5.0
-offset_right = 39.0
-offset_bottom = 19.0
-texture_normal = ExtResource("1_0kpiu")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="ButtonAnimationPlayer" type="AnimationPlayer" parent="." unique_id=887506625]
 libraries/ = SubResource("AnimationLibrary_ur6nl")
+
+[node name="EndShiftButton" type="TextureButton" parent="." unique_id=1189502508]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 53.0
+offset_bottom = 71.0
+texture_normal = ExtResource("6_svtet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="IndicatorTimer" type="Timer" parent="EndShiftButton" unique_id=1609643582]
+wait_time = 0.3
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="EndShiftButton" unique_id=1163170641]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 53.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.5254902, 0.49019608, 0.49411765, 1)
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="EndShiftButton" to="." method="_on_end_shift_button_pressed"]
+[connection signal="timeout" from="EndShiftButton/IndicatorTimer" to="." method="_on_indicator_timer_timeout"]

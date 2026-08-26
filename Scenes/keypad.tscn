@@ -1,0 +1,374 @@
+[gd_scene format=3 uid="uid://dwkq2bo3q0b27"]
+
+[ext_resource type="Script" uid="uid://b1qn8qpqbst4b" path="res://Scripts/keypad.gd" id="1_ohrw4"]
+[ext_resource type="FontFile" uid="uid://crwjb73i4k3ip" path="res://Assets/fonts/digit-tech.16.ttf" id="1_v31qc"]
+[ext_resource type="Texture2D" uid="uid://dn4ubx0isd2v7" path="res://Assets/Textures/Keypad/keypad_base.png" id="2_iahdr"]
+[ext_resource type="Texture2D" uid="uid://4nvgbhubygge" path="res://Assets/Textures/Keypad/keypad_key_shadow.png" id="3_dw7mh"]
+[ext_resource type="Texture2D" uid="uid://dr47sltssp1bw" path="res://Assets/Textures/Keypad/keypad_key7.png" id="4_xhokr"]
+[ext_resource type="Texture2D" uid="uid://dv5r5sq1q60ih" path="res://Assets/Textures/Keypad/keypad_key8.png" id="5_nyqlf"]
+[ext_resource type="Texture2D" uid="uid://bya2vkfyvbm7s" path="res://Assets/Textures/Keypad/keypad_key9.png" id="6_fopst"]
+[ext_resource type="Texture2D" uid="uid://tsmfpeehrs6e" path="res://Assets/Textures/Keypad/keypad_key4.png" id="7_pud8t"]
+[ext_resource type="Texture2D" uid="uid://bfrmq6b388i5a" path="res://Assets/Textures/Keypad/keypad_key5.png" id="8_td3mb"]
+[ext_resource type="Texture2D" uid="uid://cyepp28lhq87p" path="res://Assets/Textures/Keypad/keypad_key6.png" id="9_eircs"]
+[ext_resource type="Texture2D" uid="uid://cx3tk2maxq6n4" path="res://Assets/Textures/Keypad/keypad_key1.png" id="10_dv84x"]
+[ext_resource type="Texture2D" uid="uid://r2xtaexx8o7c" path="res://Assets/Textures/Keypad/keypad_key2.png" id="11_jn4sd"]
+[ext_resource type="Texture2D" uid="uid://cvlb3lgr5ibxt" path="res://Assets/Textures/Keypad/keypad_key3.png" id="12_roe0x"]
+[ext_resource type="Texture2D" uid="uid://dl38t0jy06f2" path="res://Assets/Textures/Keypad/keypad_key0.png" id="13_12jxv"]
+
+[node name="Keypad" type="Control" unique_id=1900938042]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohrw4")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1631891631]
+layout_mode = 0
+offset_left = -23.0
+offset_right = 277.0
+offset_bottom = 511.0
+texture = ExtResource("2_iahdr")
+region_rect = Rect2(22, 0, 358, 499)
+patch_margin_left = 10
+patch_margin_right = 10
+patch_margin_bottom = 100
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=2137906953]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 110.0
+offset_right = 232.0
+offset_bottom = 397.21054
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+columns = 3
+
+[node name="Button7" type="Button" parent="GridContainer" unique_id=1046392369]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button7" unique_id=1711617121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button7" unique_id=1528422904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xhokr")
+expand_mode = 1
+
+[node name="Button8" type="Button" parent="GridContainer" unique_id=1046103999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button8" unique_id=192637219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button8" unique_id=163240046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_nyqlf")
+expand_mode = 1
+
+[node name="Button9" type="Button" parent="GridContainer" unique_id=1940121529]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button9" unique_id=415714752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button9" unique_id=788665722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_fopst")
+expand_mode = 1
+
+[node name="Button4" type="Button" parent="GridContainer" unique_id=1704211014]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button4" unique_id=1574225019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button4" unique_id=583346467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pud8t")
+expand_mode = 1
+
+[node name="Button5" type="Button" parent="GridContainer" unique_id=652841153]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button5" unique_id=806679061]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button5" unique_id=1604422236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_td3mb")
+expand_mode = 1
+
+[node name="Button6" type="Button" parent="GridContainer" unique_id=1328691866]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button6" unique_id=1154961446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button6" unique_id=1064011321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_eircs")
+expand_mode = 1
+
+[node name="Button1" type="Button" parent="GridContainer" unique_id=30978777]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button1" unique_id=1577859499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button1" unique_id=485356294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_dv84x")
+expand_mode = 1
+
+[node name="Button2" type="Button" parent="GridContainer" unique_id=2058624893]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button2" unique_id=1175130754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button2" unique_id=1602225551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_jn4sd")
+expand_mode = 1
+
+[node name="Button3" type="Button" parent="GridContainer" unique_id=563104782]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button3" unique_id=1668832028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button3" unique_id=1249800507]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_roe0x")
+expand_mode = 1
+
+[node name="Spacer" type="ColorRect" parent="GridContainer" unique_id=528982903]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(4.805124, 4.805124, 4.805124, 0)
+
+[node name="Button0" type="Button" parent="GridContainer" unique_id=1166926477]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button0" unique_id=51506117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button0" unique_id=1129082095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_12jxv")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="." unique_id=516268037]
+self_modulate = Color(2.6374314, 2.6374314, 2.6374314, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 13.0
+offset_right = 244.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("1_v31qc")
+theme_override_font_sizes/font_size = 41
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="ColorRect" parent="Text" unique_id=286203356]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.067437746, 0.06743774, 0.06743772, 1)

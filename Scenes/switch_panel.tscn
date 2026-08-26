@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://dnodmkiorfmph" path="res://Scripts/switch_panel.gd" id="1_m3457"]
 [ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="2_uh1af"]
 [ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="3_pvrkq"]
-[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/LinkMagic-Regular.ttf" id="4_pvrkq"]
+[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/fonts/LinkMagic-Regular.ttf" id="4_pvrkq"]
 
 [node name="SwitchPanel" type="Control" unique_id=1973828323]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -401.0

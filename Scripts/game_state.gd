@@ -36,6 +36,10 @@ var current_switch_combination: String = "0000"
 
 signal sector_destroyed(sector: String)
 signal round_finished(round: int)
+signal day_changed
+
+signal end_shift_pressed
+var gotten_error: bool = false
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
@@ -48,6 +52,8 @@ func _ready() -> void:
 func next_round():
 	round_index += 1
 	round_finished.emit(round_index)
+	
+	gotten_error = false
 
 func destroy_sector(id: String):
 	var sector: String = find_sector_with_id(id)

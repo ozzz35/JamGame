@@ -2,9 +2,41 @@
 
 [ext_resource type="PackedScene" uid="uid://pfoh5fim0htc" path="res://Scenes/button.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://bcs3oq4ks010g" path="res://Assets/Textures/Screens/cafe1.png" id="2_6iyac"]
+[ext_resource type="PackedScene" uid="uid://cbgfv6ujl23jf" path="res://Scenes/clock.tscn" id="2_344ge"]
 [ext_resource type="PackedScene" uid="uid://bjsxixl4whcwv" path="res://Scenes/switch_panel.tscn" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://die1y3ub2mm4p" path="res://Scripts/round_controller.gd" id="3_8gbba"]
-[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/LinkMagic-Regular.ttf" id="3_jjvhh"]
+[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/fonts/LinkMagic-Regular.ttf" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://b326dofheby8q" path="res://Scenes/error_screen.tscn" id="3_ynf5e"]
+[ext_resource type="Shader" uid="uid://c3c570trc4f1g" path="res://Scripts/crt_effect.gdshader" id="4_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dwkq2bo3q0b27" path="res://Scenes/keypad.tscn" id="4_21xkr"]
+[ext_resource type="Texture2D" uid="uid://qvmshkja6pg6" path="res://Assets/Textures/Screens/image.png" id="4_jkdf5"]
+[ext_resource type="FontFile" uid="uid://dayon6ip22l58" path="res://Assets/fonts/Commodore Angled v1.2.ttf" id="6_6bp64"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
+shader = ExtResource("4_6iyac")
+shader_parameter/brightness = 1.02
+shader_parameter/contrast = 1.1990000332025001
+shader_parameter/saturation = 0.78
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.038000001805
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.1450000068875
+shader_parameter/scanline_density = 1.15
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 0.8
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
 
 [sub_resource type="Animation" id="Animation_kry3j"]
 length = 0.001
@@ -95,6 +127,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -410.0
+offset_top = -341.0
+offset_right = 463.0
+offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23353665, 0.23353665, 0.23353665, 1)
@@ -106,7 +142,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 
 [node name="Screen1" type="TextureRect" parent="Room/CameraScreens" unique_id=1297362530]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
@@ -120,7 +156,7 @@ texture = ExtResource("1_jjgbg")
 expand_mode = 1
 
 [node name="Screen2" type="TextureRect" parent="Room/CameraScreens" unique_id=1951833902]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -132,9 +168,31 @@ offset_right = -0.47998047
 offset_bottom = -75.34001
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Room/CameraScreens/Screen2" unique_id=1749323934]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Room/CameraScreens/Screen2" unique_id=1764799139]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.200012
+offset_right = 0.47998047
+offset_bottom = -16.659973
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6iyac")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Screen3" type="TextureRect" parent="Room/CameraScreens" unique_id=1633588371]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -147,8 +205,30 @@ offset_bottom = -75.34001
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="Room/CameraScreens/Screen3" unique_id=831006259]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Room/CameraScreens/Screen3" unique_id=171931274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.200012
+offset_right = 0.47998047
+offset_bottom = -16.659973
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6iyac")
+expand_mode = 5
+stretch_mode = 6
+
 [node name="Screen4" type="TextureRect" parent="Room/CameraScreens" unique_id=17494789]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -161,8 +241,30 @@ offset_bottom = -75.34001
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="Room/CameraScreens/Screen4" unique_id=1373098201]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Room/CameraScreens/Screen4" unique_id=2017156410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.200012
+offset_right = 0.47998047
+offset_bottom = -16.659973
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jkdf5")
+expand_mode = 5
+stretch_mode = 6
+
 [node name="Screen5" type="TextureRect" parent="Room/CameraScreens" unique_id=1956068090]
-modulate = Color(0.08560727, 0.08560727, 0.08560727, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -174,6 +276,14 @@ offset_right = -0.47998047
 offset_bottom = -75.34001
 texture = ExtResource("1_jjgbg")
 expand_mode = 1
+
+[node name="CRTShader" type="ColorRect" parent="Room/CameraScreens" unique_id=1361053760]
+material = SubResource("ShaderMaterial_fdnlq")
+layout_mode = 0
+offset_left = 320.0
+offset_top = 105.0
+offset_right = 1280.0
+offset_bottom = 522.0
 
 [node name="PanelUI" type="Control" parent="Room" unique_id=939453577]
 layout_mode = 1
@@ -193,6 +303,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.8392157, 0.76862746, 0.7137255, 1)
+
+[node name="Clock" parent="Room/PanelUI" unique_id=619599893 instance=ExtResource("2_344ge")]
+layout_mode = 1
+offset_top = -94.0
+offset_right = -965.28
+offset_bottom = -94.0
+
+[node name="ErrorScreen" parent="Room/PanelUI" unique_id=691320762 instance=ExtResource("3_ynf5e")]
+layout_mode = 1
+offset_left = 487.0
+offset_right = 487.0
+scale = Vector2(1.765, 1.765)
 
 [node name="Interface" type="Control" parent="Room/PanelUI" unique_id=1451327863]
 layout_mode = 1
@@ -204,19 +327,31 @@ grow_vertical = 2
 
 [node name="Button" parent="Room/PanelUI/Interface" unique_id=59391517 instance=ExtResource("1_bo1nx")]
 layout_mode = 0
-offset_left = 446.8
-offset_top = 186.0
-offset_right = 500.8
-offset_bottom = 240.0
+offset_left = 582.0
+offset_top = 326.0
+offset_right = 636.0
+offset_bottom = 380.0
+scale = Vector2(2.28, 2.28)
+round_index = 1
 
 [node name="SwitchPanel" parent="Room/PanelUI/Interface" unique_id=1973828323 instance=ExtResource("2_kry3j")]
 layout_mode = 1
-anchors_preset = 15
-offset_left = -23.200005
-offset_top = -9.0
-offset_right = -210.672
-offset_bottom = 262.784
-scale = Vector2(0.585, 0.585)
+offset_left = -13.0
+offset_top = 35.0
+offset_right = -606.27997
+offset_bottom = 84.91901
+scale = Vector2(0.87, 0.87)
+mouse_filter = 2
+round_index = 2
+
+[node name="Keypad" parent="Room/PanelUI/Interface" unique_id=1900938042 instance=ExtResource("4_21xkr")]
+layout_mode = 1
+offset_left = 880.0
+offset_top = 33.0
+offset_right = -275.28003
+offset_bottom = -236.43994
+scale = Vector2(0.6, 0.6)
+round_index = 3
 
 [node name="NPCScreens" type="Control" parent="Room" unique_id=2035786970]
 layout_mode = 1
@@ -228,7 +363,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Screen1" type="TextureRect" parent="Room/NPCScreens" unique_id=103396358]
-self_modulate = Color(0.09302468, 0.09302468, 0.09302468, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -242,10 +378,11 @@ expand_mode = 1
 
 [node name="Indicator" type="Label" parent="Room/NPCScreens/Screen1" unique_id=2026350506]
 layout_mode = 0
-offset_left = 118.2
-offset_top = 168.36
-offset_right = 158.2
-offset_bottom = 191.36
+offset_left = 97.0
+offset_top = 316.0
+offset_right = 137.0
+offset_bottom = 339.0
+scale = Vector2(1.765, 1.765)
 theme_override_colors/font_color = Color(0.30938512, 0.30938518, 0.30938515, 1)
 theme_override_fonts/font = ExtResource("3_jjvhh")
 text = "REC"
@@ -275,8 +412,24 @@ offset_right = 44.529587
 offset_bottom = 16.36
 color = Color(0, 0, 0, 1)
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Screen1" unique_id=1369597603]
+position = Vector2(-1415.7125, -168.42249)
+rotation = 3.1415927
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="CRTShader" type="ColorRect" parent="Room/NPCScreens/Screen1" unique_id=1067005723]
+material = SubResource("ShaderMaterial_fdnlq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Screen2" type="TextureRect" parent="Room/NPCScreens" unique_id=472316616]
-self_modulate = Color(0.07190548, 0.07190548, 0.07190548, 1)
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
 layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
@@ -291,10 +444,11 @@ expand_mode = 1
 
 [node name="Indicator" type="Label" parent="Room/NPCScreens/Screen2" unique_id=1768136562]
 layout_mode = 0
-offset_left = 118.2
-offset_top = 168.36
-offset_right = 158.2
-offset_bottom = 191.36
+offset_left = 139.4
+offset_top = 316.0
+offset_right = 179.4
+offset_bottom = 339.0
+scale = Vector2(1.765, 1.765)
 theme_override_colors/font_color = Color(0.30938512, 0.30938518, 0.30938515, 1)
 theme_override_fonts/font = ExtResource("3_jjvhh")
 text = "REC"
@@ -324,6 +478,21 @@ offset_right = 44.529587
 offset_bottom = 16.36
 color = Color(0, 0, 0, 1)
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Screen2" unique_id=16006063]
+position = Vector2(-1415.7125, -168.42249)
+rotation = 3.1415927
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="CRTShader" type="ColorRect" parent="Room/NPCScreens/Screen2" unique_id=1127846101]
+material = SubResource("ShaderMaterial_fdnlq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="IndicationAnimation" type="AnimationPlayer" parent="Room/NPCScreens" unique_id=1119376553]
 libraries/ = SubResource("AnimationLibrary_344ge")
 
@@ -333,32 +502,71 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 229.0
-offset_top = 258.0
-offset_right = -231.0
-offset_bottom = -324.0
+offset_left = 350.0
+offset_top = 522.0
+offset_right = -365.0
+offset_bottom = -600.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 color = Color(0.39942783, 0.3994278, 0.39942777, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Room/NPCScreens/Panel" unique_id=691186586]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 807.0
+offset_bottom = 78.0
+color = Color(0, 0, 0, 1)
 
 [node name="Screen1Text" type="RichTextLabel" parent="Room/NPCScreens/Panel" unique_id=2013003602]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 6.0
-offset_right = -12.0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = -94.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_jjvhh")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_6bp64")
 theme_override_font_sizes/normal_font_size = 30
 text = "[NPC]"
 
-[node name="GameManager" type="Node" parent="Room" unique_id=1377518922]
+[node name="NextButton" type="Button" parent="Room/NPCScreens/Panel" unique_id=462411779]
+layout_mode = 0
+offset_left = 817.0
+offset_right = 888.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_jjvhh")
+theme_override_font_sizes/font_size = 56
+text = "->"
+text_overrun_behavior = 1
+autowrap_mode = 1
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Panel" unique_id=325487837]
+position = Vector2(407.99997, 42.00003)
+rotation = 3.1415927
+scale = Vector2(3.9573746, 0.34524068)
+copy_mode = 2
+
+[node name="CRTShader" type="ColorRect" parent="Room/NPCScreens/Panel" unique_id=2067695157]
+material = SubResource("ShaderMaterial_fdnlq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = -79.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="input_controller" type="ColorRect" parent="Room" unique_id=573512137]
 layout_mode = 1
@@ -371,5 +579,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
+[node name="GameManager" type="Node" parent="Room" unique_id=1377518922]
+
 [node name="RoundController" type="Node" parent="." unique_id=1297435692]
 script = ExtResource("3_8gbba")
+
+[node name="DayNightEffect" type="CanvasModulate" parent="." unique_id=1669865577]
+visible = false
+color = Color(0.044557855, 0.044557847, 0.044557847, 1)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=447601290]
+position = Vector2(800, 600)

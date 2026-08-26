@@ -12,7 +12,16 @@ extends Node
 @onready var input_controller: ColorRect = $"../Room/input_controller"
 
 @onready var indication_animation: AnimationPlayer = $"../Room/NPCScreens/IndicationAnimation"
+@onready var next_button: Button = $"../Room/NPCScreens/Panel/NextButton"
 
+@onready var day_night_effect: CanvasModulate = $"../DayNightEffect"
+var day_color: Color = Color(1, 1, 1)
+var night_color: Color = Color("1a1a1a")
+
+@onready var camera: Camera2D = $"../Camera"
+var default_camera_pos: Vector2 = Vector2(800, 600)
+
+@export var intro: bool = true
 
 var char_wait_time: float = 0.05
 var line_wait_time: float = 0.5
@@ -22,12 +31,16 @@ func _ready() -> void:
 	set_input(true)
 	GameState.round_finished.connect(_on_round_finished)
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("mouse_left"):
-		line_skipped.emit()
+
+## -- Round Stuff -- ##
 
 func _on_round_finished(round: int):
+	if not round == 1:
+		day_change()
+		await GameState.day_changed
+	
 	interface_setup(round)
+	day_night_effect.hide()
 	npc_lines(round)
 
 func npc_lines(round):
@@ -41,13 +54,12 @@ func npc_lines(round):
 	
 	indication_animation.play("indicator1")
 	for text in current_round.boss_line:
-		
 		screen_1_text.visible_characters = 0
 		screen_1_text.text = "BOSS: " + text
 		for i in screen_1_text.text.length():
 			screen_1_text.visible_characters += 1
 			await get_tree().create_timer(char_wait_time).timeout
-		await line_skipped
+		await next_button.pressed
 	
 	indication_animation.play("RESET")
 	indication_animation.play("indicator2")
@@ -59,17 +71,59 @@ func npc_lines(round):
 		for i in screen_1_text.text.length():
 			screen_1_text.visible_characters += 1
 			await get_tree().create_timer(char_wait_time).timeout
-		await line_skipped
-	
+		await next_button.pressed
 	indication_animation.play("RESET")
 
 func interface_setup(round: int):
 	for child in interface.get_children():
-		if child.round_index == round:
-			child.setup()
+		if child.round_index <= round:
+			child.show()
+		else:
+			child.hide()
+
+func day_change():
+	for i in 3:
+		day_night_effect.show()
+		await get_tree().create_timer(randf_range(0.1, 0.3)).timeout
+		day_night_effect.hide()
+		await get_tree().create_timer(randf_range(0.1, 0.3)).timeout
+	
+	await get_tree().create_timer(0.6).timeout
+	
+	day_night_effect.show()
+
+
+
+
+## -- Utility Methods -- ##
 
 func set_input(input_on):
 	var val: int = 0
 	if input_on:
 		val = 2
 	input_controller.mouse_filter = val
+
+
+## -- Signals -- ##
+
+
+## -- Camera -- ##
+
+func reset_camera(duration):
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	
+	tween.tween_property(camera, "zoom", Vector2(1, 1), duration)
+	tween.tween_property(camera, "position", default_camera_pos, duration)
+	
+	await tween.finished
+	
+	camera.enabled = false
+
+func zoom_into(pos: Vector2, duration: float, zoom: float):
+	camera.enabled = true
+	
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.set_parallel()
+	
+	tween.tween_property(camera, "zoom", Vector2(zoom, zoom), duration)
+	tween.tween_property(camera, "position", pos, duration)

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b26xgnqr7gcpp"]
+
+[node name="Lamp" type="Control" unique_id=1372947694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2091384639]
+layout_mode = 0
+offset_left = 5.5182037
+offset_top = 76.99868
+offset_right = 44.518204
+offset_bottom = 79.99868
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=473371294]
+layout_mode = 0
+offset_left = 22.518204
+offset_top = 34.0
+offset_right = 27.518204
+offset_bottom = 76.99868
+color = Color(0.32420272, 0.32420275, 0.32420272, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1653486040]
+layout_mode = 0
+offset_left = 4.5182037
+offset_top = 16.99868
+offset_right = 48.518204
+offset_bottom = 23.99868
+rotation = 0.70162237
+color = Color(0.6941205, 0.6941206, 0.69412035, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1097588039]
+layout_mode = 0
+offset_left = 15.290802
+offset_top = 16.72197
+offset_right = 42.74868
+offset_bottom = 23.72197
+rotation = 0.70162237
+color = Color(0.6941205, 0.6941206, 0.69412035, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=96581785]
+layout_mode = 0
+offset_left = 24.253124
+offset_top = 16.0
+offset_right = 37.829426
+offset_bottom = 23.0
+rotation = 0.70162237
+color = Color(0.6941205, 0.6941206, 0.69412035, 1)
