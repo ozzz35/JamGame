@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bw3dw7r38x82j" path="res://Assets/Textures/TV/tv3_body.png" id="24_c8tki"]
 [ext_resource type="Texture2D" uid="uid://cnp1wjeg14fgc" path="res://Assets/Textures/TV/tv3_screen.png" id="25_em406"]
 [ext_resource type="Texture2D" uid="uid://dn0h42xd0w5p7" path="res://Assets/Textures/TV/tv2_body.png" id="25_muufk"]
+[ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/Fonts/digit-tech.14.ttf" id="28_muufk"]
+[ext_resource type="FontFile" uid="uid://br8f4unyagu1u" path="res://Assets/Fonts/digit-tech.16.ttf" id="29_s6ybd"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -616,6 +618,26 @@ sprite_frames = SubResource("SpriteFrames_2xssj")
 animation = &"blink"
 autoplay = "blink"
 frame_progress = 0.955447
+
+[node name="Label" type="Label" parent="." unique_id=1366388729]
+offset_left = 612.0
+offset_top = 604.0
+offset_right = 929.0
+offset_bottom = 631.0
+theme_override_colors/font_color = Color(0.5858469, 8.663535e-07, 3.3691526e-07, 1)
+theme_override_fonts/font = ExtResource("28_muufk")
+theme_override_font_sizes/font_size = 24
+text = "ERROR: WORDS N STUFF"
+
+[node name="Label2" type="Label" parent="." unique_id=272462269]
+offset_left = 612.0
+offset_top = 630.0
+offset_right = 929.0
+offset_bottom = 657.0
+theme_override_colors/font_color = Color(0.5858469, 8.663535e-07, 3.3691526e-07, 1)
+theme_override_fonts/font = ExtResource("29_s6ybd")
+theme_override_font_sizes/font_size = 24
+text = "ERROR: aaaaaaaaaaaaaq"
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
