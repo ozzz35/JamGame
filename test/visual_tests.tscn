@@ -13,6 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://ohqgjh4wjhco" path="res://Assets/Textures/Interface/Keypad/keypad_base.png" id="10_liwt1"]
 [ext_resource type="Texture2D" uid="uid://b3a7e1ck6lqax" path="res://Assets/Textures/Interface/Keypad/keypad_key_shadow.png" id="12_bd4go"]
 [ext_resource type="Texture2D" uid="uid://bnmoxnqe1x4ut" path="res://Assets/Textures/Interface/Keypad/keypad_key1.png" id="12_qfmdm"]
+[ext_resource type="Texture2D" uid="uid://dkah5vgmh6lwq" path="res://Assets/Textures/Interface/Clock1/clock_base_w_shadow.png" id="14_ksegm"]
+[ext_resource type="Texture2D" uid="uid://dh55igir0pqu4" path="res://Assets/Textures/Interface/Keypad/keypad_base_v2_w_shadow.png" id="14_wll4h"]
+[ext_resource type="Texture2D" uid="uid://3sv8t5fom4cb" path="res://Assets/Textures/Interface/Keypad/keypad_base_v2_dp_reflection.png" id="15_1o4xe"]
+[ext_resource type="FontFile" uid="uid://cbwqsnolnmhqv" path="res://test/7sdp_font.res" id="15_bumm1"]
+[ext_resource type="Texture2D" uid="uid://cukwl0x4bj7rg" path="res://Assets/Textures/Interface/Clock1/clock_reflection.png" id="15_dvtot"]
+[ext_resource type="Texture2D" uid="uid://hd0ohn5630s0" path="res://Assets/Textures/TV/tv1_screen.png" id="18_teu5y"]
+[ext_resource type="Texture2D" uid="uid://4td5nf8q0cgq" path="res://Assets/Textures/TV/tv1_body.png" id="19_2xssj"]
+[ext_resource type="Texture2D" uid="uid://60m1hsycpfew" path="res://Assets/Textures/room_and_control_desk.png" id="20_2xssj"]
+[ext_resource type="Texture2D" uid="uid://bcdb4jfgypg05" path="res://Assets/Textures/Interface/LED/LED.png" id="21_kkm2p"]
+[ext_resource type="Texture2D" uid="uid://neyu7b0sslgk" path="res://Assets/Textures/Interface/LED/LED_lit.png" id="22_bumm1"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -141,6 +151,20 @@ _data = {
 &"RESET": SubResource("Animation_wll4h"),
 &"press": SubResource("Animation_bd4go")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xssj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_kkm2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bumm1")
+}],
+"loop": 1,
+"name": &"blink",
+"speed": 3.0
+}]
 
 [node name="visual_tests" type="Node2D" unique_id=1147265054]
 
@@ -388,6 +412,130 @@ texture = ExtResource("12_qfmdm")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Clock" type="Node2D" parent="." unique_id=895452587]
+
+[node name="Base" type="Sprite2D" parent="Clock" unique_id=820501127]
+position = Vector2(657.5, 553.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_ksegm")
+
+[node name="Label" type="Label" parent="Clock" unique_id=1556358312]
+offset_left = 571.0
+offset_top = 519.0
+offset_right = 745.0
+offset_bottom = 583.0
+theme_override_colors/font_color = Color(0.5365746, 0.11756245, 0.17466122, 1)
+theme_override_fonts/font = ExtResource("15_bumm1")
+theme_override_font_sizes/font_size = 40
+text = "14:541"
+vertical_alignment = 1
+
+[node name="Reflection" type="Sprite2D" parent="Clock" unique_id=1906837993]
+modulate = Color(1, 1, 1, 0.40784314)
+position = Vector2(657.5, 553.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_dvtot")
+
+[node name="KeypadV2_vis" type="Node2D" parent="." unique_id=1366712037]
+position = Vector2(1116, 530)
+
+[node name="KeypadBaseV2WShadow" type="Sprite2D" parent="KeypadV2_vis" unique_id=2127092779]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_wll4h")
+
+[node name="Label" type="Label" parent="KeypadV2_vis" unique_id=680325145]
+offset_left = -77.0
+offset_top = -131.0
+offset_right = 79.0
+offset_bottom = -82.0
+theme_override_colors/font_color = Color(0.5365746, 0.11756245, 0.17466122, 1)
+theme_override_fonts/font = ExtResource("15_bumm1")
+theme_override_font_sizes/font_size = 40
+text = "14541"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="KeypadV2_vis" unique_id=1208574709]
+modulate = Color(1, 1, 1, 0.40784314)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_1o4xe")
+
+[node name="keys" type="Node2D" parent="KeypadV2_vis" unique_id=352251081]
+
+[node name="KeypadKey1" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=969515583]
+position = Vector2(-57, -52.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey2" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=30043656]
+position = Vector2(-1, -52.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey3" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=350909222]
+position = Vector2(58, -52.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey4" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=531397758]
+position = Vector2(-57, -5.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey5" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=551339546]
+position = Vector2(-1, -5.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey6" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=1931944559]
+position = Vector2(58, -5.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey7" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=1412473658]
+position = Vector2(-57, 42.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey8" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=1889637070]
+position = Vector2(-1, 42.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey10" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=89574868]
+position = Vector2(-1, 90.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="KeypadKey9" type="Sprite2D" parent="KeypadV2_vis/keys" unique_id=636515210]
+position = Vector2(58, 42.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_qfmdm")
+
+[node name="TV1" type="Node2D" parent="." unique_id=1502945243]
+position = Vector2(987, 508)
+
+[node name="Screen" type="Sprite2D" parent="TV1" unique_id=555341813]
+position = Vector2(-487.5, 398.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_teu5y")
+
+[node name="Body" type="Sprite2D" parent="TV1" unique_id=1704521589]
+position = Vector2(-487.5, 398.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_2xssj")
+
+[node name="RoomAndControlDesk" type="Sprite2D" parent="." unique_id=2070534534]
+position = Vector2(2502, 639)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_2xssj")
+
+[node name="LED" type="AnimatedSprite2D" parent="." unique_id=80533065]
+position = Vector2(1046, 807)
+sprite_frames = SubResource("SpriteFrames_2xssj")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.58832055
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
