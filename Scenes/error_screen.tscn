@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6x4du"]
 shader = ExtResource("2_ri21w")
 shader_parameter/brightness = 1.02
-shader_parameter/contrast = 1.1990000332025001
+shader_parameter/contrast = 1.1990000332025
 shader_parameter/saturation = 0.78
 shader_parameter/gamma = 1.05
 shader_parameter/curvature = 0.038000001805
@@ -69,12 +69,14 @@ theme_override_font_sizes/font_size = 15
 autowrap_mode = 3
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Base/Screen" unique_id=718135463]
+visible = false
 position = Vector2(-1415.7125, -168.42249)
 rotation = 3.1415927
 scale = Vector2(0.032325003, 0.024224998)
 copy_mode = 2
 
 [node name="CRTShader" type="ColorRect" parent="Base/Screen" unique_id=1320507565]
+visible = false
 material = SubResource("ShaderMaterial_6x4du")
 layout_mode = 1
 anchors_preset = 15
