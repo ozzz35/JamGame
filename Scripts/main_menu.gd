@@ -37,6 +37,9 @@ func _ready() -> void:
 	boss_seriousness = 2
 	timer.start()
 
+# test
+
+
 func display_text(text: String):
 	screen_1_text.visible_characters = 0
 	screen_1_text.text = "UNKNOWN: " + text
