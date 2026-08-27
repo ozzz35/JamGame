@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ws0uxkvdqd6s" path="res://test/button_1.gd" id="1_d15is"]
 [ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="1_k3rg5"]
+[ext_resource type="Texture2D" uid="uid://dgsj3b7nq8dsy" path="res://Assets/room_and_control_desk.png" id="1_qfmdm"]
 [ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="2_tu3k4"]
 [ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_d15is"]
 [ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="3_tu3k4"]
@@ -9,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="7_in8s1"]
 [ext_resource type="Script" uid="uid://codo6cl5lqqqw" path="res://test/switch_1.gd" id="7_khshs"]
 [ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="8_khshs"]
+[ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="10_liwt1"]
+[ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="11_l7401"]
+[ext_resource type="Texture2D" uid="uid://ph5rhrpyvvst" path="res://Assets/Interface/ErrorScreen/error_screen_w_shadow.png" id="13_bd4go"]
+[ext_resource type="Texture2D" uid="uid://ciffwd0fc0qhg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow.png" id="13_wll4h"]
+[ext_resource type="Texture2D" uid="uid://bg73gfwpkpcyg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow_pressed.png" id="14_1o4xe"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -103,6 +109,12 @@ _data = {
 
 [node name="visual_tests" type="Node2D" unique_id=1147265054]
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1867458583]
+offset_right = 3200.0
+offset_bottom = 2400.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qfmdm")
+
 [node name="Button1" type="Node2D" parent="." unique_id=252544159]
 position = Vector2(489, 245)
 script = ExtResource("1_d15is")
@@ -161,6 +173,100 @@ texture = ExtResource("8_khshs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Switch1" unique_id=859106384]
 libraries/ = SubResource("AnimationLibrary_liwt1")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1519873323]
+position = Vector2(378, 574)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D" unique_id=2002578586]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_liwt1")
+
+[node name="Label" type="Label" parent="Node2D/TextureRect" unique_id=2045720802]
+layout_mode = 0
+offset_left = 42.0
+offset_right = 1778.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.16862746)
+theme_override_fonts/font = ExtResource("11_l7401")
+theme_override_font_sizes/font_size = 64
+text = "#####################################"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Node2D/TextureRect" unique_id=923280538]
+modulate = Color(1, 0.29403853, 0.14803952, 1)
+layout_mode = 0
+offset_left = 42.0
+offset_right = 1764.0
+offset_bottom = 168.0
+theme_override_colors/font_outline_color = Color(0.74658525, 2.0094587e-06, 8.663535e-07, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("11_l7401")
+theme_override_font_sizes/font_size = 64
+text = "BOSS: PRESS THE RED BUTTON."
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureButton" parent="Node2D/TextureRect" unique_id=1064766860]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -71.5
+offset_right = -30.0
+offset_bottom = 61.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("13_wll4h")
+texture_pressed = ExtResource("14_1o4xe")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=128674274]
+
+[node name="ColorRect" type="TextureRect" parent="Node2D2" unique_id=581740838]
+offset_left = 595.0
+offset_top = 736.0
+offset_right = 899.0
+offset_bottom = 944.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_bd4go")
+
+[node name="Label2" type="Label" parent="Node2D2/ColorRect" unique_id=484228506]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 34.0
+offset_right = -16.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.21960784)
+theme_override_fonts/font = ExtResource("11_l7401")
+theme_override_font_sizes/font_size = 48
+text = "##################################################################################################################"
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="Node2D2/ColorRect/Label2" unique_id=1133627345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.2784314, 0, 1)
+theme_override_fonts/font = ExtResource("11_l7401")
+theme_override_font_sizes/font_size = 48
+text = "ERROR: NON COMPLIANCE DETECTED AND OTHER TEXT TO TEST THIS THING"
+autowrap_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=484138612]
+position = Vector2(1226, 608)
+enabled = false
+zoom = Vector2(11.685, 11.685)
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]
