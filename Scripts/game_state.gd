@@ -11,7 +11,7 @@ var sectors: Dictionary = {
 	},
 	"Europe" : {
 		"destroyed": false,
-		"id": "1000"
+		"id": "0000"
 	},
 	"NorthAmerica": {
 		"destroyed": false,
@@ -32,14 +32,27 @@ var sectors: Dictionary = {
 }
 
 var round_index: int = 0
+var current_round_resource: String = ""
 var current_switch_combination: String = "0000"
 
 signal sector_destroyed(sector: String)
 signal round_finished(round: int)
+signal day_skipped
 signal day_changed
+
+signal loyal_last_day # triggers if the player has been loyal to the boss the last day
+var was_loyal_last_day: bool = false
+
+signal invalid_code_entered(code: String) ## is triggered when player doesn't enter the code selected by the boss. unless player has access
 
 signal end_shift_pressed
 var gotten_error: bool = false
+
+var gained_access: bool = false
+
+## Custom Round-based signals ##
+
+signal round2_switch_changed
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
@@ -51,8 +64,12 @@ func _ready() -> void:
 
 func next_round():
 	round_index += 1
+	
+	
 	round_finished.emit(round_index)
-
+	
+	current_round_resource = "res://Rounds/round" + str(round_index) + ".tres"
+	
 	gotten_error = false
 
 func destroy_sector(id: String):
@@ -62,6 +79,7 @@ func destroy_sector(id: String):
 		print("Couldn't find a sector with id: " + id)
 		return
 	
+	sector_destroyed.emit(sector)
 	print("Destroyed sector: " + sector)
 	if sectors[sector]["destroyed"]:
 		sectors[sector]["destroyed"] = true
@@ -69,6 +87,9 @@ func destroy_sector(id: String):
 
 
 func change_switch_combination(combination: Array):
+	if round_index == 2:
+		round2_switch_changed.emit()
+	
 	var combination_s: String
 	for digit in combination:
 		combination_s = combination_s + str(int(digit))
@@ -76,7 +97,27 @@ func change_switch_combination(combination: Array):
 	current_switch_combination = combination_s
 
 func big_button_pressed():
+	if not gained_access:
+		var current_round: RoundBase = load(current_round_resource)
+		if not current_round.sector_to_be_destroyed == current_switch_combination:
+			invalid_code_entered.emit(current_switch_combination)
+			return
+	
+	was_loyal_last_day = true
 	destroy_sector(current_switch_combination)
+	
+	await get_tree().create_timer(4.0).timeout
+	
+	next_round()
+
+func skip_day():
+	day_skipped.emit()
+	was_loyal_last_day = false
+	
+	await get_tree().create_timer(2.5).timeout
+	
+	next_round()
+
 
 func find_sector_with_id(id: String) -> String:
 	for sector_name in sectors:

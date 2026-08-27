@@ -1,9 +1,21 @@
 [gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://bv5qb7aufriy2"]
 
 [ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="1_5j42t"]
+[ext_resource type="Script" uid="uid://ndwn46fhvgss" path="res://Scripts/dialogue_block.gd" id="2_2srx8"]
+
+[sub_resource type="Resource" id="Resource_2srx8"]
+script = ExtResource("2_2srx8")
+signal_name = "day_changed"
+lines = Array[String](["You know the situation. The virus doesn't wait, and neither do we.", "Sector selection is automatic today. You only need to press the button.", "Do it."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_r1vuk"]
+script = ExtResource("2_2srx8")
+signal_name = "sector_destroyed"
+lines = Array[String](["Good. One less problem."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [resource]
 script = ExtResource("1_5j42t")
-boss_line = Array[String](["HELLO", "BOSS"])
-employee_line = Array[String](["HI", "EMPLOYEE"])
+boss_line = Array[ExtResource("2_2srx8")]([SubResource("Resource_2srx8"), SubResource("Resource_r1vuk")])
 metadata/_custom_type_script = "uid://cvbvgyackyiws"

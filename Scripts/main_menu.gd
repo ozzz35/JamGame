@@ -1,7 +1,7 @@
 extends Control
 
 @onready var button_animation_player: AnimationPlayer = $Interface/Button/ButtonAnimationPlayer
-@onready var screen_1_text: RichTextLabel = $NPCScreens/Panel/Screen1Text
+@onready var screen_1_text: Label = $NPCScreens/Panel/ChatText
 
 var button_pressed: bool = false
 @onready var day_night_effect: CanvasModulate = $DayNightEffect
@@ -83,7 +83,6 @@ func _on_button_button_up() -> void:
 func _on_button_pressed() -> void:
 	if button_pressed:
 		return
-	print("yes")
 	button_pressed = true
 	await day_change()
 	

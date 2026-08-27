@@ -6,8 +6,7 @@ extends Node
 @onready var camera_screens: Control = $"../Room/CameraScreens"
 @onready var npc_screens: Control = $"../Room/NPCScreens"
 
-@onready var screen_1_text: RichTextLabel = $"../Room/NPCScreens/Panel/Screen1Text" ## boss
-@onready var speech_bubble1: ColorRect = $"../Room/NPCScreens/Panel"
+@onready var screen_1_text: Label = $"../Room/NPCScreens/Panel/ChatText"
 
 @onready var input_controller: ColorRect = $"../Room/input_controller"
 
@@ -23,9 +22,16 @@ var default_camera_pos: Vector2 = Vector2(800, 600)
 
 @export var intro: bool = true
 
-var char_wait_time: float = 0.05
+var char_wait_time: float = 0.03
 var line_wait_time: float = 0.5
 signal line_skipped
+
+## -- Dialogue Queue / Interrupt State -- ##
+var dialogue_queue: Array = []
+var is_displaying: bool = false
+var active_signal_name: String = ""
+var current_generation: int = 0
+var round_gen: int = 0
 
 const LED = "res://Assets/Interface/LED/LED.png"
 const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
@@ -34,23 +40,41 @@ const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
 
 func _ready() -> void:
 	GameState.round_finished.connect(_on_round_finished)
+	GameState.next_round()
 	SoundManager.play_music("full_loop", 3)
+	#GameState.sector_destroyed.connect(turn_off_input)
+	GameState.day_skipped.connect(turn_off_input)
 	
 	set_input(false)
 	if intro:
 		day_night_effect.show()
 		await get_tree().create_timer(2.0).timeout
 	day_night_effect.hide()
-	
-	GameState.next_round()
+	GameState.day_changed.emit()
 	
 	set_input(true)
 	
 
 
+
+
 ## -- Round Stuff -- ##
 
 func _on_round_finished(round: int):
+	round_gen += 1
+	var my_round_gen = round_gen
+	var current_round_resource_path = "res://Rounds/round" + str(round) + ".tres"
+	if not ResourceLoader.exists(current_round_resource_path):
+		push_error("Resource not found: " + current_round_resource_path)
+		return
+	var current_round = load(current_round_resource_path) as RoundBase
+	print(current_round)
+	print(GameState.was_loyal_last_day)
+	#_interrupt_current("round_finished")
+	
+	play_dialogue_sequence(current_round.boss_line, "BOSS", my_round_gen)
+	play_dialogue_sequence(current_round.employee_line, "EMPLOYEE", my_round_gen)
+	
 	if not round == 1:
 		day_change()
 		await GameState.day_changed
@@ -58,40 +82,27 @@ func _on_round_finished(round: int):
 	
 	interface_setup(round)
 	
+	await get_tree().create_timer(3).timeout
 	
-	npc_lines(round)
+	if GameState.was_loyal_last_day:
+		GameState.loyal_last_day.emit()
 
-func npc_lines(round):
-	var current_round_resource_path = "res://Rounds/round" + str(round) + ".tres"
-	
-	if not ResourceLoader.exists(current_round_resource_path):
-		push_error("Resource not found: " + current_round_resource_path)
+
+func play_dialogue_sequence(blocks: Array[DialogueBlock], npc_name: String, my_round_gen: int) -> void:
+	for block in blocks:
+		await wait_for_signal(block.signal_name)
+		#if my_round_gen != round_gen:
+			#return
+		for line in block.lines:
+			if my_round_gen != round_gen:
+				return
+			enqueue_line(line, npc_name, block.signal_name)
+
+func wait_for_signal(target_name: String) -> void:
+	if not GameState.has_signal(target_name):
+		push_warning("Couldn't find GameState signal: " + target_name)
 		return
-	
-	var current_round = load(current_round_resource_path) as RoundBase
-	
-	indication_animation.play("indicator1")
-	for text in current_round.boss_line:
-		screen_1_text.visible_characters = 0
-		screen_1_text.text = "BOSS: " + text
-		for i in screen_1_text.text.length():
-			screen_1_text.visible_characters += 1
-			await get_tree().create_timer(char_wait_time).timeout
-		await next_button.pressed
-	
-	indication_animation.stop()
-	indication_animation.play("RESET")
-	indication_animation.play("indicator2")
-	
-	for text in current_round.employee_line:
-		
-		screen_1_text.visible_characters = 0
-		screen_1_text.text = "EMPLOYEE: " + text
-		for i in screen_1_text.text.length():
-			screen_1_text.visible_characters += 1
-			await get_tree().create_timer(char_wait_time).timeout
-		await next_button.pressed
-	indication_animation.play("RESET")
+	await Signal(GameState, target_name)
 
 func interface_setup(round: int):
 	for child in interface.get_children():
@@ -112,6 +123,58 @@ func day_change():
 	day_night_effect.show()
 
 
+func turn_off_input():
+	set_input(false)
+
+## -- Dialogue Display / Queue / Interrupt -- ##
+
+func enqueue_line(text: String, npc_name: String, signal_name: String) -> void:
+	if signal_name != active_signal_name:
+		_interrupt_current(signal_name)
+	
+	dialogue_queue.append({"text": text, "npc": npc_name})
+	if not is_displaying:
+		_process_queue()
+
+func _interrupt_current(new_signal_name: String) -> void:
+	current_generation += 1
+	dialogue_queue.clear()
+	is_displaying = false
+	active_signal_name = new_signal_name
+
+func _process_queue() -> void:
+	var my_gen = current_generation
+	is_displaying = true
+	while dialogue_queue.size() > 0:
+		if my_gen != current_generation:
+			return
+		var entry = dialogue_queue.pop_front()
+		await _display_single(entry["text"], entry["npc"], my_gen)
+	is_displaying = false
+
+func _display_single(text: String, npc_name: String, my_gen: int) -> void:
+	_play_indicator(npc_name)
+	
+	screen_1_text.visible_characters = 0
+	screen_1_text.text = npc_name + ": " + text
+	for i in screen_1_text.text.length():
+		if my_gen != current_generation:
+			return
+		screen_1_text.visible_characters += 1
+		await get_tree().create_timer(char_wait_time).timeout
+	
+	if my_gen != current_generation:
+		return
+	
+	await next_button.pressed
+
+func _play_indicator(npc_name: String) -> void:
+	indication_animation.stop()
+	indication_animation.play("RESET")
+	if npc_name == "BOSS":
+		indication_animation.play("indicator1")
+	elif npc_name == "EMPLOYEE":
+		indication_animation.play("indicator2")
 
 
 ## -- Utility Methods -- ##

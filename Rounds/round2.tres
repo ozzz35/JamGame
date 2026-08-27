@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://bkxqidv1c2qw1"]
+
+[ext_resource type="Script" uid="uid://ndwn46fhvgss" path="res://Scripts/dialogue_block.gd" id="1_0m3et"]
+[ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="1_quni0"]
+
+[sub_resource type="Resource" id="Resource_0m3et"]
+script = ExtResource("1_0m3et")
+signal_name = "day_changed"
+lines = Array[String](["New tools today. These switches let you choose the target sector directly.", "Each combination corresponds to a sector. You'll be told which to enter.", "Enter 1000. Confirm. That's Europe. Infected, like the rest."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_5u0fn"]
+script = ExtResource("1_0m3et")
+signal_name = "round2_switch_changed"
+lines = Array[String](["Ignore that. You have a job. Finish it."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_wgwpq"]
+script = ExtResource("1_0m3et")
+signal_name = "sector_destroyed"
+lines = Array[String](["Good. That's one less problem for both of us."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_7dpxq"]
+script = ExtResource("1_0m3et")
+signal_name = "round2_switch_changed"
+lines = Array[String](["Wait! don't listen to him.", "I used to work there. I sat where you're sitting.", "He's not destroying a virus. He's destroying the planet. Piece by piece."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_2n2ij"]
+script = ExtResource("1_0m3et")
+signal_name = "day_skipped"
+lines = Array[String](["Thank you. That's one less lie you have to carry."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[resource]
+script = ExtResource("1_quni0")
+boss_line = Array[ExtResource("1_0m3et")]([SubResource("Resource_0m3et"), SubResource("Resource_5u0fn"), SubResource("Resource_wgwpq")])
+employee_line = Array[ExtResource("1_0m3et")]([SubResource("Resource_7dpxq"), SubResource("Resource_2n2ij")])
+sector_to_be_destroyed = "1011"
+metadata/_custom_type_script = "uid://cvbvgyackyiws"

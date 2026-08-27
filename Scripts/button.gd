@@ -26,7 +26,7 @@ func _on_button_up() -> void:
 
 func _on_end_shift_button_pressed() -> void:
 	if GameState.gotten_error:
-		GameState.next_round()
+		GameState.skip_day()
 		return
 	
 	GameState.end_shift_pressed.emit()

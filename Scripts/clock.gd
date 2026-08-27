@@ -41,7 +41,6 @@ func _on_next_round(round: int):
 		hours_label.show()
 		label.show()
 		mins_label.show()
-		print("yes")
 		await get_tree().create_timer(0.4).timeout
 		
 		hours_label.hide()

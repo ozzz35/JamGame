@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b326dofheby8q"]
 
 [ext_resource type="Script" uid="uid://ccjrq3iuvf7uf" path="res://Scripts/error_screen.gd" id="1_q3ik3"]
+[ext_resource type="Texture2D" uid="uid://ph5rhrpyvvst" path="res://Assets/Interface/ErrorScreen/error_screen_w_shadow.png" id="2_6x4du"]
 [ext_resource type="Shader" uid="uid://c3c570trc4f1g" path="res://Scripts/crt_effect.gdshader" id="2_ri21w"]
-[ext_resource type="FontFile" uid="uid://dvqv3guokdhrx" path="res://Assets/fonts/Seven Segment.ttf" id="2_yy442"]
+[ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="3_6haoc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6x4du"]
 shader = ExtResource("2_ri21w")
@@ -29,6 +30,43 @@ shader_parameter/roll_strength = 0.15
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
 
+[sub_resource type="Animation" id="Animation_ri21w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/ErrorText:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6x4du"]
+resource_name = "access_denied"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/ErrorText:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.008333334, 0.099999994, 0.20000002, 0.3, 0.39999998, 0.49166667, 0.7999999, 0.90833324, 1.0083332, 1.1083332, 1.2083333, 1.3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6haoc"]
+_data = {
+&"RESET": SubResource("Animation_ri21w"),
+&"access_denied": SubResource("Animation_6x4du")
+}
+
 [node name="ErrorScreen" type="Control" unique_id=691320762]
 layout_mode = 3
 anchors_preset = 15
@@ -38,49 +76,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q3ik3")
 
-[node name="Base" type="ColorRect" parent="." unique_id=1945434574]
+[node name="Base" type="TextureRect" parent="." unique_id=868708236]
 layout_mode = 0
 offset_right = 168.0
 offset_bottom = 94.0
-color = Color(0.4, 0.4, 0.4, 1)
+texture = ExtResource("2_6x4du")
 
-[node name="Screen" type="ColorRect" parent="Base" unique_id=1145461656]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.07
-anchor_top = 0.07
-anchor_right = 0.93
-anchor_bottom = 1.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ErrorText" type="Label" parent="Base/Screen" unique_id=370250613]
+[node name="ErrorText" type="Label" parent="Base" unique_id=370250613]
 layout_mode = 0
-offset_left = 4.24
-offset_top = 5.42
-offset_right = 139.24
-offset_bottom = 75.42
+offset_left = 36.0
+offset_top = 27.0
+offset_right = 619.0
+offset_bottom = 388.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("2_yy442")
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("3_6haoc")
+theme_override_font_sizes/font_size = 52
+text = "ERROR ERROR"
 autowrap_mode = 3
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Base/Screen" unique_id=718135463]
-visible = false
-position = Vector2(-1415.7125, -168.42249)
-rotation = 3.1415927
+[node name="ErrorText" type="Label" parent="Base/ErrorText" unique_id=82828773]
+modulate = Color(0.09803922, 0.09803922, 0.09803922, 0.23921569)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6haoc")
+theme_override_font_sizes/font_size = 52
+text = "######################################################################################################"
+autowrap_mode = 3
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Base" unique_id=2049797964]
+position = Vector2(-1419.9525, -173.8425)
+rotation = -3.1415925
 scale = Vector2(0.032325003, 0.024224998)
 copy_mode = 2
 
-[node name="CRTShader" type="ColorRect" parent="Base/Screen" unique_id=1320507565]
-visible = false
+[node name="CRTShader" type="ColorRect" parent="Base" unique_id=379898326]
 material = SubResource("ShaderMaterial_6x4du")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 12.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=169017766]
+libraries/ = SubResource("AnimationLibrary_6haoc")

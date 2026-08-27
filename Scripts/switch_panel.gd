@@ -15,11 +15,23 @@ signal switches_changed(combination)
 
 @export var round_index: int ## in which round this button is going to show up. All the interface nodes will have this
 
+var current_round: int
+
 func _ready() -> void:
-	pass
+	GameState.round_finished.connect(_on_round_finished)
 
 func setup(): ## All the interface nodes will have this
 	pass
+
+## -- Round Based Actions -- ##
+
+func _on_round_finished(round):
+	current_round = round
+
+
+
+
+## -- Button Signals -- ##
 
 func _on_switch_0_toggled(toggled_on: bool) -> void:
 	var target_pos : Vector2 = Vector2(-slider_0.position.x, slider_0.position.y)

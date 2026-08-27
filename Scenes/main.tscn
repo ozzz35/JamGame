@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b2hm3x03u4kor" path="res://Assets/Interface/LED/LED.png" id="13_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://fww80ekocv7e" path="res://Assets/Interface/LED/LED_lit.png" id="15_b3802"]
 [ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="18_hibaj"]
+[ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="18_pdsj5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1bgf"]
 shader = ExtResource("4_6iyac")
@@ -141,7 +142,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
 shader = ExtResource("4_6iyac")
-shader_parameter/brightness = 1.02
+shader_parameter/brightness = 0.7570000359575
 shader_parameter/contrast = 1.1990000332025
 shader_parameter/saturation = 0.78
 shader_parameter/gamma = 1.05
@@ -154,10 +155,10 @@ shader_parameter/interlace_strength = 0.2
 shader_parameter/mask_strength = 0.22
 shader_parameter/mask_scale = 1.0
 shader_parameter/chroma_offset_px = 0.8
-shader_parameter/luma_smear_px = 2.2
+shader_parameter/luma_smear_px = 0.0
 shader_parameter/jitter_px = 1.8
 shader_parameter/wobble_px = 1.5
-shader_parameter/tape_noise = 0.22
+shader_parameter/tape_noise = 1.0
 shader_parameter/tape_lines = 0.35
 shader_parameter/roll_speed = 0.1
 shader_parameter/roll_strength = 0.15
@@ -480,11 +481,11 @@ scale = Vector2(1.32, 1.32)
 
 [node name="ErrorScreen" parent="Room/PanelUI" unique_id=691320762 instance=ExtResource("3_ynf5e")]
 layout_mode = 1
-offset_left = 487.0
-offset_top = 148.0
-offset_right = 487.0
-offset_bottom = 148.0
-scale = Vector2(1.765, 1.765)
+offset_left = 518.0
+offset_top = 133.0
+offset_right = 518.0
+offset_bottom = 133.0
+scale = Vector2(0.395, 0.395)
 
 [node name="Interface" type="Control" parent="Room/PanelUI" unique_id=1451327863]
 layout_mode = 1
@@ -666,7 +667,7 @@ expand_mode = 1
 [node name="IndicationAnimation" type="AnimationPlayer" parent="Room/NPCScreens" unique_id=1119376553]
 libraries/ = SubResource("AnimationLibrary_344ge")
 
-[node name="Panel" type="ColorRect" parent="Room/NPCScreens" unique_id=88294595]
+[node name="Panel" type="TextureRect" parent="Room/NPCScreens" unique_id=1183888561]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -678,33 +679,18 @@ offset_right = -365.0
 offset_bottom = -541.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-color = Color(0.39942783, 0.3994278, 0.39942777, 1)
+texture = ExtResource("18_pdsj5")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="Room/NPCScreens/Panel" unique_id=691186586]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
 offset_right = 807.0
 offset_bottom = 78.0
 color = Color(0, 0, 0, 1)
-
-[node name="Screen1Text" type="RichTextLabel" parent="Room/NPCScreens/Panel" unique_id=2013003602]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 21.0
-offset_top = 10.0
-offset_right = -94.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("18_hibaj")
-theme_override_font_sizes/normal_font_size = 30
-text = "[NPC]"
 
 [node name="NextButton" type="Button" parent="Room/NPCScreens/Panel" unique_id=462411779]
 layout_mode = 0
@@ -720,9 +706,42 @@ text = "->"
 text_overrun_behavior = 1
 autowrap_mode = 1
 
+[node name="ChatText" type="Label" parent="Room/NPCScreens/Panel" unique_id=195396922]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 805.0
+offset_bottom = 69.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("18_hibaj")
+theme_override_font_sizes/font_size = 25
+autowrap_mode = 3
+uppercase = true
+
+[node name="ErrorText" type="Label" parent="Room/NPCScreens/Panel/ChatText" unique_id=1090184207]
+modulate = Color(0.09803922, 0.09803922, 0.09803922, 0.23921569)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("18_hibaj")
+theme_override_font_sizes/font_size = 25
+text = "################################################################################################"
+autowrap_mode = 3
+
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Panel" unique_id=325487837]
 position = Vector2(407.99997, 42.00003)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(3.9573746, 0.34524068)
 copy_mode = 2
 
@@ -732,9 +751,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = -79.0
+offset_right = -68.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -52,7 +52,7 @@ func play_music(music_name: String, transition_duration: float = 1.0) -> void:
 	tween.tween_property(new_player, "volume_db", 0.0, transition_duration)
 	
 	if is_instance_valid(old_player):
-		tween.tween_property(old_player, "volume_db", -80.0, transition_duration)
+		tween.tween_property(old_player, "volume_db", -80.0, transition_duration / 2).set_delay(transition_duration / 2)
 	
 	await tween.finished
 	
