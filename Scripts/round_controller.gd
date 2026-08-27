@@ -70,7 +70,8 @@ func _on_round_finished(round: int):
 	var current_round = load(current_round_resource_path) as RoundBase
 	print(current_round)
 	print(GameState.was_loyal_last_day)
-	#_interrupt_current("round_finished")
+	
+	_interrupt_current("round_finished") ## this DOES fix some of the problem but the main problem remains. and it's probably not the best way to fix it
 	
 	play_dialogue_sequence(current_round.boss_line, "BOSS", my_round_gen)
 	play_dialogue_sequence(current_round.employee_line, "EMPLOYEE", my_round_gen)
