@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://fww80ekocv7e" path="res://Assets/Interface/LED/LED_lit.png" id="15_b3802"]
 [ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="18_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="18_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://ciffwd0fc0qhg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow.png" id="19_gt3je"]
+[ext_resource type="Texture2D" uid="uid://bg73gfwpkpcyg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow_pressed.png" id="20_3pmx8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1bgf"]
 shader = ExtResource("4_6iyac")
@@ -603,7 +605,6 @@ offset_bottom = 40.0
 [node name="Screen2" type="TextureRect" parent="Room/NPCScreens" unique_id=472316616]
 modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
-layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -612,6 +613,7 @@ anchor_right = 0.18
 anchor_bottom = 0.305
 offset_right = -0.47998047
 offset_bottom = -0.14001465
+layout_direction = 3
 texture = ExtResource("12_k12tt")
 expand_mode = 1
 
@@ -692,7 +694,18 @@ offset_right = 807.0
 offset_bottom = 78.0
 color = Color(0, 0, 0, 1)
 
-[node name="NextButton" type="Button" parent="Room/NPCScreens/Panel" unique_id=462411779]
+[node name="NextButton" type="TextureButton" parent="Room/NPCScreens/Panel" unique_id=1351896383]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 6.0
+offset_right = 950.0
+offset_bottom = 139.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("19_gt3je")
+texture_pressed = ExtResource("20_3pmx8")
+
+[node name="NextButtonOld" type="Button" parent="Room/NPCScreens/Panel" unique_id=462411779]
+visible = false
 layout_mode = 0
 offset_left = 817.0
 offset_right = 888.0

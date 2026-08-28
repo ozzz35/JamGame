@@ -12,6 +12,7 @@ metadata/_custom_type_script = "uid://ndwn46fhvgss"
 [sub_resource type="Resource" id="Resource_hpo6q"]
 script = ExtResource("1_oqv1j")
 signal_name = "loyal_last_day"
+lines = Array[String](["test loyal"])
 metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [resource]
