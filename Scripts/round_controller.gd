@@ -11,7 +11,7 @@ extends Node
 @onready var input_controller: ColorRect = $"../Room/input_controller"
 
 @onready var indication_animation: AnimationPlayer = $"../Room/NPCScreens/IndicationAnimation"
-@onready var next_button: Button = $"../Room/NPCScreens/Panel/NextButton"
+@onready var next_button: TextureButton = $"../Room/NPCScreens/Panel/NextButton"
 
 @onready var day_night_effect: CanvasModulate = $"../DayNightEffect"
 var day_color: Color = Color(1, 1, 1)
@@ -95,7 +95,10 @@ func _on_round_finished(round: int):
 
 func play_dialogue_sequence(blocks: Array[DialogueBlock], npc_name: String, my_round_gen: int) -> void:
 	for block in blocks:
+		
 		await wait_for_signal(block.signal_name)
+		print("dseq signal name: " + block.signal_name)
+		
 		#if my_round_gen != round_gen:
 			#return
 		for line in block.lines:
