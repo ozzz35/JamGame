@@ -21,14 +21,10 @@ var sectors: Dictionary = {
 		"destroyed": false,
 		"id": "1010"
 	},
-	"Antartica": {
-		"destroyed": false,
-		"id": "0010"
-	},
 	"Oceania": {
 		"destroyed": false,
 		"id": "0011"
-	},
+	}
 }
 
 var round_index: int = 0
@@ -53,6 +49,8 @@ var gained_access: bool = false
 ## Custom Round-based signals ##
 
 signal round2_switch_changed
+
+var hovered_printouts: Array = []
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
@@ -81,7 +79,7 @@ func destroy_sector(id: String):
 	
 	sector_destroyed.emit(sector)
 	print("Destroyed sector: " + sector)
-	if sectors[sector]["destroyed"]:
+	if not sectors[sector]["destroyed"]:
 		sectors[sector]["destroyed"] = true
 
 
@@ -106,7 +104,11 @@ func big_button_pressed():
 	was_loyal_last_day = true
 	destroy_sector(current_switch_combination)
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(1.0).timeout
+	
+	SoundManager.play_sfx("sector_destruction", false)
+	
+	await get_tree().create_timer(3.0).timeout
 	
 	next_round()
 

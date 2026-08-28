@@ -35,23 +35,29 @@ func _on_next_round(round: int):
 	min = 0
 	hour = 9
 	
+	SoundManager.play_sfx_2d("clock_alarm", global_position, false)
+	
 	update_clock(str(hour), str(min))
 	
 	for i in 3:
 		hours_label.show()
 		label.show()
 		mins_label.show()
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.3).timeout
 		
 		hours_label.hide()
 		label.hide()
 		mins_label.hide()
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.2).timeout
 	
-	GameState.day_changed.emit()
 	hours_label.show()
 	label.show()
 	mins_label.show()
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	GameState.day_changed.emit()
+	
 
 	day_transition = false
 

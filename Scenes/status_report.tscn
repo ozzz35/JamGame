@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://c4hujivibv8rq"]
+
+[ext_resource type="Script" uid="uid://cevc2pxokgsr5" path="res://Scripts/status_report.gd" id="1_2ault"]
+[ext_resource type="FontFile" uid="uid://bu0ruw31jv2o7" path="res://Assets/fonts/CourierPrimeFont/CourierPrime-Regular.ttf" id="1_27kvh"]
+
+[node name="StatusReport" type="ColorRect" unique_id=2137193540]
+offset_right = 442.0
+offset_bottom = 565.0
+script = ExtResource("1_2ault")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=246069773]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 418.0
+offset_bottom = 527.0
+theme_override_constants/separation = 2
+
+[node name="Seperator" type="Label" parent="VBoxContainer" unique_id=952728337]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "============================="
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=730261490]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "[COMPANY NAME]
+DAILY SECTOR REPORT"
+horizontal_alignment = 1
+
+[node name="Seperator2" type="Label" parent="VBoxContainer" unique_id=247462975]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Day" type="HBoxContainer" parent="VBoxContainer" unique_id=833729052]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Day" type="Label" parent="VBoxContainer/Day" unique_id=1521347958]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "DAY: "
+horizontal_alignment = 2
+
+[node name="DayNumber" type="Label" parent="VBoxContainer/Day" unique_id=1619344363]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "01"
+
+[node name="Seperator3" type="Label" parent="VBoxContainer" unique_id=1550774222]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1164609898]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "SECTOR          CODE    POP."
+horizontal_alignment = 1
+
+[node name="Seperator4" type="Label" parent="VBoxContainer" unique_id=1550515787]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Africa" type="HBoxContainer" parent="VBoxContainer" unique_id=933396842]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Africa" type="Label" parent="VBoxContainer/Africa" unique_id=1294920979]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "AFRICA           1010  "
+horizontal_alignment = 1
+
+[node name="AfricaPop" type="Label" parent="VBoxContainer/Africa" unique_id=523264506]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "1.5B"
+horizontal_alignment = 1
+
+[node name="Asia" type="HBoxContainer" parent="VBoxContainer" unique_id=242498511]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Asia" type="Label" parent="VBoxContainer/Asia" unique_id=1717100426]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "ASIA             1010  "
+horizontal_alignment = 1
+
+[node name="AsiaPop" type="Label" parent="VBoxContainer/Asia" unique_id=1877632134]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "4.8B"
+horizontal_alignment = 1
+
+[node name="Europe" type="HBoxContainer" parent="VBoxContainer" unique_id=2044197670]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Europe" type="Label" parent="VBoxContainer/Europe" unique_id=2059414099]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "EUROPE           1010  "
+horizontal_alignment = 1
+
+[node name="EuropePop" type="Label" parent="VBoxContainer/Europe" unique_id=389338514]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "0.7B"
+horizontal_alignment = 1
+
+[node name="NorthAmerica" type="HBoxContainer" parent="VBoxContainer" unique_id=285922794]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NorthAmerica" type="Label" parent="VBoxContainer/NorthAmerica" unique_id=1822619272]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "NORTH AMERICA    1010  "
+horizontal_alignment = 1
+
+[node name="NorthAmericaPop" type="Label" parent="VBoxContainer/NorthAmerica" unique_id=881659957]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "0.6B"
+horizontal_alignment = 1
+
+[node name="SouthAmerica" type="HBoxContainer" parent="VBoxContainer" unique_id=907432717]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SouthAmerica" type="Label" parent="VBoxContainer/SouthAmerica" unique_id=1864603215]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "SOUTH AMERICA    1010  "
+horizontal_alignment = 1
+
+[node name="SouthAmericaPop" type="Label" parent="VBoxContainer/SouthAmerica" unique_id=1029937230]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "0.5B"
+horizontal_alignment = 1
+
+[node name="Oceania" type="HBoxContainer" parent="VBoxContainer" unique_id=683498720]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Oceania" type="Label" parent="VBoxContainer/Oceania" unique_id=240630225]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "OCEANIA          1010  "
+horizontal_alignment = 1
+
+[node name="OceaniaPop" type="Label" parent="VBoxContainer/Oceania" unique_id=2145934574]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "0.04B"
+horizontal_alignment = 1
+
+[node name="Seperator5" type="Label" parent="VBoxContainer" unique_id=1947443189]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Status" type="HBoxContainer" parent="VBoxContainer" unique_id=740365735]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Status" type="Label" parent="VBoxContainer/Status" unique_id=1513059837]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "STATUS: "
+horizontal_alignment = 1
+
+[node name="SectorCount" type="Label" parent="VBoxContainer/Status" unique_id=1045320544]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "6"
+horizontal_alignment = 1
+
+[node name="Status2" type="Label" parent="VBoxContainer/Status" unique_id=2094472069]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = " SECTOR(S) NEUTRALIZED"
+horizontal_alignment = 1
+
+[node name="Seperator6" type="Label" parent="VBoxContainer" unique_id=795920541]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_27kvh")
+theme_override_font_sizes/font_size = 21
+text = "============================="
+horizontal_alignment = 1
+
+[node name="shadow" type="ColorRect" parent="." unique_id=160492666]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 17.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.4509804)

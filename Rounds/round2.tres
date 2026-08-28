@@ -6,13 +6,13 @@
 [sub_resource type="Resource" id="Resource_0m3et"]
 script = ExtResource("1_0m3et")
 signal_name = "day_changed"
-lines = Array[String](["New tools today. These switches let you choose the target sector directly.", "Each combination corresponds to a sector. You'll be told which to enter.", "Enter 1000. Confirm. That's Europe. Infected, like the rest."])
+lines = Array[String](["New tools today. These switches let you choose the target sector directly.", "Each combination corresponds to a sector. You'll be told which to enter.", "Enter 1010. Confirm. That's South America. Infected, like the rest."])
 metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [sub_resource type="Resource" id="Resource_5u0fn"]
 script = ExtResource("1_0m3et")
 signal_name = "round2_switch_changed"
-lines = Array[String](["Ignore that. You have a job. Finish it."])
+lines = Array[String](["Ignore that. You have a job. Finish it.", "Enter 1010. "])
 metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [sub_resource type="Resource" id="Resource_wgwpq"]
@@ -37,5 +37,5 @@ metadata/_custom_type_script = "uid://ndwn46fhvgss"
 script = ExtResource("1_quni0")
 boss_line = Array[ExtResource("1_0m3et")]([SubResource("Resource_0m3et"), SubResource("Resource_5u0fn"), SubResource("Resource_wgwpq")])
 employee_line = Array[ExtResource("1_0m3et")]([SubResource("Resource_7dpxq"), SubResource("Resource_2n2ij")])
-sector_to_be_destroyed = "1011"
+sector_to_be_destroyed = "1010"
 metadata/_custom_type_script = "uid://cvbvgyackyiws"

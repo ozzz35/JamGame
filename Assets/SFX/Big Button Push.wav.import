@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1naymis7fg7c"
+path="res://.godot/imported/Big Button Push.wav-238ff5b5a0d5959d8a3c712c38844201.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Big Button Push.wav"
+dest_files=["res://.godot/imported/Big Button Push.wav-238ff5b5a0d5959d8a3c712c38844201.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

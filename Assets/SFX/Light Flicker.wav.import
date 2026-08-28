@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgo66tcskm0ay"
+path="res://.godot/imported/Light Flicker.wav-86d09a53cd1bba4d413aea5eca8f259c.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Light Flicker.wav"
+dest_files=["res://.godot/imported/Light Flicker.wav-86d09a53cd1bba4d413aea5eca8f259c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

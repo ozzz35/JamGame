@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dk61ue6n88afp"]
+
+[ext_resource type="Script" uid="uid://dy3cyrgkd4ncy" path="res://Scripts/security_notice.gd" id="1_1f7j6"]
+[ext_resource type="FontFile" uid="uid://bu0ruw31jv2o7" path="res://Assets/fonts/CourierPrimeFont/CourierPrime-Regular.ttf" id="1_u5gyx"]
+
+[node name="SecurityNotice" type="ColorRect" unique_id=1141835277]
+offset_right = 442.0
+offset_bottom = 565.0
+pivot_offset = Vector2(10.165, 0)
+pivot_offset_ratio = Vector2(0.48, 0)
+mouse_filter = 2
+script = ExtResource("1_1f7j6")
+
+[node name="shadow" type="ColorRect" parent="." unique_id=87075410]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 17.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.4509804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=103125458]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 21.0
+offset_right = 425.0
+offset_bottom = 535.0
+theme_override_constants/separation = 2
+
+[node name="Seperator" type="Label" parent="VBoxContainer" unique_id=816594056]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "============================="
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=326746990]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "[COMPANY NAME]
+SECURITY CLEARANCE NOTICE"
+horizontal_alignment = 1
+
+[node name="Seperator2" type="Label" parent="VBoxContainer" unique_id=964541093]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Day" type="HBoxContainer" parent="VBoxContainer" unique_id=8785650]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Day" type="Label" parent="VBoxContainer/Day" unique_id=2085778241]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "DAY: "
+horizontal_alignment = 2
+
+[node name="DayNumber" type="Label" parent="VBoxContainer/Day" unique_id=1486406780]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "01"
+
+[node name="Seperator3" type="Label" parent="VBoxContainer" unique_id=1440626624]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Subject" type="HBoxContainer" parent="VBoxContainer" unique_id=1863907643]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Subject" type="Label" parent="VBoxContainer/Subject" unique_id=2086930144]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = " TO: EMPLOYEE #"
+horizontal_alignment = 1
+
+[node name="EmployeeNumber" type="Label" parent="VBoxContainer/Subject" unique_id=1194462029]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "1"
+horizontal_alignment = 1
+
+[node name="Subject2" type="Label" parent="VBoxContainer" unique_id=545207898]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = " FROM: SUPERVISOR"
+
+[node name="Seperator4" type="Label" parent="VBoxContainer" unique_id=1023433988]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------
+"
+horizontal_alignment = 1
+
+[node name="Subject3" type="Label" parent="VBoxContainer" unique_id=2108180780]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "YOUR CONDUCT HAS BEEN REVIEWED.
+CLEARANCE UPGRADED TO LEVEL 2.
+"
+horizontal_alignment = 1
+
+[node name="Password" type="Label" parent="VBoxContainer" unique_id=407843248]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+horizontal_alignment = 1
+
+[node name="Seperator5" type="Label" parent="VBoxContainer" unique_id=502538918]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "-----------------------------"
+horizontal_alignment = 1
+
+[node name="Subject4" type="Label" parent="VBoxContainer" unique_id=1664866625]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "CLASSIFICATION: RESTRICTED"
+horizontal_alignment = 1
+
+[node name="Seperator6" type="Label" parent="VBoxContainer" unique_id=1345955641]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u5gyx")
+theme_override_font_sizes/font_size = 21
+text = "
+============================="
+horizontal_alignment = 1

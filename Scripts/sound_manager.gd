@@ -1,6 +1,7 @@
 extends Node
 
 @onready var music: Node = $Music
+@onready var sfx: Node = $SFX
 
 var sounds: Dictionary = {
 	"bad_ending_1": "res://Assets/Music/Bad Ending 1.wav",
@@ -13,7 +14,21 @@ var sounds: Dictionary = {
 	
 	"phase1": "res://Assets/Music/Phase 1.wav",
 	"phase2": "res://Assets/Music/Phase 2.wav",
-	"phase3": "res://Assets/Music/Phase 3.wav"
+	"phase3": "res://Assets/Music/Phase 3.wav",
+	
+	"clock_alarm" : "res://Assets/SFX/Digital Clock Alarm.wav",
+	"light_flicker" : "res://Assets/SFX/Light Flicker.wav",
+	"printer" : "res://Assets/SFX/Printer.wav",
+	"sector_destruction" : "res://Assets/SFX/Sector Destruction.wav",
+	"switch_toggle" : "res://Assets/SFX/Switch Toggle.wav",
+	"termination_warning" : "res://Assets/SFX/Termination Warning.wav",
+	"text_blip" : "res://Assets/SFX/Text Blip.wav",
+	
+	"big_button_push" : "res://Assets/SFX/Big Button Push.wav",
+	"big_button_release" : "res://Assets/SFX/Big Button Release.wav",
+	
+	"end_shift_button_push" : "res://Assets/SFX/End Shift Button Push.wav",
+	"end_shift_button_release": "res://Assets/SFX/End Shift Button Release.wav"
 }
 
 var looping_music: Array[String] = ["phase1", "phase2", "phase3", "menu_screen"]
@@ -66,3 +81,51 @@ func on_player_stream_finished():
 		current_player.play()
 	else:
 		music_ended.emit(current_music)
+
+
+## -- SFX -- ##
+
+func play_sfx(sfx_key: String, change_pitch = true, volume_db: float = 0.0):
+	if not sounds.has(sfx_key): return
+	
+	var new_player = AudioStreamPlayer.new()
+	_play(new_player, sfx_key, volume_db, change_pitch)
+	
+	return new_player
+
+func play_sfx_2d(sfx_key: String, position: Vector2, change_pitch = true, volume_db: float = 0.0):
+	if not sounds.has(sfx_key): return
+	
+	var new_player = AudioStreamPlayer2D.new()
+	new_player.global_position = position
+	new_player.max_distance = 2000.0 
+	
+	_play(new_player, sfx_key, volume_db, change_pitch)
+	
+	return new_player
+
+
+func _play(player: Node, sfx_key: String, volume_db: float, change_pitch: bool):
+	player.bus = "SFX"
+	player.stream = load(sounds[sfx_key])
+	player.volume_db = volume_db
+	
+	if change_pitch:
+		player.pitch_scale = randf_range(0.8, 1.2)
+	
+	sfx.add_child(player)
+	player.play()
+	
+	player.finished.connect(func(): player.queue_free())
+
+
+func set_bus_volume(bus_name: String, value: float):
+	print("Volume changed: ", bus_name)
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	
+	if bus_index == -1:
+		push_error("Audio bus not found: " + bus_name)
+		return
+	
+	var volume_db = linear_to_db(value)
+	AudioServer.set_bus_volume_db(bus_index, volume_db)

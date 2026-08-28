@@ -16,21 +16,28 @@ func _on_pressed() -> void:
 	GameState.big_button_pressed()
 
 func _on_button_down() -> void:
+	SoundManager.play_sfx("big_button_push")
 	button_animation_player.play("press")
 
 func _on_button_up() -> void:
+	SoundManager.play_sfx("big_button_release")
 	button_animation_player.play("release")
 
 
 ## -- End Shift Button -- ##
 
 func _on_end_shift_button_pressed() -> void:
+	SoundManager.play_sfx("end_shift_button_push")
+	
 	if GameState.gotten_error:
 		GameState.skip_day()
 		return
 	
+	SoundManager.play_sfx("termination_warning", false)
 	GameState.end_shift_pressed.emit()
 	GameState.gotten_error = true
+
+
 
 func _on_indicator_timer_timeout() -> void:
 	if not GameState.gotten_error:
@@ -41,3 +48,7 @@ func _on_indicator_timer_timeout() -> void:
 		end_shift_button.modulate = Color(1, 1, 1)
 	else:
 		end_shift_button.modulate = Color.DARK_RED
+
+
+func _on_end_shift_button_button_down() -> void:
+	SoundManager.play_sfx("end_shift_button_release")

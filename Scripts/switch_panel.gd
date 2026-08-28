@@ -38,6 +38,8 @@ func _on_switch_0_toggled(toggled_on: bool) -> void:
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(slider_0, "position", target_pos, slider_anim_duration)
 	
+	SoundManager.play_sfx_2d("switch_toggle", global_position)
+	
 	switches[0] = toggled_on
 	
 	print(switches[0])
@@ -50,6 +52,8 @@ func _on_switch_1_toggled(toggled_on: bool) -> void:
 	var target_pos : Vector2 = Vector2(-slider_1.position.x, slider_1.position.y)
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(slider_1, "position", target_pos, slider_anim_duration)
+	
+	SoundManager.play_sfx_2d("switch_toggle", global_position)
 	
 	switches[1] = toggled_on
 	
@@ -64,6 +68,8 @@ func _on_switch_2_toggled(toggled_on: bool) -> void:
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(slider_2, "position", target_pos, slider_anim_duration)
 	
+	SoundManager.play_sfx_2d("switch_toggle", global_position)
+	
 	switches[2] = toggled_on
 	
 	print(switches[2])
@@ -76,6 +82,8 @@ func _on_switch_3_toggled(toggled_on: bool) -> void:
 	var target_pos : Vector2 = Vector2(-slider_3.position.x, slider_3.position.y)
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(slider_3, "position", target_pos, slider_anim_duration)
+	
+	SoundManager.play_sfx_2d("switch_toggle", global_position)
 	
 	switches[3] = toggled_on
 	

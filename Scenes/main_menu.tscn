@@ -164,7 +164,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehtkc"]
 shader = ExtResource("4_8dnnj")
-shader_parameter/brightness = 1.3850000657875001
+shader_parameter/brightness = 1.3850000657875
 shader_parameter/contrast = 1.1990000332025
 shader_parameter/saturation = 0.78
 shader_parameter/gamma = 1.05
@@ -246,6 +246,21 @@ _data = {
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4nkqq"]
 gradient = SubResource("Gradient_mkpwh")
 fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ee4r6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.54444444)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujyyl"]
+gradient = SubResource("Gradient_ee4r6")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.3)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mkpwh"]
+gradient = SubResource("Gradient_ee4r6")
+fill_from = Vector2(0.9963768, 1)
+fill_to = Vector2(0, 0.3)
 
 [node name="MainMenu" type="Control" unique_id=860706905]
 layout_mode = 3
@@ -790,6 +805,24 @@ position = Vector2(800.50006, 753)
 scale = Vector2(25.359377, 23.812498)
 blend_mode = 1
 texture = SubResource("GradientTexture2D_4nkqq")
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=727715145]
+position = Vector2(393.56003, 601.56006)
+scale = Vector2(0.801122, 1.1882902)
+energy = 0.45
+blend_mode = 1
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_ujyyl")
+texture_scale = 15.82
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1459526737]
+position = Vector2(1203.72, 602.56)
+scale = Vector2(0.8084703, 1.1902655)
+energy = 0.45
+blend_mode = 1
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_mkpwh")
+texture_scale = 15.82
 
 [connection signal="button_down" from="Interface/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Interface/Button" to="." method="_on_button_button_up"]

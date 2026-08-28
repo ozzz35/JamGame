@@ -43,9 +43,13 @@ func _ready() -> void:
 func display_text(text: String):
 	screen_1_text.visible_characters = 0
 	screen_1_text.text = "UNKNOWN: " + text
+	var sfx_player: AudioStreamPlayer = SoundManager.play_sfx("text_blip", false, -5.0)
 	for i in screen_1_text.text.length():
 		screen_1_text.visible_characters += 1
 		await get_tree().create_timer(char_wait_time).timeout
+	
+	sfx_player.stop()
+	sfx_player.queue_free()
 
 func day_change():
 	display_text(boss_begin_lines[boss_seriousness])

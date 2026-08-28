@@ -6,3 +6,5 @@
 script = ExtResource("1_32i44")
 
 [node name="Music" type="Node" parent="." unique_id=840024032]
+
+[node name="SFX" type="Node" parent="." unique_id=863095154]

@@ -45,6 +45,8 @@ func _ready() -> void:
 	#GameState.sector_destroyed.connect(turn_off_input)
 	GameState.day_skipped.connect(turn_off_input)
 	
+	next_button.pressed.connect(_on_next_button_pressed)
+	
 	set_input(false)
 	if intro:
 		day_night_effect.show()
@@ -81,6 +83,8 @@ func _on_round_finished(round: int):
 		await GameState.day_changed
 		day_night_effect.hide()
 	
+	set_input(true)
+	
 	interface_setup(round)
 	
 	await get_tree().create_timer(3).timeout
@@ -113,6 +117,7 @@ func interface_setup(round: int):
 			child.hide()
 
 func day_change():
+	SoundManager.play_sfx("light_flicker", false)
 	for i in 3:
 		day_night_effect.show()
 		await get_tree().create_timer(randf_range(0.1, 0.3)).timeout
@@ -150,20 +155,26 @@ func _process_queue() -> void:
 		if my_gen != current_generation:
 			return
 		var entry = dialogue_queue.pop_front()
+		
 		await _display_single(entry["text"], entry["npc"], my_gen)
+		
 	is_displaying = false
 
 func _display_single(text: String, npc_name: String, my_gen: int) -> void:
 	_play_indicator(npc_name)
-	
+	var sfx_player: AudioStreamPlayer = SoundManager.play_sfx("text_blip", false, -5.0)
 	screen_1_text.visible_characters = 0
 	screen_1_text.text = npc_name + ": " + text
 	for i in screen_1_text.text.length():
 		if my_gen != current_generation:
+			sfx_player.stop()
+			sfx_player.queue_free()
 			return
 		screen_1_text.visible_characters += 1
 		await get_tree().create_timer(char_wait_time).timeout
 	
+	sfx_player.stop()
+	sfx_player.queue_free()
 	if my_gen != current_generation:
 		return
 	
@@ -189,6 +200,8 @@ func set_input(input_on):
 
 ## -- Signals -- ##
 
+func _on_next_button_pressed():
+	SoundManager.play_sfx_2d("end_shift_button_push", next_button.global_position, false, -2.0)
 
 ## -- Camera -- ##
 

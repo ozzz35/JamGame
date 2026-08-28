@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cajskrk64otcd"
+path="res://.godot/imported/Big Button Release.wav-506dc0cd1aa2243ccb48ee2d88fecdaf.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Big Button Release.wav"
+dest_files=["res://.godot/imported/Big Button Release.wav-506dc0cd1aa2243ccb48ee2d88fecdaf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

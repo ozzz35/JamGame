@@ -87,6 +87,7 @@ func _on_button_up(button: Button) -> void:
 	tween.tween_property(button.get_node("TextureRect"), "position", Vector2(0, 0), 0.05)
 
 func _on_button_pressed(button: Button) -> void:
+	SoundManager.play_sfx_2d("end_shift_button_push", global_position, false, -2.0)
 	var button_val : int = int(button.name.right(1))
 	add_char(str(button_val))
 	print("Button: ", button_val)
