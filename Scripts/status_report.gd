@@ -9,7 +9,7 @@ class_name StatusReport extends Control
 @onready var oceania_pop: Label = $VBoxContainer/Oceania/OceaniaPop
 @onready var sector_count: Label = $VBoxContainer/Status/SectorCount
 
-@onready var shadow: ColorRect = $shadow
+@onready var shadow: TextureRect = $shadow
 
 var sector_label_map: Dictionary = {}
 

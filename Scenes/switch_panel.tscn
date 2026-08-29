@@ -59,6 +59,7 @@ mouse_filter = 2
 texture = ExtResource("3_pvrkq")
 
 [node name="Labels" type="Control" parent="VBoxContainer/Switch0" unique_id=1047235531]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,6 +121,7 @@ mouse_filter = 2
 texture = ExtResource("3_pvrkq")
 
 [node name="Labels" type="Control" parent="VBoxContainer/Switch1" unique_id=151037104]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,6 +183,7 @@ mouse_filter = 2
 texture = ExtResource("3_pvrkq")
 
 [node name="Labels" type="Control" parent="VBoxContainer/Switch2" unique_id=342462544]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,6 +245,7 @@ mouse_filter = 2
 texture = ExtResource("3_pvrkq")
 
 [node name="Labels" type="Control" parent="VBoxContainer/Switch3" unique_id=458974566]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

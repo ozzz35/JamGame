@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://ph5rhrpyvvst" path="res://Assets/Interface/ErrorScreen/error_screen_w_shadow.png" id="13_bd4go"]
 [ext_resource type="Texture2D" uid="uid://ciffwd0fc0qhg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow.png" id="13_wll4h"]
 [ext_resource type="Texture2D" uid="uid://bg73gfwpkpcyg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow_pressed.png" id="14_1o4xe"]
+[ext_resource type="Texture2D" uid="uid://cpmtvxol10tld" path="res://Assets/Interface/EndShiftButton/end_shift_button_base.png" id="16_teu5y"]
+[ext_resource type="Texture2D" uid="uid://b4hepl4n10e5j" path="res://Assets/Interface/EndShiftButton/end_shift_button_shadow.png" id="17_2xssj"]
+[ext_resource type="Texture2D" uid="uid://dl5h73jufywoo" path="res://Assets/Interface/EndShiftButton/end_shift_button_inner_shadow.png" id="18_0ol3c"]
+[ext_resource type="Texture2D" uid="uid://c60y1bgcgnav3" path="res://Assets/Interface/EndShiftButton/end_shift_button_glow.png" id="19_kkm2p"]
+[ext_resource type="Texture2D" uid="uid://b1bjiwn3wbb7o" path="res://Assets/Interface/EndShiftButton/end_shift_button_text.png" id="20_2xssj"]
 
 [sub_resource type="Animation" id="Animation_d15is"]
 length = 0.001
@@ -447,6 +452,113 @@ cache/0/37/0/glyphs/1/size = Vector2(0, 0)
 cache/0/37/0/glyphs/1/uv_rect = Rect2(0, 0, 0, 0)
 cache/0/37/0/glyphs/1/texture_idx = -1
 
+[sub_resource type="Animation" id="Animation_0ol3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control/Sprite2D3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Control/Sprite2D4:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2xssj"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control/Sprite2D3:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Control/Sprite2D4:visible")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kkm2p"]
+resource_name = "press"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_bumm1"]
+resource_name = "release"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ol3c"]
+_data = {
+&"RESET": SubResource("Animation_0ol3c"),
+&"blink": SubResource("Animation_2xssj"),
+&"press": SubResource("Animation_kkm2p"),
+&"release": SubResource("Animation_bumm1")
+}
+
 [node name="visual_tests" type="Node2D" unique_id=1147265054]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1867458583]
@@ -607,6 +719,58 @@ autowrap_mode = 3
 position = Vector2(1226, 608)
 enabled = false
 zoom = Vector2(11.685, 11.685)
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=326566858]
+position = Vector2(1160, 935)
+scale = Vector2(0.5, 0.5)
+
+[node name="Control" type="Control" parent="Node2D3" unique_id=64906571]
+custom_minimum_size = Vector2(262, 73)
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Node2D3/Control" unique_id=735053351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -262.0
+offset_bottom = -72.99982
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D3/Control/Control" unique_id=761197577]
+texture = ExtResource("16_teu5y")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D3/Control/Control" unique_id=794408175]
+texture = ExtResource("18_0ol3c")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D3/Control/Control" unique_id=1546773679]
+visible = false
+texture = ExtResource("19_kkm2p")
+centered = false
+
+[node name="EndShiftButtonText" type="Sprite2D" parent="Node2D3/Control/Control" unique_id=1083102680]
+texture = ExtResource("20_2xssj")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D3" unique_id=1677407139]
+texture = ExtResource("17_2xssj")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D3" unique_id=747508927]
+libraries/ = SubResource("AnimationLibrary_0ol3c")
+
+[node name="Control" type="Control" parent="." unique_id=1724724297]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="Button1/TextureButton" to="Button1" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Switch1/TextureButton" to="Switch1" method="_on_texture_button_pressed"]

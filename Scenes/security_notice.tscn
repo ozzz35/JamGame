@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://dk61ue6n88afp"]
 
 [ext_resource type="Script" uid="uid://dy3cyrgkd4ncy" path="res://Scripts/security_notice.gd" id="1_1f7j6"]
+[ext_resource type="Texture2D" uid="uid://minensacnusa" path="res://Assets/Textures/printer_paper.png" id="1_qfb0c"]
 [ext_resource type="FontFile" uid="uid://bu0ruw31jv2o7" path="res://Assets/fonts/CourierPrimeFont/CourierPrime-Regular.ttf" id="1_u5gyx"]
+[ext_resource type="Texture2D" uid="uid://dju7udwp13v0c" path="res://Assets/Textures/printer_paper_shadow.png" id="3_m4cmf"]
 
-[node name="SecurityNotice" type="ColorRect" unique_id=1141835277]
-offset_right = 440.0
-offset_bottom = 560.0
+[node name="SecurityNotice" type="TextureRect" unique_id=1332391305]
+offset_right = 442.0
+offset_bottom = 565.0
 pivot_offset = Vector2(10.165, 0)
 pivot_offset_ratio = Vector2(0.48, 0)
 mouse_filter = 2
+texture = ExtResource("1_qfb0c")
 script = ExtResource("1_1f7j6")
 
-[node name="shadow" type="ColorRect" parent="." unique_id=87075410]
+[node name="shadow" type="TextureRect" parent="." unique_id=1557084742]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -23,7 +26,7 @@ offset_right = 17.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.011764706, 0.011764706, 0.011764706, 0.4509804)
+texture = ExtResource("3_m4cmf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=103125458]
 layout_mode = 0
