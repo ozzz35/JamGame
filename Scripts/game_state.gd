@@ -37,7 +37,14 @@ signal day_skipped
 signal day_changed
 
 signal loyal_last_day # triggers if the player has been loyal to the boss the last day
+signal disloyal_last_day
 var was_loyal_last_day: bool = false
+
+# for setting different dialogue options depending on how many sectors the player already destroyed
+signal player_evil
+signal player_pacifist 
+
+signal just_got_keypad
 
 signal invalid_code_entered(code: String) ## is triggered when player doesn't enter the code selected by the boss. unless player has access
 

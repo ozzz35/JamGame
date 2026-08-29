@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://b0qnfirf0alpd"]
+
+[ext_resource type="Script" uid="uid://ndwn46fhvgss" path="res://Scripts/dialogue_block.gd" id="1_mlk0c"]
+[ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="2_vdmvh"]
+
+[sub_resource type="Resource" id="Resource_oqv1j"]
+script = ExtResource("1_mlk0c")
+signal_name = "day_changed"
+lines = Array[String](["day_changed"])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_hpo6q"]
+script = ExtResource("1_mlk0c")
+signal_name = "loyal_last_day"
+lines = Array[String](["Let's make this another good day.", "Select the African sector next."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_ee4r6"]
+script = ExtResource("1_mlk0c")
+signal_name = "just_got_keypad"
+lines = Array[String](["You are now authorized to select any sector by yourself.", "You still have to follow my orders, it's just less work for me."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_uqh5h"]
+script = ExtResource("1_mlk0c")
+signal_name = "disloyal_last_day"
+lines = Array[String](["Alright, let's forget yesterday and look forward.", "Select the African sector next."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_sc27q"]
+script = ExtResource("1_mlk0c")
+signal_name = "loyal_last_day"
+lines = Array[String](["Please, just stop, innocent people live in these place!"])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_xy28b"]
+script = ExtResource("1_mlk0c")
+signal_name = "disloyal_last_day"
+lines = Array[String](["Thank you... for not destroying Asia."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[resource]
+script = ExtResource("2_vdmvh")
+boss_line = Array[ExtResource("1_mlk0c")]([SubResource("Resource_oqv1j"), SubResource("Resource_hpo6q"), SubResource("Resource_ee4r6"), SubResource("Resource_uqh5h")])
+employee_line = Array[ExtResource("1_mlk0c")]([SubResource("Resource_sc27q"), SubResource("Resource_xy28b")])
+sector_to_be_destroyed = "0101"
+metadata/_custom_type_script = "uid://cvbvgyackyiws"

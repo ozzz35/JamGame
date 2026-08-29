@@ -33,6 +33,9 @@ var active_signal_name: String = ""
 var current_generation: int = 0
 var round_gen: int = 0
 
+var sectors_destroyed: int = 0 #total number of sectors the player has destroyed in the current game
+var had_keypad_last_day: bool = false
+
 const LED = "res://Assets/Interface/LED/LED.png"
 const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
 
@@ -77,6 +80,10 @@ func _on_round_finished(round: int):
 	
 	play_dialogue_sequence(current_round.boss_line, "BOSS", my_round_gen)
 	play_dialogue_sequence(current_round.employee_line, "EMPLOYEE", my_round_gen)
+	# if we add more lines for some rounds, it could work i think
+	if GameState.round_index in []:
+		play_dialogue_sequence(current_round.boss_line_2, "BOSS", my_round_gen)
+		play_dialogue_sequence(current_round.employee_line_2, "EMPLOYEE", my_round_gen)
 	
 	if not round == 1:
 		day_change()
@@ -91,7 +98,26 @@ func _on_round_finished(round: int):
 	
 	if GameState.was_loyal_last_day:
 		GameState.loyal_last_day.emit()
-
+		print("lld emit")
+	else:
+		GameState.loyal_last_day.emit()
+		GameState.disloyal_last_day.emit()
+		print("nlld emit")
+	
+	sectors_destroyed = 0
+	for sector in GameState.sectors:
+		if GameState.sectors[sector]["destroyed"]: sectors_destroyed += 1
+	print("destroyed secs: " + str(sectors_destroyed))
+	
+	# conditionals for some rounds
+	if GameState.round_index in [3, 4, 5, 6] and GameState.was_loyal_last_day and !had_keypad_last_day:
+		had_keypad_last_day = true
+		GameState.just_got_keypad.emit()
+	if GameState.round_index in []:
+		if sectors_destroyed > 3:
+			GameState.player_evil.emit()
+	if GameState.round_index in []:
+		pass
 
 func play_dialogue_sequence(blocks: Array[DialogueBlock], npc_name: String, my_round_gen: int) -> void:
 	for block in blocks:
@@ -99,11 +125,12 @@ func play_dialogue_sequence(blocks: Array[DialogueBlock], npc_name: String, my_r
 		await wait_for_signal(block.signal_name)
 		print("dseq signal name: " + block.signal_name)
 		
+		print(block.signal_name)
 		#if my_round_gen != round_gen:
 			#return
 		for line in block.lines:
-			if my_round_gen != round_gen:
-				return
+			#if my_round_gen != round_gen:
+				#return
 			enqueue_line(line, npc_name, block.signal_name)
 
 func wait_for_signal(target_name: String) -> void:
@@ -114,10 +141,12 @@ func wait_for_signal(target_name: String) -> void:
 
 func interface_setup(round: int):
 	for child in interface.get_children():
-		if child.round_index <= round:
-			child.show()
-		else:
-			child.hide()
+		child.show()
+		
+		#if child.round_index <= round:
+			#child.show()
+		#else:
+			#child.hide()
 
 func day_change():
 	SoundManager.play_sfx("light_flicker", false)

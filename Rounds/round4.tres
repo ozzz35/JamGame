@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://bbnocnqnkcwh4"]
+
+[ext_resource type="Script" uid="uid://ndwn46fhvgss" path="res://Scripts/dialogue_block.gd" id="1_sc27q"]
+[ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="2_y3sdp"]
+
+[sub_resource type="Resource" id="Resource_oqv1j"]
+script = ExtResource("1_sc27q")
+signal_name = "day_changed"
+lines = Array[String](["day_changed"])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_hpo6q"]
+script = ExtResource("1_sc27q")
+signal_name = "loyal_last_day"
+lines = Array[String](["Good work. At this rate, you might become employee of the month hahaha", "Let's continue.", "Let's get the Asian sector next, soon this disease will be eradicated."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_ee4r6"]
+script = ExtResource("1_sc27q")
+signal_name = "just_got_keypad"
+lines = Array[String](["You are now authorized to select any sector by yourself.", "You still have to follow my orders, it's just less work for me."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_uqh5h"]
+script = ExtResource("1_sc27q")
+signal_name = "disloyal_last_day"
+lines = Array[String](["Well, I've seen better recruits, but what can you do with this shortage...", "Anyway, 1011 and boom, you should be able to manage that, no?"])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_sc27q"]
+script = ExtResource("1_sc27q")
+signal_name = "loyal_last_day"
+lines = Array[String](["Do you realize what you're doing?", "You're murdering innocent people!"])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[sub_resource type="Resource" id="Resource_xy28b"]
+script = ExtResource("1_sc27q")
+signal_name = "disloyal_last_day"
+lines = Array[String](["I knew it's in you not to engage in needles destruction!", "Just skip this one too, please, my family lives in Nagoya."])
+metadata/_custom_type_script = "uid://ndwn46fhvgss"
+
+[resource]
+script = ExtResource("2_y3sdp")
+boss_line = Array[ExtResource("1_sc27q")]([SubResource("Resource_oqv1j"), SubResource("Resource_hpo6q"), SubResource("Resource_ee4r6"), SubResource("Resource_uqh5h")])
+employee_line = Array[ExtResource("1_sc27q")]([SubResource("Resource_sc27q"), SubResource("Resource_xy28b")])
+sector_to_be_destroyed = "1011"
+metadata/_custom_type_script = "uid://cvbvgyackyiws"
