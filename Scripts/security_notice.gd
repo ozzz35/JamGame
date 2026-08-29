@@ -4,7 +4,7 @@ class_name SecurityNotice extends ColorRect
 
 @onready var employee_number_label: Label = $VBoxContainer/Subject/EmployeeNumber
 @onready var password_label: Label = $VBoxContainer/Password
-@onready var shadow: ColorRect = $shadow
+@onready var shadow: TextureRect = $shadow
 
 
 func setup(employee_number: int, day_number: int, password: String):

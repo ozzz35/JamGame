@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cevc2pxokgsr5" path="res://Scripts/status_report.gd" id="1_2ault"]
 [ext_resource type="FontFile" uid="uid://bu0ruw31jv2o7" path="res://Assets/fonts/CourierPrimeFont/CourierPrime-Regular.ttf" id="1_27kvh"]
+[ext_resource type="Texture2D" uid="uid://minensacnusa" path="res://Assets/Textures/printer_paper.png" id="1_ovgln"]
+[ext_resource type="Texture2D" uid="uid://dju7udwp13v0c" path="res://Assets/Textures/printer_paper_shadow.png" id="4_l4bpp"]
 
-[node name="StatusReport" type="ColorRect" unique_id=2137193540]
+[node name="StatusReport" type="TextureRect" unique_id=1652161836]
 offset_right = 442.0
 offset_bottom = 565.0
+texture = ExtResource("1_ovgln")
 script = ExtResource("1_2ault")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=246069773]
@@ -268,7 +271,7 @@ theme_override_font_sizes/font_size = 21
 text = "============================="
 horizontal_alignment = 1
 
-[node name="shadow" type="ColorRect" parent="." unique_id=160492666]
+[node name="shadow" type="TextureRect" parent="." unique_id=1735321440]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -281,4 +284,4 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.011764706, 0.011764706, 0.011764706, 0.4509804)
+texture = ExtResource("4_l4bpp")

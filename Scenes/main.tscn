@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dwkq2bo3q0b27" path="res://Scenes/keypad.tscn" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://qvmshkja6pg6" path="res://Assets/Textures/Screens/image.png" id="4_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://okv0qwmtq3jj" path="res://Assets/TV/tv2_screen.png" id="6_k12tt"]
+[ext_resource type="Texture2D" uid="uid://7wjqxdsw5fa7" path="res://Assets/Textures/switches_base.png" id="12_gt3je"]
 [ext_resource type="Texture2D" uid="uid://j0juxhw6soee" path="res://Assets/TV/tv3_body.png" id="12_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bvmburhjnxwg7" path="res://Assets/TV/tv3_screen.png" id="12_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://b2hm3x03u4kor" path="res://Assets/Interface/LED/LED.png" id="13_h1bgf"]
@@ -589,6 +590,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SwitchesBase" type="TextureRect" parent="Room/PanelUI/Interface" unique_id=505841713]
+layout_mode = 0
+offset_left = -127.0
+offset_top = 176.99997
+offset_right = 123.0
+offset_bottom = 524.0
+scale = Vector2(0.91199994, 0.82708913)
+texture = ExtResource("12_gt3je")
 
 [node name="Button" parent="Room/PanelUI/Interface" unique_id=59391517 instance=ExtResource("1_bo1nx")]
 layout_mode = 0
