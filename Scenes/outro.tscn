@@ -1,0 +1,940 @@
+[gd_scene format=3 uid="uid://bromqnef35meu"]
+
+[ext_resource type="Script" uid="uid://c74kmw1y2ly3s" path="res://Scripts/outro.gd" id="1_tj4c5"]
+[ext_resource type="Texture2D" uid="uid://dgsj3b7nq8dsy" path="res://Assets/room_and_control_desk.png" id="2_dklkt"]
+[ext_resource type="Texture2D" uid="uid://8iujgyb4318k" path="res://Assets/TV/tv1_body.png" id="3_q26f8"]
+[ext_resource type="Texture2D" uid="uid://c84gideshxqhg" path="res://Assets/TV/tv1_screen.png" id="4_h2and"]
+[ext_resource type="FontFile" uid="uid://fm7ogrlvkple" path="res://Assets/fonts/Commodore Rounded v1.2.ttf" id="5_nv7nc"]
+[ext_resource type="Shader" uid="uid://c3c570trc4f1g" path="res://Scripts/crt_effect.gdshader" id="6_2fbt8"]
+[ext_resource type="Texture2D" uid="uid://dx670fdji2dnr" path="res://Assets/TV/tv2_body.png" id="7_w6kci"]
+[ext_resource type="Texture2D" uid="uid://okv0qwmtq3jj" path="res://Assets/TV/tv2_screen.png" id="8_2rwv3"]
+[ext_resource type="Texture2D" uid="uid://j0juxhw6soee" path="res://Assets/TV/tv3_body.png" id="9_uo53a"]
+[ext_resource type="Texture2D" uid="uid://b2hm3x03u4kor" path="res://Assets/Interface/LED/LED.png" id="10_2le3a"]
+[ext_resource type="Texture2D" uid="uid://bvmburhjnxwg7" path="res://Assets/TV/tv3_screen.png" id="11_ouf71"]
+[ext_resource type="Texture2D" uid="uid://fww80ekocv7e" path="res://Assets/Interface/LED/LED_lit.png" id="12_tyxvn"]
+[ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="13_lkx11"]
+[ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="14_fag04"]
+[ext_resource type="Texture2D" uid="uid://cijhbfgaeaimy" path="res://Assets/Textures/button1_base.png" id="15_la3uf"]
+[ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="16_2h3ld"]
+[ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="17_p7o3x"]
+[ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="18_yuw6y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tj4c5"]
+shader = ExtResource("6_2fbt8")
+shader_parameter/brightness = 2.0
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.0
+shader_parameter/corner_soften = 0.0
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.95
+shader_parameter/scanline_density = 1.15
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dklkt"]
+shader = ExtResource("6_2fbt8")
+shader_parameter/brightness = 1.7
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.0
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.95
+shader_parameter/scanline_density = 1.15
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q26f8"]
+shader = ExtResource("6_2fbt8")
+shader_parameter/brightness = 1.7
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.0
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.95
+shader_parameter/scanline_density = 1.15
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="Animation" id="Animation_kry3j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen1/Indicator/LED:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_2le3a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen2/Indicator/LED:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_2le3a")]
+}
+
+[sub_resource type="Animation" id="Animation_21xkr"]
+resource_name = "indicator1"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen1/Indicator/LED:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("10_2le3a"), ExtResource("12_tyxvn")]
+}
+
+[sub_resource type="Animation" id="Animation_6bp64"]
+resource_name = "indicator2"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen2/Indicator/LED:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("10_2le3a"), ExtResource("12_tyxvn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2and"]
+_data = {
+&"RESET": SubResource("Animation_kry3j"),
+&"indicator1": SubResource("Animation_21xkr"),
+&"indicator2": SubResource("Animation_6bp64")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nv7nc"]
+shader = ExtResource("6_2fbt8")
+shader_parameter/brightness = 1.3850000657875
+shader_parameter/contrast = 1.1990000332025
+shader_parameter/saturation = 0.78
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.038000001805
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.1450000068875
+shader_parameter/scanline_density = 1.15
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 0.8
+shader_parameter/luma_smear_px = 0.0
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 1.0
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="Animation" id="Animation_svtet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nrk2b"]
+resource_name = "press"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_c4mwi"]
+resource_name = "release"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 16), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fbt8"]
+_data = {
+&"RESET": SubResource("Animation_svtet"),
+&"press": SubResource("Animation_nrk2b"),
+&"release": SubResource("Animation_c4mwi")
+}
+
+[sub_resource type="Gradient" id="Gradient_et3xt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6kci"]
+gradient = SubResource("Gradient_et3xt")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_jfi4t"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.54444444)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2rwv3"]
+gradient = SubResource("Gradient_jfi4t")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.3)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uo53a"]
+gradient = SubResource("Gradient_jfi4t")
+fill_from = Vector2(0.9963768, 1)
+fill_to = Vector2(0, 0.3)
+
+[node name="Outro" type="Control" unique_id=1531082395]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tj4c5")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1780918073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dklkt")
+expand_mode = 1
+
+[node name="CameraScreens" type="Control" parent="." unique_id=789427545]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -69.0
+offset_bottom = -69.0
+grow_horizontal = 2
+
+[node name="Screen1" type="TextureRect" parent="CameraScreens" unique_id=1826409134]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.3
+anchor_right = 0.65
+anchor_bottom = 1.0
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34003
+texture = ExtResource("3_q26f8")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="CameraScreens/Screen1" unique_id=1043524544]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+clip_children = 2
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h2and")
+expand_mode = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CameraScreens/Screen1/Display" unique_id=287550052]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = -8.799995
+offset_right = 659.48
+offset_bottom = 291.34003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+volume_db = -80.0
+autoplay = true
+loop = true
+
+[node name="Label" type="Label" parent="CameraScreens/Screen1/Display" unique_id=1950610088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 18.200005
+offset_right = -25.52002
+offset_bottom = -20.659973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.2189684, 4.2189684, 4.2189684, 1)
+theme_override_fonts/font = ExtResource("5_nv7nc")
+theme_override_font_sizes/font_size = 52
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CameraScreens/Screen1" unique_id=763684985]
+position = Vector2(-1415.7125, -168.42249)
+rotation = -3.1415925
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="CameraScreens/Screen1" unique_id=1523176442]
+material = SubResource("ShaderMaterial_tj4c5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h2and")
+expand_mode = 1
+
+[node name="Screen2" type="TextureRect" parent="CameraScreens" unique_id=1334054382]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.35
+anchor_bottom = 0.65
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("7_w6kci")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="CameraScreens/Screen2" unique_id=1252237818]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+clip_children = 2
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CameraScreens/Screen2/Display" unique_id=1637917430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 18.200005
+offset_right = -25.52002
+offset_bottom = -20.659973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.2189684, 4.2189684, 4.2189684, 1)
+theme_override_fonts/font = ExtResource("5_nv7nc")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CameraScreens/Screen2" unique_id=1379759272]
+position = Vector2(-1415.7125, -168.42249)
+rotation = -3.1415925
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="CameraScreens/Screen2" unique_id=2135338612]
+material = SubResource("ShaderMaterial_dklkt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Screen3" type="TextureRect" parent="CameraScreens" unique_id=1554279788]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.65
+anchor_right = 0.35
+anchor_bottom = 1.0
+offset_top = -75.2
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("7_w6kci")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="CameraScreens/Screen3" unique_id=750215856]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+clip_children = 2
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CameraScreens/Screen3/Display" unique_id=336686718]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 18.200005
+offset_right = -25.52002
+offset_bottom = -20.659973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.2189684, 4.2189684, 4.2189684, 1)
+theme_override_fonts/font = ExtResource("5_nv7nc")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CameraScreens/Screen3" unique_id=475920877]
+position = Vector2(-1415.7125, -168.42249)
+rotation = -3.1415925
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="CameraScreens/Screen3" unique_id=2009208889]
+material = SubResource("ShaderMaterial_dklkt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Screen4" type="TextureRect" parent="CameraScreens" unique_id=1225065595]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_top = -75.20001
+offset_right = -0.47998047
+offset_bottom = -75.34003
+texture = ExtResource("7_w6kci")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="CameraScreens/Screen4" unique_id=1770742618]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+clip_children = 2
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CameraScreens/Screen4/Display" unique_id=1168187669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 18.200005
+offset_right = -25.52002
+offset_bottom = -20.659973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.2189684, 4.2189684, 4.2189684, 1)
+theme_override_fonts/font = ExtResource("5_nv7nc")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CameraScreens/Screen4" unique_id=442534987]
+position = Vector2(-1415.7125, -168.42249)
+rotation = -3.1415925
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="CameraScreens/Screen4" unique_id=1132690046]
+material = SubResource("ShaderMaterial_dklkt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Screen5" type="TextureRect" parent="CameraScreens" unique_id=364734552]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.65
+offset_top = -75.200005
+offset_right = -0.47998047
+offset_bottom = -75.34001
+texture = ExtResource("7_w6kci")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="CameraScreens/Screen5" unique_id=1520652350]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+clip_children = 2
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CameraScreens/Screen5/Display" unique_id=875532510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 18.200005
+offset_right = -25.52002
+offset_bottom = -20.659973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.2189684, 4.2189684, 4.2189684, 1)
+theme_override_fonts/font = ExtResource("5_nv7nc")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CameraScreens/Screen5" unique_id=180701733]
+position = Vector2(-1415.7125, -168.42249)
+rotation = -3.1415925
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="CameraScreens/Screen5" unique_id=240644130]
+material = SubResource("ShaderMaterial_dklkt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2rwv3")
+expand_mode = 1
+
+[node name="NPCScreens" type="Control" parent="." unique_id=57009723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Screen1" type="TextureRect" parent="NPCScreens" unique_id=147722284]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.055
+anchor_right = 0.18
+anchor_bottom = 0.305
+offset_right = -0.47998047
+offset_bottom = -0.14001465
+texture = ExtResource("9_uo53a")
+expand_mode = 1
+
+[node name="Indicator" type="TextureRect" parent="NPCScreens/Screen1" unique_id=1300948940]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 223.0
+offset_top = 281.0
+offset_right = 274.0
+offset_bottom = 311.0
+rotation = 1.5707964
+texture = ExtResource("7_w6kci")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="LED" type="TextureRect" parent="NPCScreens/Screen1/Indicator" unique_id=81502189]
+layout_mode = 0
+offset_left = 17.999998
+offset_top = -2.0000007
+offset_right = 52.03032
+offset_bottom = 29.55539
+texture = ExtResource("10_2le3a")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="NPCScreens/Screen1" unique_id=532161123]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_ouf71")
+expand_mode = 1
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="NPCScreens/Screen1" unique_id=533959875]
+position = Vector2(-1415.7125, -168.42249)
+rotation = 3.1415927
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="NPCScreens/Screen1" unique_id=1749973003]
+material = SubResource("ShaderMaterial_q26f8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_ouf71")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="NPCScreens/Screen1" unique_id=1920714105]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Screen2" type="TextureRect" parent="NPCScreens" unique_id=517997951]
+modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
+self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.055
+anchor_right = 0.18
+anchor_bottom = 0.305
+offset_right = -0.47998047
+offset_bottom = -0.14001465
+texture = ExtResource("9_uo53a")
+expand_mode = 1
+
+[node name="Indicator" type="TextureRect" parent="NPCScreens/Screen2" unique_id=1046520845]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 143.0
+offset_top = 281.0
+offset_right = 194.0
+offset_bottom = 311.0
+rotation = 1.5707964
+texture = ExtResource("7_w6kci")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="LED" type="TextureRect" parent="NPCScreens/Screen2/Indicator" unique_id=546233086]
+layout_mode = 0
+offset_left = -1.030304
+offset_top = -2.0000014
+offset_right = 33.000015
+offset_bottom = 29.555387
+texture = ExtResource("10_2le3a")
+expand_mode = 1
+
+[node name="Display" type="TextureRect" parent="NPCScreens/Screen2" unique_id=1472950666]
+self_modulate = Color(0.67206407, 0.67206407, 0.67206407, 1)
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_ouf71")
+expand_mode = 1
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="NPCScreens/Screen2" unique_id=2128984405]
+position = Vector2(-1415.7125, -168.42249)
+rotation = 3.1415927
+scale = Vector2(0.032325003, 0.024224998)
+copy_mode = 2
+
+[node name="Shader" type="TextureRect" parent="NPCScreens/Screen2" unique_id=1143526291]
+material = SubResource("ShaderMaterial_q26f8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_ouf71")
+expand_mode = 1
+
+[node name="IndicationAnimation" type="AnimationPlayer" parent="NPCScreens" unique_id=1243927235]
+libraries/ = SubResource("AnimationLibrary_h2and")
+
+[node name="Panel" type="TextureRect" parent="NPCScreens" unique_id=1460654583]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 350.0
+offset_top = 581.0
+offset_right = -365.0
+offset_bottom = -541.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_lkx11")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="NPCScreens/Panel" unique_id=1024953415]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 807.0
+offset_bottom = 78.0
+color = Color(0, 0, 0, 1)
+
+[node name="ChatText" type="Label" parent="NPCScreens/Panel" unique_id=434686325]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 872.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1.6411257, 1.6411257, 1.6411257, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("14_fag04")
+theme_override_font_sizes/font_size = 27
+autowrap_mode = 3
+
+[node name="ErrorText" type="Label" parent="NPCScreens/Panel/ChatText" unique_id=323866606]
+modulate = Color(0.09803922, 0.09803922, 0.09803922, 0.23921569)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("14_fag04")
+theme_override_font_sizes/font_size = 27
+text = "################################################################################################"
+autowrap_mode = 3
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="NPCScreens/Panel" unique_id=1351937230]
+position = Vector2(407.99997, 42.00003)
+rotation = -3.1415925
+scale = Vector2(3.9573746, 0.34524068)
+copy_mode = 2
+
+[node name="CRTShader" type="ColorRect" parent="NPCScreens/Panel" unique_id=283638134]
+material = SubResource("ShaderMaterial_nv7nc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interface" type="Control" parent="." unique_id=860637706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Interface" unique_id=1553895024]
+visible = false
+light_mask = 2
+visibility_layer = 2
+layout_mode = 0
+offset_left = 692.0
+offset_top = 810.0
+offset_right = 861.0
+offset_bottom = 979.0
+
+[node name="Base" type="TextureRect" parent="Interface/Button" unique_id=1004821030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_la3uf")
+expand_mode = 1
+
+[node name="Button" type="TextureRect" parent="Interface/Button" unique_id=745721606]
+light_mask = 2
+visibility_layer = 2
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_2h3ld")
+expand_mode = 1
+
+[node name="Mask" type="TextureRect" parent="Interface/Button" unique_id=2110628721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_p7o3x")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="Interface/Button" unique_id=1756409652]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_yuw6y")
+expand_mode = 1
+
+[node name="ButtonAnimationPlayer" type="AnimationPlayer" parent="Interface/Button" unique_id=1554742660]
+libraries/ = SubResource("AnimationLibrary_2fbt8")
+
+[node name="Timer" type="Timer" parent="Interface" unique_id=1925728847]
+wait_time = 0.5
+
+[node name="DayNightEffect" type="CanvasModulate" parent="." unique_id=181164212]
+visible = false
+color = Color(0.008202021, 0.008202026, 0.00820202, 0.96862745)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=728059433]
+position = Vector2(800.50006, 753)
+scale = Vector2(25.359377, 23.812498)
+energy = 0.75
+blend_mode = 1
+texture = SubResource("GradientTexture2D_w6kci")
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=1414650830]
+position = Vector2(393.56003, 601.56006)
+scale = Vector2(0.801122, 1.1882902)
+energy = 0.45
+blend_mode = 1
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_2rwv3")
+texture_scale = 15.82
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1323310032]
+position = Vector2(1203.72, 602.56)
+scale = Vector2(0.8084703, 1.1902655)
+energy = 0.45
+blend_mode = 1
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_uo53a")
+texture_scale = 15.82
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=147725564]
+position = Vector2(794, 434)
+zoom = Vector2(1.41, 1.41)

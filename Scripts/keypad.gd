@@ -16,13 +16,12 @@ var locked: bool = false
 func setup():
 	pass
 
-func add_char(char: String) -> void:
-	if locked:
+func add_char(char: String, control: bool = false) -> void:
+	if current_text.length() >= password.length() and control:
+		control_text()
 		return
 	
-	if current_text.length() >= password.length():
-		control_text()
-		locked = true
+	if locked:
 		return
 	
 	current_text += char
@@ -38,6 +37,7 @@ func add_char(char: String) -> void:
 	
 	print(current_text)
 	if current_text.length() == password.length():
+		locked = true
 		text.text = "Confirm?"
 
 func _update_display(show_last: bool) -> void:
@@ -87,6 +87,9 @@ func _on_button_up(button: Button) -> void:
 	tween.tween_property(button.get_node("TextureRect"), "position", Vector2(0, 0), 0.05)
 
 func _on_button_pressed(button: Button) -> void:
+	if button.name == "Button10":
+		add_char("", true)
+	
 	SoundManager.play_sfx_2d("end_shift_button_push", global_position, false, -2.0)
 	var button_val : int = int(button.name.right(1))
 	add_char(str(button_val))

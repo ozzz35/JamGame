@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://r2xtaexx8o7c" path="res://Assets/Textures/Keypad/keypad_key2.png" id="11_jn4sd"]
 [ext_resource type="Texture2D" uid="uid://cvlb3lgr5ibxt" path="res://Assets/Textures/Keypad/keypad_key3.png" id="12_roe0x"]
 [ext_resource type="Texture2D" uid="uid://dl38t0jy06f2" path="res://Assets/Textures/Keypad/keypad_key0.png" id="13_12jxv"]
+[ext_resource type="Texture2D" uid="uid://by58lnmxpvt31" path="res://Assets/Textures/Keypad/keypad_key.png" id="14_dw7mh"]
 
 [node name="Keypad" type="Control" unique_id=1900938042]
 layout_mode = 3
@@ -348,6 +349,36 @@ grow_vertical = 2
 texture = ExtResource("13_12jxv")
 expand_mode = 1
 
+[node name="Button10" type="Button" parent="GridContainer" unique_id=1484368740]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/Button10" unique_id=709484706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 0.29032135
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dw7mh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Button10" unique_id=179408967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_dw7mh")
+expand_mode = 1
+
 [node name="Text" type="Label" parent="." unique_id=516268037]
 self_modulate = Color(2.6374314, 2.6374314, 2.6374314, 1)
 layout_mode = 0
@@ -356,6 +387,6 @@ offset_top = 55.0
 offset_right = 276.0
 offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("1_v31qc")
-theme_override_font_sizes/font_size = 53
+theme_override_font_sizes/font_size = 46
 horizontal_alignment = 1
 vertical_alignment = 1

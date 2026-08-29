@@ -15,7 +15,7 @@ var button_light: bool = false
 @onready var button_texture: TextureRect = $Interface/Button/Button
 @onready var timer: Timer = $Interface/Timer
 
-const MAIN = "res://Scenes/main.tscn"
+const INTRO = "res://Scenes/intro.tscn"
 
 var boss_seriousness: int = 0
 var boss_begin_lines = ["BEGIN.", "GOOD.", "FINALLY."]
@@ -90,4 +90,4 @@ func _on_button_pressed() -> void:
 	button_pressed = true
 	await day_change()
 	
-	SceneTransition.change_scene(MAIN)
+	SceneTransition.change_scene(INTRO)

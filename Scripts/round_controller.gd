@@ -41,11 +41,11 @@ const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
 func _ready() -> void:
 	GameState.round_finished.connect(_on_round_finished)
 	GameState.next_round()
-	SoundManager.play_music("full_loop", 3)
-	#GameState.sector_destroyed.connect(turn_off_input)
+	SoundManager.play_music("phase1", 3)
 	GameState.day_skipped.connect(turn_off_input)
 	
 	next_button.pressed.connect(_on_next_button_pressed)
+	GameState.sector_destroyed.connect(_on_sector_destroyed)
 	
 	set_input(false)
 	if intro:
@@ -205,6 +205,9 @@ func set_input(input_on):
 
 func _on_next_button_pressed():
 	SoundManager.play_sfx_2d("end_shift_button_push", next_button.global_position, false, -2.0)
+
+func _on_sector_destroyed(sector):
+	turn_off_input()
 
 ## -- Camera -- ##
 

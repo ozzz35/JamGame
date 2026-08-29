@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bh1pgpdhi8md6"]
 
 [ext_resource type="Texture2D" uid="uid://bmmah3lamcgim" path="res://Assets/Textures/printer_bottom.png" id="1_c5w5y"]
-[ext_resource type="Script" uid="uid://vel3qmjdrc7y" path="res://Scenes/printer.gd" id="1_ulkxg"]
+[ext_resource type="Script" uid="uid://vel3qmjdrc7y" path="res://Scripts/printer.gd" id="1_ulkxg"]
 [ext_resource type="Texture2D" uid="uid://uk2ybw8tn1v2" path="res://Assets/Textures/printer.png" id="3_ll1ux"]
 
 [node name="Printer" type="Control" unique_id=979301839]

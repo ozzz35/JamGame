@@ -51,6 +51,7 @@ func play_music(music_name: String, transition_duration: float = 1.0) -> void:
 	
 	new_player.stream = load(sounds[music_name])
 	new_player.volume_db = -80.0
+	new_player.bus = "Music"
 	music.add_child(new_player)
 	new_player.play()
 	
@@ -62,9 +63,9 @@ func play_music(music_name: String, transition_duration: float = 1.0) -> void:
 	
 	current_player.finished.connect(on_player_stream_finished)
 	
-	var tween: Tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
+	var tween: Tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	tween.tween_property(new_player, "volume_db", 0.0, transition_duration)
+	tween.tween_property(new_player, "volume_db", 0.0, transition_duration).set_delay(transition_duration * 0.15)
 	
 	if is_instance_valid(old_player):
 		tween.tween_property(old_player, "volume_db", -80.0, transition_duration / 2).set_delay(transition_duration / 2)

@@ -700,6 +700,7 @@ offset_bottom = 40.0
 [node name="Screen2" type="TextureRect" parent="Room/NPCScreens" unique_id=472316616]
 modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
 self_modulate = Color(0.918091, 0.91809106, 0.91809094, 1)
+layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -708,7 +709,6 @@ anchor_right = 0.18
 anchor_bottom = 0.305
 offset_right = -0.47998047
 offset_bottom = -0.14001465
-layout_direction = 3
 texture = ExtResource("12_k12tt")
 expand_mode = 1
 

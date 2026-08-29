@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dnodmkiorfmph" path="res://Scripts/switch_panel.gd" id="1_m3457"]
 [ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="2_uh1af"]
 [ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="3_pvrkq"]
-[ext_resource type="FontFile" uid="uid://c563x1hwmnh6q" path="res://Assets/fonts/LinkMagic-Regular.ttf" id="4_pvrkq"]
+[ext_resource type="FontFile" uid="uid://fm7ogrlvkple" path="res://Assets/fonts/Commodore Rounded v1.2.ttf" id="4_pvrkq"]
 
 [node name="SwitchPanel" type="Control" unique_id=1973828323]
 layout_mode = 3
@@ -69,26 +69,22 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Switch0/Labels" unique_id=1968448561]
 layout_mode = 0
-offset_left = -29.0
+offset_left = -40.0
 offset_top = 13.0
-offset_right = -7.0
+offset_right = -10.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "0"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Switch0/Labels" unique_id=749970590]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 142.0
 offset_top = 13.0
-offset_right = 175.0
+offset_right = 172.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "1"
@@ -134,26 +130,22 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Switch1/Labels" unique_id=1662309196]
 layout_mode = 0
-offset_left = -29.0
+offset_left = -40.0
 offset_top = 13.0
-offset_right = -7.0
+offset_right = -10.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "0"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Switch1/Labels" unique_id=352019124]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 142.0
 offset_top = 13.0
-offset_right = 175.0
+offset_right = 172.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "1"
@@ -199,26 +191,22 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Switch2/Labels" unique_id=1031227949]
 layout_mode = 0
-offset_left = -29.0
+offset_left = -40.0
 offset_top = 13.0
-offset_right = -7.0
+offset_right = -10.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "0"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Switch2/Labels" unique_id=389876142]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 142.0
 offset_top = 13.0
-offset_right = 175.0
+offset_right = 172.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "1"
@@ -264,26 +252,22 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Switch3/Labels" unique_id=1677261580]
 layout_mode = 0
-offset_left = -29.0
+offset_left = -40.0
 offset_top = 13.0
-offset_right = -7.0
+offset_right = -10.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "0"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Switch3/Labels" unique_id=1318484141]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 142.0
 offset_top = 13.0
-offset_right = 175.0
+offset_right = 172.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.39942783, 0.3994278, 0.39942777, 1)
-theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("4_pvrkq")
 theme_override_font_sizes/font_size = 39
 text = "1"
