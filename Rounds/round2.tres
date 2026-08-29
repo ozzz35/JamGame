@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://ndwn46fhvgss"
 [sub_resource type="Resource" id="Resource_7dpxq"]
 script = ExtResource("1_0m3et")
 signal_name = "round2_switch_changed"
-lines = Array[String](["Wait! don't listen to him.", "I used to work there. I sat where you're sitting.", "He's not destroying a virus. He's destroying the planet. Piece by piece."])
+lines = Array[String](["Wait! don't listen to him.", "I used to work there. I sat where you're sitting.", "He's not destroying a virus. He's destroying the planet. Piece by piece.", "Just end the shift early, please."])
 metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [sub_resource type="Resource" id="Resource_2n2ij"]
