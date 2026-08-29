@@ -44,6 +44,8 @@ var was_loyal_last_day: bool = false
 signal player_evil
 signal player_pacifist 
 
+signal switch_combination_changed(combination)
+
 signal just_got_keypad
 
 signal invalid_code_entered(code: String) ## is triggered when player doesn't enter the code selected by the boss. unless player has access
@@ -98,6 +100,8 @@ func change_switch_combination(combination: Array):
 	var combination_s: String
 	for digit in combination:
 		combination_s = combination_s + str(int(digit))
+	
+	switch_combination_changed.emit(combination_s)
 	
 	current_switch_combination = combination_s
 

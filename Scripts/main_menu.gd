@@ -88,6 +88,7 @@ func _on_button_pressed() -> void:
 	if button_pressed:
 		return
 	button_pressed = true
+	SoundManager.play_sfx("light_flicker", false)
 	await day_change()
 	
 	SceneTransition.change_scene(INTRO)

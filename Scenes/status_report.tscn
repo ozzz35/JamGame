@@ -97,7 +97,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "AFRICA           1010  "
+text = "AFRICA           0101  "
 horizontal_alignment = 1
 
 [node name="AfricaPop" type="Label" parent="VBoxContainer/Africa" unique_id=523264506]
@@ -119,7 +119,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "ASIA             1010  "
+text = "ASIA             1011  "
 horizontal_alignment = 1
 
 [node name="AsiaPop" type="Label" parent="VBoxContainer/Asia" unique_id=1877632134]
@@ -141,7 +141,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "EUROPE           1010  "
+text = "EUROPE           0011 "
 horizontal_alignment = 1
 
 [node name="EuropePop" type="Label" parent="VBoxContainer/Europe" unique_id=389338514]
@@ -163,7 +163,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "NORTH AMERICA    1010  "
+text = "NORTH AMERICA    1100  "
 horizontal_alignment = 1
 
 [node name="NorthAmericaPop" type="Label" parent="VBoxContainer/NorthAmerica" unique_id=881659957]
@@ -207,7 +207,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "OCEANIA          1010  "
+text = "OCEANIA          0000  "
 horizontal_alignment = 1
 
 [node name="OceaniaPop" type="Label" parent="VBoxContainer/Oceania" unique_id=2145934574]

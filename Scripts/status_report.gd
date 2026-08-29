@@ -11,8 +11,14 @@ class_name StatusReport extends Control
 
 @onready var shadow: ColorRect = $shadow
 
-
 var sector_label_map: Dictionary = {}
+
+signal animation_finished
+var can_be_zoomed_into: bool = false
+
+var mouse_hover: bool = false
+
+var initial_pos: Vector2
 
 var display_population: Dictionary = {
 	"Africa": "1.4B",
@@ -32,6 +38,30 @@ func _ready() -> void:
 		"SouthAmerica": south_america_pop,
 		"Oceania": oceania_pop,
 	}
+	
+	animation_finished.connect(_on_animation_finished)
+
+
+func _on_animation_finished():
+	initial_pos = global_position
+	can_be_zoomed_into = true
+
+
+func zoom_in():
+	if not can_be_zoomed_into: return
+	
+	z_index = 100
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	tween.tween_property(self, "global_position", Vector2(550, 300), 0.7)
+	tween.tween_property(self, "scale", Vector2(2, 2), 0.7)
+
+func zoom_out():
+	if not can_be_zoomed_into: return
+	
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	tween.tween_property(self, "global_position", initial_pos, 0.7)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.7)
+
 
 func setup(day: int) -> void:
 	day_number.text = str(day)

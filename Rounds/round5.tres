@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://b0qnfirf0alpd"]
+[gd_resource type="Resource" script_class="RoundBase" format=3 uid="uid://clso2tme4yfw8"]
 
 [ext_resource type="Script" uid="uid://ndwn46fhvgss" path="res://Scripts/dialogue_block.gd" id="1_mlk0c"]
 [ext_resource type="Script" uid="uid://cvbvgyackyiws" path="res://Scripts/round_base.gd" id="2_vdmvh"]

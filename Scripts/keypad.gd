@@ -61,6 +61,8 @@ func control_text():
 			text.text = ""
 			await get_tree().create_timer(0.3).timeout
 		
+		GameState.gained_access = true
+		
 		locked = true
 	else:
 		text.text = "WRONG"

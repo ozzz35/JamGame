@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://bu0ruw31jv2o7" path="res://Assets/fonts/CourierPrimeFont/CourierPrime-Regular.ttf" id="1_u5gyx"]
 
 [node name="SecurityNotice" type="ColorRect" unique_id=1141835277]
-offset_right = 442.0
-offset_bottom = 565.0
+offset_right = 440.0
+offset_bottom = 560.0
 pivot_offset = Vector2(10.165, 0)
 pivot_offset_ratio = Vector2(0.48, 0)
 mouse_filter = 2

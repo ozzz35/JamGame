@@ -1,7 +1,7 @@
 extends Control
 
 var starting_pos: Vector2 = Vector2(1685, -580)
-var target_pos: Vector2 = Vector2(1685, 345)
+var target_pos: Vector2 = Vector2(1685, 280)
 @onready var print_layer: ColorRect = $PrintLayer
 
 const SECURITY_NOTICE = preload("uid://dk61ue6n88afp")
@@ -23,6 +23,13 @@ func _on_round_finished(round):
 	await get_tree().create_timer(0.8).timeout
 	
 	print_paper(StatusReport, [round])
+	
+	await get_tree().create_timer(4).timeout
+	
+	print_paper(StatusReport, [round])
+	
+	if round > 2 and GameState.was_loyal_last_day:
+		print_paper(SecurityNotice, [2, round, "92306"])
 
 
 func print_paper(type, contents: Array): ## Security notice contents = [employee_number, day_number, password]
@@ -58,4 +65,5 @@ func print_paper(type, contents: Array): ## Security notice contents = [employee
 	tween.parallel().tween_property(new_printout.shadow, "position", Vector2(0, 0), 1).set_delay(0.4)
 	
 	if printouts.size() > 1:
-		tween.tween_property(new_printout, "position", Vector2(1150, 345), 1).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(new_printout, "position", Vector2(1150, 280), 1).set_trans(Tween.TRANS_CUBIC)
+	
