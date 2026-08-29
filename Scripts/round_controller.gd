@@ -100,6 +100,7 @@ func _on_round_finished(round: int):
 		GameState.loyal_last_day.emit()
 		print("lld emit")
 	else:
+		GameState.loyal_last_day.emit()
 		GameState.disloyal_last_day.emit()
 		print("nlld emit")
 	
