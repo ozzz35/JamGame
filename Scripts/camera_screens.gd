@@ -19,8 +19,48 @@ extends Control
 
 var char_wait_time: float = 0.04
 
-func set_displays(sector_name: String):
+func set_displays(sector_name: String, infected: bool = false):
 	print("Displays set to: " + sector_name)
+	
+	## V- this should work once the photos are added to Assets/Photos/sectorname/ -V
+	
+	#var folder_path: String = "res://Assets/Photos/" + sector_name + "/"
+	#var files = DirAccess.get_files_at(folder_path)
+	#
+	#var texture_files: Array[String]
+	#
+	#for file in files:
+		#if file.ends_with(".import"): 
+			#return
+		#
+		#if file.ends_with("infected"): ## like "infected_1.png"
+			#if not infected:
+				#continue
+			#else:
+				#texture_files.append(file)
+				#continue
+		#
+		#if file.begins_with("photo"): ## like "photo_1.png"
+			#if infected:
+				#if texture_files.size() <= 3:
+					#texture_files.append(file)
+			#else:
+				#texture_files.append(file)
+	#
+	#if infected:
+		#photo1.texture = load(texture_files[0])
+		#photo2.texture = load(texture_files[1])
+		#photo4.texture = load(texture_files[2])
+		#set_static(false, 3)
+		#set_static(false, 5)
+		#
+	#else:
+		#photo1.texture = load(texture_files[0])
+		#photo2.texture = load(texture_files[1])
+		#photo3.texture = load(texture_files[2])
+		#photo4.texture = load(texture_files[3])
+		#photo5.texture = load(texture_files[4])
+	
 	
 	if GameState.sectors.has(sector_name):
 		if GameState.sectors[sector_name]["destroyed"]:
@@ -37,6 +77,16 @@ func set_displays(sector_name: String):
 	
 	
 	display_text(sector_name)
+
+func set_static(clear: bool, screen_num: int):
+	var static_tv: VideoStreamPlayer = get("static_tv" + str(screen_num))
+	
+	if clear:
+		static_tv.stop()
+		static_tv.hide()
+	else:
+		static_tv.play()
+		static_tv.show()
 
 func all_static(clear: bool = false):
 	for i in 5:
