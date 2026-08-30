@@ -44,7 +44,7 @@ const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
 func _ready() -> void:
 	GameState.round_finished.connect(_on_round_finished)
 	GameState.next_round()
-	SoundManager.play_music("phase1", 3)
+	SoundManager.play_music("full_loop", 3)
 	GameState.day_skipped.connect(turn_off_input)
 	GameState.outro.connect(_on_outro)
 	

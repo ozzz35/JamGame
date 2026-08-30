@@ -10,6 +10,7 @@ var sounds: Dictionary = {
 	"neutral_ending": "res://Assets/Music/Neutral Ending.wav",
 	"good_ending": "res://Assets/Music/Good Ending.wav",
 	
+	"intro_loop": "res://Assets/Music/Story Intro Loop.wav",
 	"full_loop": "res://Assets/Music/Full Loop.wav",
 	"menu_screen": "res://Assets/Music/Menu Screen.wav",
 	

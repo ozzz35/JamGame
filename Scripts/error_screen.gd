@@ -11,6 +11,8 @@ var errors3: Array[String] = ["THIS WILL BE ON YOUR RECORD",
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var current_round: int = 1
+
 func display_error(seriousness: int):
 	var error_array: Array[String]
 	match seriousness:
@@ -33,6 +35,7 @@ func _on_end_shift_pressed():
 	display_error(2)
 
 func _on_next_round(round):
+	current_round = round
 	error_label.text = ""
 
 func _on_invalid_code_entered(code: String):
@@ -44,3 +47,14 @@ func _ready() -> void:
 	GameState.end_shift_pressed.connect(_on_end_shift_pressed)
 	GameState.round_finished.connect(_on_next_round)
 	GameState.invalid_code_entered.connect(_on_invalid_code_entered)
+	GameState.day_changed.connect(_on_day_changed)
+
+func _on_day_changed():
+	var current_round_resource_path = "res://Rounds/round" + str(current_round) + ".tres"
+	if not ResourceLoader.exists(current_round_resource_path):
+		push_error("Resource not found: " + current_round_resource_path)
+		return
+	var current_round = load(current_round_resource_path) as RoundBase
+	var required_code: String = current_round.sector_to_be_destroyed
+	
+	error_label.text = "SEQUENCE REQUIRED: " + required_code

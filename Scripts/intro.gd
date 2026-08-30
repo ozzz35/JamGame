@@ -25,7 +25,7 @@ var default_wait_time: float = 3.0
 var long_wait_time: float = 9.0
 
 func _ready() -> void:
-	SoundManager.play_music("phase1", 3.5)
+	SoundManager.play_music("intro_loop", 3.5)
 	await get_tree().create_timer(0.7).timeout
 	play()
 

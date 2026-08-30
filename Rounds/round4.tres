@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_oqv1j"]
 script = ExtResource("1_sc27q")
 signal_name = "day_changed"
-lines = Array[String](["day_changed"])
+lines = Array[String](["Anyway, 1011 and boom, you should be able to manage that, no?"])
 metadata/_custom_type_script = "uid://ndwn46fhvgss"
 
 [sub_resource type="Resource" id="Resource_hpo6q"]
