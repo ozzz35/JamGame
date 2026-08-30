@@ -7,6 +7,7 @@ var sounds: Dictionary = {
 	"bad_ending_1": "res://Assets/Music/Bad Ending 1.wav",
 	"bad_ending_2": "res://Assets/Music/Bad Ending 2.wav",
 	"bad_ending_3": "res://Assets/Music/Bad Ending 3.wav",
+	"neutral_ending": "res://Assets/Music/Neutral Ending.wav",
 	"good_ending": "res://Assets/Music/Good Ending.wav",
 	
 	"full_loop": "res://Assets/Music/Full Loop.wav",

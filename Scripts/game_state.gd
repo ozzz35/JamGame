@@ -61,6 +61,8 @@ signal round2_switch_changed
 
 var hovered_printouts: Array = []
 
+signal outro
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
 		next_round()
@@ -71,6 +73,10 @@ func _ready() -> void:
 
 func next_round():
 	round_index += 1
+	
+	if round_index >= 7:
+		outro.emit()
+		return
 	
 	
 	round_finished.emit(round_index)

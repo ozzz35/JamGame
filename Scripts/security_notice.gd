@@ -1,4 +1,4 @@
-class_name SecurityNotice extends ColorRect
+class_name SecurityNotice extends TextureRect
 
 @onready var day_number_label: Label = $VBoxContainer/Day/DayNumber
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="3_tu3k4"]
 [ext_resource type="Texture2D" uid="uid://uk2ybw8tn1v2" path="res://Assets/Textures/printer.png" id="6_4rtdt"]
 [ext_resource type="Texture2D" uid="uid://bp54ahtaj4q3m" path="res://Assets/Textures/switch1_base.png" id="7_in8s1"]
-[ext_resource type="Script" uid="uid://codo6cl5lqqqw" path="res://test/switch_1.gd" id="7_khshs"]
+[ext_resource type="Script" path="res://test/switch_1.gd" id="7_khshs"]
 [ext_resource type="Texture2D" uid="uid://djsfdubhia78w" path="res://Assets/Textures/switch1_slider.png" id="8_khshs"]
 [ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="10_liwt1"]
 [ext_resource type="FontFile" uid="uid://7rqflcy1k8p4" path="res://Assets/fonts/digit-tech.14.ttf" id="11_l7401"]
@@ -725,8 +725,8 @@ position = Vector2(1160, 935)
 scale = Vector2(0.5, 0.5)
 
 [node name="Control" type="Control" parent="Node2D3" unique_id=64906571]
-custom_minimum_size = Vector2(262, 73)
 clip_contents = true
+custom_minimum_size = Vector2(262, 73)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

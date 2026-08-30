@@ -22,8 +22,15 @@ var char_wait_time: float = 0.04
 func set_displays(sector_name: String):
 	print("Displays set to: " + sector_name)
 	
+	if GameState.sectors.has(sector_name):
+		if GameState.sectors[sector_name]["destroyed"]:
+			all_static()
+			display_text("N/A")
+			return
+	
 	if sector_name == "":
 		all_static()
+		display_text("N/A")
 		return
 	else:
 		all_static(true)
@@ -52,7 +59,7 @@ func _on_switch_combination_changed(combination):
 	set_displays(GameState.find_sector_with_id(combination))
 
 func _on_round_finished(round):
-	pass
+	set_displays(GameState.find_sector_with_id(GameState.current_switch_combination))
 
 func display_text(text: String):
 	label.visible_characters = 0

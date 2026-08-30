@@ -12,7 +12,8 @@ var day_transition: bool = false
 
 func _ready() -> void:
 	GameState.round_finished.connect(_on_next_round)
-
+	GameState.outro.connect(_on_outro)
+	
 func _on_timer_1_timeout() -> void:
 	if day_transition:
 		label.hide()
@@ -82,3 +83,11 @@ func update_clock(hours: String, mins: String):
 	
 	hours_label.text = hours
 	mins_label.text = mins
+
+
+func _on_outro():
+	day_transition = true
+	hours_label.hide()
+	mins_label.hide()
+	label.hide()
+	

@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://ctqevks3jv4qh" path="res://Assets/Textures/button1_button.png" id="3_nrk2b"]
 [ext_resource type="Texture2D" uid="uid://3vj55tw23y5k" path="res://Assets/Textures/button1_base_mask.png" id="4_c4mwi"]
 [ext_resource type="Texture2D" uid="uid://dr1hnnhj45d0c" path="res://Assets/Textures/button1_shadow.png" id="5_ur6nl"]
-[ext_resource type="Texture2D" uid="uid://bsam52b8ww0si" path="res://icon.svg" id="6_svtet"]
+[ext_resource type="Texture2D" uid="uid://b4hepl4n10e5j" path="res://Assets/Interface/EndShiftButton/end_shift_button_shadow.png" id="6_rmklx"]
+[ext_resource type="Texture2D" uid="uid://cpmtvxol10tld" path="res://Assets/Interface/EndShiftButton/end_shift_button_base.png" id="6_ur6nl"]
+[ext_resource type="Texture2D" uid="uid://dl5h73jufywoo" path="res://Assets/Interface/EndShiftButton/end_shift_button_inner_shadow.png" id="7_rmklx"]
+[ext_resource type="Texture2D" uid="uid://c60y1bgcgnav3" path="res://Assets/Interface/EndShiftButton/end_shift_button_glow.png" id="8_q5xx2"]
+[ext_resource type="Texture2D" uid="uid://b1bjiwn3wbb7o" path="res://Assets/Interface/EndShiftButton/end_shift_button_text.png" id="9_oxl26"]
 
 [sub_resource type="Animation" id="Animation_svtet"]
 length = 0.001
@@ -20,6 +24,50 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndShiftButton/Control/Texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -1.3113022e-06)]
+}
+
+[sub_resource type="Animation" id="Animation_ur6nl"]
+resource_name = "end_shift_press"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndShiftButton/Control/Texture:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -1.3113022e-06), Vector2(2, 1.65)]
+}
+
+[sub_resource type="Animation" id="Animation_q5xx2"]
+resource_name = "end_shift_release"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndShiftButton/Control/Texture:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 1.65), Vector2(2, -1.3113022e-06)]
 }
 
 [sub_resource type="Animation" id="Animation_nrk2b"]
@@ -57,6 +105,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur6nl"]
 _data = {
 &"RESET": SubResource("Animation_svtet"),
+&"end_shift_press": SubResource("Animation_ur6nl"),
+&"end_shift_release": SubResource("Animation_q5xx2"),
 &"press": SubResource("Animation_nrk2b"),
 &"release": SubResource("Animation_c4mwi")
 }
@@ -112,33 +162,124 @@ expand_mode = 1
 [node name="ButtonAnimationPlayer" type="AnimationPlayer" parent="." unique_id=887506625]
 libraries/ = SubResource("AnimationLibrary_ur6nl")
 
-[node name="EndShiftButton" type="TextureButton" parent="." unique_id=1189502508]
+[node name="EndShiftButton" type="Button" parent="." unique_id=45707151]
 layout_mode = 0
-offset_left = 1.0
 offset_top = 58.0
-offset_right = 53.0
-offset_bottom = 71.0
-texture_normal = ExtResource("6_svtet")
-ignore_texture_size = true
-stretch_mode = 0
+offset_right = 54.0
+offset_bottom = 72.0
+flat = true
 
 [node name="IndicatorTimer" type="Timer" parent="EndShiftButton" unique_id=1609643582]
 wait_time = 0.3
 autostart = true
 
-[node name="ColorRect" type="ColorRect" parent="EndShiftButton" unique_id=1163170641]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -1.0
+[node name="Shadow" type="TextureRect" parent="EndShiftButton" unique_id=429143080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
 offset_top = -1.0
-offset_right = 53.0
-offset_bottom = 14.0
+offset_right = -9.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.34, 1.34)
 mouse_filter = 2
-color = Color(0.5254902, 0.49019608, 0.49411765, 1)
+texture = ExtResource("6_rmklx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="ColorRect" parent="EndShiftButton" unique_id=896399121]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.17
+offset_right = -1.1699982
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.06, 1.06)
+mouse_filter = 2
+
+[node name="Texture" type="Control" parent="EndShiftButton/Control" unique_id=1592904987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -1.8571434
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Base" type="TextureRect" parent="EndShiftButton/Control/Texture" unique_id=2079887341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.33, 1.33)
+mouse_filter = 2
+texture = ExtResource("6_ur6nl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InnerShadow" type="TextureRect" parent="EndShiftButton/Control/Texture" unique_id=456641203]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.33, 1.33)
+mouse_filter = 2
+texture = ExtResource("7_rmklx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Glow" type="TextureRect" parent="EndShiftButton/Control/Texture" unique_id=480368417]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.33, 1.33)
+mouse_filter = 2
+texture = ExtResource("8_q5xx2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="TextureRect" parent="EndShiftButton/Control/Texture" unique_id=1099718109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.33, 1.33)
+mouse_filter = 2
+texture = ExtResource("9_oxl26")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="button_down" from="EndShiftButton" to="." method="_on_end_shift_button_button_down"]
+[connection signal="button_up" from="EndShiftButton" to="." method="_on_end_shift_button_button_up"]
 [connection signal="pressed" from="EndShiftButton" to="." method="_on_end_shift_button_pressed"]
 [connection signal="timeout" from="EndShiftButton/IndicatorTimer" to="." method="_on_indicator_timer_timeout"]

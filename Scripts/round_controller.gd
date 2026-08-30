@@ -46,6 +46,7 @@ func _ready() -> void:
 	GameState.next_round()
 	SoundManager.play_music("phase1", 3)
 	GameState.day_skipped.connect(turn_off_input)
+	GameState.outro.connect(_on_outro)
 	
 	next_button.pressed.connect(_on_next_button_pressed)
 	GameState.sector_destroyed.connect(_on_sector_destroyed)
@@ -60,7 +61,11 @@ func _ready() -> void:
 	set_input(true)
 	
 
-
+func _on_outro():
+	await day_change()
+	await get_tree().create_timer(2.0).timeout
+	SoundManager.current_player.stop()
+	SceneTransition.change_scene("res://Scenes/outro.tscn")
 
 
 ## -- Round Stuff -- ##
@@ -224,6 +229,8 @@ func _play_indicator(npc_name: String) -> void:
 ## -- Utility Methods -- ##
 
 func set_input(input_on):
+	print("Input set to " + str(input_on))
+	
 	var val: int = 0
 	if input_on:
 		val = 2

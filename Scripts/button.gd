@@ -2,7 +2,8 @@ class_name BigButton extends Button
 
 @export var round_index: int ## in which round this button is going to show up. All the interface nodes will have this
 @onready var button_animation_player: AnimationPlayer = $ButtonAnimationPlayer
-@onready var end_shift_button: TextureButton = $EndShiftButton
+@onready var end_shift_button: Button = $EndShiftButton
+@onready var glow: TextureRect = $EndShiftButton/Control/Texture/Glow
 
 func _ready() -> void:
 	pass
@@ -41,14 +42,16 @@ func _on_end_shift_button_pressed() -> void:
 
 func _on_indicator_timer_timeout() -> void:
 	if not GameState.gotten_error:
-		end_shift_button.modulate = Color(1, 1, 1)
+		glow.hide()
 		return
 	
-	if end_shift_button.modulate == Color.DARK_RED:
-		end_shift_button.modulate = Color(1, 1, 1)
-	else:
-		end_shift_button.modulate = Color.DARK_RED
+	glow.visible = !glow.visible
 
 
 func _on_end_shift_button_button_down() -> void:
 	SoundManager.play_sfx("end_shift_button_release")
+	button_animation_player.play("end_shift_press")
+
+
+func _on_end_shift_button_button_up() -> void:
+	button_animation_player.play("end_shift_release")

@@ -26,8 +26,6 @@ func _on_round_finished(round):
 	
 	await get_tree().create_timer(4).timeout
 	
-	print_paper(StatusReport, [round])
-	
 	if round > 2 and GameState.was_loyal_last_day:
 		print_paper(SecurityNotice, [2, round, "92306"])
 
