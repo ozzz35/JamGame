@@ -19,6 +19,10 @@ var current_round: int
 
 func _ready() -> void:
 	GameState.round_finished.connect(_on_round_finished)
+	
+	for switch in v_box_container.get_children():
+		switch.mouse_entered.connect(Cursor.register_hover_enter)
+		switch.mouse_exited.connect(Cursor.register_hover_exit)
 
 func setup(): ## All the interface nodes will have this
 	pass

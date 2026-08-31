@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cs34o360tsyr5"]
+
+[ext_resource type="Script" uid="uid://d0avgpw35oxq7" path="res://Scripts/cursor.gd" id="1_i7fis"]
+[ext_resource type="Texture2D" uid="uid://c1svuytjkcy21" path="res://Assets/Textures/cursor_thinner.png" id="2_i7fis"]
+
+[node name="Cursor" type="CanvasLayer" unique_id=1776072144]
+script = ExtResource("1_i7fis")
+
+[node name="Texture" type="TextureRect" parent="." unique_id=608806732]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.32, 0.32)
+mouse_filter = 2
+texture = ExtResource("2_i7fis")

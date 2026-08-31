@@ -79,6 +79,9 @@ func _ready() -> void:
 			child.pressed.connect(_on_button_pressed.bind(child))
 			child.button_down.connect(_on_button_down.bind(child))
 			child.button_up.connect(_on_button_up.bind(child))
+			
+			child.mouse_entered.connect(Cursor.register_hover_enter)
+			child.mouse_exited.connect(Cursor.register_hover_exit)
 
 func _on_button_down(button: Button) -> void:
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC)

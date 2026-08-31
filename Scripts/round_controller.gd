@@ -39,6 +39,7 @@ var had_keypad_last_day: bool = false
 const LED = "res://Assets/Interface/LED/LED.png"
 const LED_LIT = "res://Assets/Interface/LED/LED_lit.png"
 
+@onready var char2_texture: TextureRect = $"../Room/NPCScreens/Screen2/Display/CharTexture"
 
 
 func _ready() -> void:
@@ -47,6 +48,7 @@ func _ready() -> void:
 	SoundManager.play_music("full_loop", 3)
 	GameState.day_skipped.connect(turn_off_input)
 	GameState.outro.connect(_on_outro)
+	GameState.round2_switch_changed.connect(func(): char2_texture.show())
 	
 	next_button.pressed.connect(_on_next_button_pressed)
 	GameState.sector_destroyed.connect(_on_sector_destroyed)
@@ -146,12 +148,18 @@ func wait_for_signal(target_name: String) -> void:
 
 func interface_setup(round: int):
 	for child in interface.get_children():
-		child.show()
+		if child.name == "Keypad":
+			if child.round_index <= round and GameState.was_loyal_last_day:
+				child.show()
+			else:
+				child.hide()
+			
+			return
 		
-		#if child.round_index <= round:
-			#child.show()
-		#else:
-			#child.hide()
+		if child.round_index <= round:
+			child.show()
+		else:
+			child.hide()
 
 func day_change():
 	SoundManager.play_sfx("light_flicker", false)
@@ -244,6 +252,7 @@ func _on_next_button_pressed():
 
 func _on_sector_destroyed(sector):
 	turn_off_input()
+
 
 ## -- Camera -- ##
 

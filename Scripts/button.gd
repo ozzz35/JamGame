@@ -6,10 +6,23 @@ class_name BigButton extends Button
 @onready var glow: TextureRect = $EndShiftButton/Control/Texture/Glow
 
 func _ready() -> void:
-	pass
+	GameState.round_finished.connect(_on_round_finished)
+	
+	
+	mouse_entered.connect(Cursor.register_hover_enter)
+	mouse_exited.connect(Cursor.register_hover_exit)
+	
+	end_shift_button.mouse_entered.connect(Cursor.register_hover_enter)
+	end_shift_button.mouse_exited.connect(Cursor.register_hover_exit)
 
 func setup(): ## All the interface nodes will have this
 	pass
+
+func _on_round_finished(round):
+	if round > 1:
+		end_shift_button.show()
+	else:
+		end_shift_button.hide()
 
 ## -- Main Button -- ##
 

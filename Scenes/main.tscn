@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://pfoh5fim0htc" path="res://Scenes/button.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://cl25v1ru8fvbn" path="res://Assets/test/room_and_control_desk.png" id="1_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://bcs3oq4ks010g" path="res://Assets/Textures/Screens/cafe1.png" id="2_6iyac"]
 [ext_resource type="PackedScene" uid="uid://cbgfv6ujl23jf" path="res://Scenes/clock.tscn" id="2_344ge"]
 [ext_resource type="Texture2D" uid="uid://8iujgyb4318k" path="res://Assets/TV/tv1_body.png" id="2_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://bjsxixl4whcwv" path="res://Scenes/switch_panel.tscn" id="2_kry3j"]
@@ -14,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b326dofheby8q" path="res://Scenes/error_screen.tscn" id="3_ynf5e"]
 [ext_resource type="Shader" uid="uid://c3c570trc4f1g" path="res://Scripts/crt_effect.gdshader" id="4_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dwkq2bo3q0b27" path="res://Scenes/keypad.tscn" id="4_21xkr"]
-[ext_resource type="Texture2D" uid="uid://qvmshkja6pg6" path="res://Assets/Textures/Screens/image.png" id="4_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://okv0qwmtq3jj" path="res://Assets/TV/tv2_screen.png" id="6_k12tt"]
 [ext_resource type="VideoStream" uid="uid://dvl6bwpl4seg1" path="res://Assets/test/crt_static.ogv" id="10_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://j0juxhw6soee" path="res://Assets/TV/tv3_body.png" id="12_k12tt"]
@@ -26,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://bg2maecr7u81p" path="res://Assets/Interface/MessagePanel/message_panel_base.png" id="18_pdsj5"]
 [ext_resource type="Texture2D" uid="uid://ciffwd0fc0qhg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow.png" id="19_gt3je"]
 [ext_resource type="Texture2D" uid="uid://bg73gfwpkpcyg" path="res://Assets/Interface/MessagePanel/message_panel_next_button_w_shadow_pressed.png" id="20_3pmx8"]
+[ext_resource type="Texture2D" uid="uid://cjtehutum7bbv" path="res://Assets/chars/char1.png" id="25_ueoa1"]
+[ext_resource type="Texture2D" uid="uid://bjbwmf523ipow" path="res://Assets/chars/char2.png" id="26_6vcvc"]
 
 [sub_resource type="Gradient" id="Gradient_ee4r6"]
 interpolation_mode = 2
@@ -374,7 +374,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_jkdf5")
 expand_mode = 1
 
 [node name="Static" type="VideoStreamPlayer" parent="Room/CameraScreens/Screen1/Display" unique_id=1923906364]
@@ -439,7 +438,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6iyac")
 expand_mode = 1
 
 [node name="Static" type="VideoStreamPlayer" parent="Room/CameraScreens/Screen2/Display" unique_id=1438174579]
@@ -503,7 +501,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_jkdf5")
 expand_mode = 1
 
 [node name="Static" type="VideoStreamPlayer" parent="Room/CameraScreens/Screen3/Display" unique_id=839270824]
@@ -567,7 +564,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_jkdf5")
 expand_mode = 1
 
 [node name="Static" type="VideoStreamPlayer" parent="Room/CameraScreens/Screen4/Display" unique_id=2048438513]
@@ -631,7 +627,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_jkdf5")
 expand_mode = 1
 
 [node name="Static" type="VideoStreamPlayer" parent="Room/CameraScreens/Screen5/Display" unique_id=656247396]
@@ -658,6 +653,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_k12tt")
 expand_mode = 1
+
+[node name="Timer" type="Timer" parent="Room/CameraScreens" unique_id=1725630605]
+wait_time = 5.0
 
 [node name="PanelUI" type="Control" parent="Room" unique_id=939453577]
 layout_mode = 1
@@ -879,6 +877,7 @@ texture = ExtResource("13_h1bgf")
 expand_mode = 1
 
 [node name="Display" type="TextureRect" parent="Room/NPCScreens/Screen1" unique_id=457771902]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -888,6 +887,19 @@ grow_vertical = 2
 texture = ExtResource("12_wsu2k")
 expand_mode = 1
 
+[node name="CharTexture" type="TextureRect" parent="Room/NPCScreens/Screen1/Display" unique_id=1004057413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 12.0
+offset_bottom = 74.140015
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_ueoa1")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Screen1" unique_id=1369597603]
 position = Vector2(-1415.7125, -168.42249)
 rotation = 3.1415927
@@ -895,7 +907,6 @@ scale = Vector2(0.032325003, 0.024224998)
 copy_mode = 2
 
 [node name="Shader" type="TextureRect" parent="Room/NPCScreens/Screen1" unique_id=2005683849]
-visible = false
 material = SubResource("ShaderMaterial_b3802")
 layout_mode = 1
 anchors_preset = 15
@@ -905,11 +916,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_wsu2k")
 expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Room/NPCScreens/Screen1" unique_id=1004057413]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Screen2" type="TextureRect" parent="Room/NPCScreens" unique_id=472316616]
 modulate = Color(0.7553861, 0.75538605, 0.75538605, 1)
@@ -948,6 +954,7 @@ texture = ExtResource("13_h1bgf")
 expand_mode = 1
 
 [node name="Display" type="TextureRect" parent="Room/NPCScreens/Screen2" unique_id=1755559709]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -957,6 +964,20 @@ grow_vertical = 2
 texture = ExtResource("12_wsu2k")
 expand_mode = 1
 
+[node name="CharTexture" type="TextureRect" parent="Room/NPCScreens/Screen2/Display" unique_id=68912936]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+offset_bottom = 74.140015
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_6vcvc")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Room/NPCScreens/Screen2" unique_id=404809437]
 position = Vector2(-1415.7125, -168.42249)
 rotation = 3.1415927
@@ -964,7 +985,6 @@ scale = Vector2(0.032325003, 0.024224998)
 copy_mode = 2
 
 [node name="Shader" type="TextureRect" parent="Room/NPCScreens/Screen2" unique_id=1766431710]
-visible = false
 material = SubResource("ShaderMaterial_b3802")
 layout_mode = 1
 anchors_preset = 15

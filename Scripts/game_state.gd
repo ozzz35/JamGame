@@ -3,27 +3,33 @@ extends Node
 var sectors: Dictionary = {
 	"Africa": {
 		"destroyed": false,
-		"id": "0101"
+		"id": "0101",
+		"infected": false
 	},
 	"Asia": {
 		"destroyed": false,
-		"id": "1011"
+		"id": "1011",
+		"infected": false
 	},
 	"Europe" : {
 		"destroyed": false,
-		"id": "0000"
+		"id": "0000",
+		"infected": true
 	},
 	"NorthAmerica": {
 		"destroyed": false,
-		"id": "1100"
+		"id": "1100",
+		"infected": true
 	},
 	"SouthAmerica": {
 		"destroyed": false,
-		"id": "1010"
+		"id": "1010",
+		"infected": true
 	},
 	"Oceania": {
 		"destroyed": false,
-		"id": "0011"
+		"id": "0011",
+		"infected": false
 	}
 }
 

@@ -577,6 +577,7 @@ offset_left = -62.0
 offset_top = -63.0
 offset_right = 59.0
 offset_bottom = 55.0
+action_mode = 0
 
 [node name="Base" type="Sprite2D" parent="Button1" unique_id=784969738]
 scale = Vector2(0.5, 0.5)

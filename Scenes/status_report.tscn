@@ -32,7 +32,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_27kvh")
 theme_override_font_sizes/font_size = 21
-text = "[COMPANY NAME]
+text = "THE WORLD GOVERNMENT
 DAILY SECTOR REPORT"
 horizontal_alignment = 1
 

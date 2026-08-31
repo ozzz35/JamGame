@@ -17,7 +17,7 @@ func _on_round_finished(round):
 	for printout in printouts:
 		printout.queue_free()
 		printouts.erase(printout)
-	
+	printouts.clear()
 	await GameState.day_changed
 	
 	await get_tree().create_timer(0.8).timeout

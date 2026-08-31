@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://df3r4ylchsplx"
 GameState="*uid://duimxmru6eh7g"
 SoundManager="*uid://7mnl8lwdc7dh"
 SceneTransition="*uid://682yxmt0nwan"
+Cursor="*uid://cs34o360tsyr5"
 
 [debug]
 
